@@ -1048,6 +1048,204 @@
                 padding: 32px 24px;
             }
         }
+
+        
+        /* ============================================
+           Quick Start Code Section (3-line example)
+           ============================================ */
+        .quickstart-section {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+        
+        .quickstart-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        @media (max-width: 900px) {
+            .quickstart-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .quickstart-info h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .quickstart-info p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .quickstart-steps {
+            list-style: none;
+        }
+        
+        .quickstart-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        
+        .quickstart-steps li strong {
+            color: var(--text-primary);
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .quickstart-code {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .quickstart-code .code-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .quickstart-code .code-lang {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .quickstart-code .code-content {
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .quickstart-code pre {
+            margin: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .quickstart-code .keyword { color: #c792ea; }
+        .quickstart-code .string { color: #c3e88d; }
+        .quickstart-code .function { color: #82aaff; }
+        .quickstart-code .property { color: #ffcb6b; }
+        .quickstart-code .comment { color: #546e7a; }
+        
+        /* ============================================
+           Models Section
+           ============================================ */
+        .models-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .models-table-wrapper {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+        }
+        
+        .models-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        .models-table th,
+        .models-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .models-table th {
+            background: rgba(255, 255, 255, 0.02);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .models-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .models-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .model-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .model-category {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .model-category.chat {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-primary);
+        }
+        
+        .model-category.code {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+        
+        .model-category.reasoning {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--accent-secondary);
+        }
+        
+        .model-category.long-context {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+        }
+        
+        .model-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .model-price .price-unit {
+            color: var(--text-muted);
+            font-size: 11px;
+        }
+
     </style>
 </head>
 <body>
@@ -1071,7 +1269,7 @@
             </a>
             
             <ul class="nav-links">
-                <li><a href="#pricing-compare">Pricing</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="#languages">Languages</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#code">API Docs</a></li>
@@ -1103,6 +1301,12 @@
                 </p>
                 
                 <div class="hero-buttons">
+                    <a href="pricing.html" class="btn btn-large" style="background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%); color: white; box-shadow: 0 4px 20px -5px rgba(16, 185, 129, 0.5);">
+                        Get API Key — Free
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                     <a href="#" class="btn btn-primary btn-large">
                         Get Started Free
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -1329,7 +1533,125 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    
+    <!-- Quick Start Section -->
+    <section class="quickstart-section">
+        <div class="container">
+            <div class="quickstart-wrapper">
+                <div class="quickstart-info animate-on-scroll">
+                    <h3>Start in 3 Lines of Code</h3>
+                    <p>Get started with Asiatek AI in seconds. No complex setup required.</p>
+                    <ul class="quickstart-steps">
+                        <li>
+                            <span class="step-number">1</span>
+                            <span>Install the OpenAI SDK — it's the same one you already use</span>
+                        </li>
+                        <li>
+                            <span class="step-number">2</span>
+                            <span>Set your API key and base URL to Asiatek AI endpoint</span>
+                        </li>
+                        <li>
+                            <span class="step-number">3</span>
+                            <span>Start building — all existing OpenAI code works instantly</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="quickstart-code animate-on-scroll">
+                    <div class="code-header">
+                        <span class="code-lang">python</span>
+                    </div>
+                    <div class="code-content">
+                        <pre><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI
+client = OpenAI(api_key=<span class="string">"YOUR_KEY"</span>, base_url=<span class="string">"https://api.asiatekai.com/v1"</span>)
+response = client.chat.completions.create(model=<span class="string">"deepseek-chat"</span>, messages=[{<span class="property">"role"</span>:<span class="string">"user"</span>,<span class="property">"content"</span>:<span class="string">"Hello!"</span>}])</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Models Section -->
+    <section class="models-section" id="models">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Supported Models</span>
+                <h2 class="section-title">9 Models Available</h2>
+                <p class="section-desc">
+                    Choose from a variety of models optimized for different use cases.
+                </p>
+            </div>
+            
+            <div class="models-table-wrapper animate-on-scroll">
+                <table class="models-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Category</th>
+                            <th>Input Price</th>
+                            <th>Output Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="model-name">qwen-turbo</td>
+                            <td><span class="model-category chat">chat</span></td>
+                            <td class="model-price">$0.5 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$1.5 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">qwen-plus</td>
+                            <td><span class="model-category chat">chat</span></td>
+                            <td class="model-price">$2 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$6 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">qwen-max</td>
+                            <td><span class="model-category chat">chat</span></td>
+                            <td class="model-price">$20 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$60 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">qwen-long</td>
+                            <td><span class="model-category long-context">long-context</span></td>
+                            <td class="model-price">$4 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$12 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">qwen-coder-turbo</td>
+                            <td><span class="model-category code">code</span></td>
+                            <td class="model-price">$0.8 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$2.4 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">qwen-coder-plus</td>
+                            <td><span class="model-category code">code</span></td>
+                            <td class="model-price">$3.5 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$10.5 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">deepseek-chat</td>
+                            <td><span class="model-category chat">chat</span></td>
+                            <td class="model-price">$0.27 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$1.1 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">deepseek-reasoner</td>
+                            <td><span class="model-category reasoning">reasoning</span></td>
+                            <td class="model-price">$0.55 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$2.19 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                        <tr>
+                            <td class="model-name">deepseek-coder</td>
+                            <td><span class="model-category code">code</span></td>
+                            <td class="model-price">$0.27 <span class="price-unit">/ 1M tokens</span></td>
+                            <td class="model-price">$1.1 <span class="price-unit">/ 1M tokens</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+<!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1593,7 +1915,7 @@ response = client.chat.completions.create(
                 <div class="footer-col">
                     <h4>Product</h4>
                     <ul>
-                        <li><a href="#pricing-compare">Pricing</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="#languages">Languages</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#">Changelog</a></li>
@@ -1721,9 +2043,9 @@ response = client.chat.completions.create(
             curl: `<span class="comment"># OpenAI → Asiatek AI Migration (cURL)</span>
 
 <span class="comment"># Just change the base URL</span>
-curl https://api.asiatekai.com/v1/chat/completions \\
-  -H <span class="string">"Authorization: Bearer asiatek_sk_xxxxxxxxxxxx"</span> \\
-  -H <span class="string">"Content-Type: application/json"</span> \\
+curl https://api.asiatekai.com/v1/chat/completions \
+  -H <span class="string">"Authorization: Bearer asiatek_sk_xxxxxxxxxxxx"</span> \
+  -H <span class="string">"Content-Type: application/json"</span> \
   -d '{
     <span class="string">"model"</span>: <span class="string">"asiatek-flash"</span>,
     <span class="string">"messages"</span>: [
