@@ -1334,9 +1334,7 @@
             display: none;
             z-index: 9999;
         }
-        .lang-switcher.open .lang-dropdown {
-            display: block;
-        }
+        /* dropdown toggled via JS inline style */
         .lang-option {
             display: flex;
             align-items: center;
@@ -1395,19 +1393,19 @@
             
             <div class="nav-cta">
                 <!-- Language Switcher -->
-                <div class="lang-switcher" id="langSwitcher">
-                    <button class="lang-btn" id="langBtn">
+                <div class="lang-switcher" id="langSwitcher" style="position:relative;">
+                    <button class="lang-btn" id="langBtn" onclick="toggleLangMenu(event)" type="button" style="pointer-events:auto;">
                         <span id="currentLangFlag">🌐</span>
                         <span id="currentLangName">English</span>
                         <span class="arrow">▼</span>
                     </button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <div class="lang-option" data-lang="en"><span class="flag">🇺🇸</span> English <span class="native-name">English</span></div>
-                        <div class="lang-option" data-lang="zh"><span class="flag">🇨🇳</span> 中文 <span class="native-name">Chinese</span></div>
-                        <div class="lang-option" data-lang="th"><span class="flag">🇹🇭</span> ไทย <span class="native-name">Thai</span></div>
-                        <div class="lang-option" data-lang="vi"><span class="flag">🇻🇳</span> Tiếng Việt <span class="native-name">Vietnamese</span></div>
-                        <div class="lang-option" data-lang="id"><span class="flag">🇮🇩</span> Bahasa Indonesia <span class="native-name">Indonesian</span></div>
-                        <div class="lang-option" data-lang="ms"><span class="flag">🇲🇾</span> Bahasa Melayu <span class="native-name">Malay</span></div>
+                    <div class="lang-dropdown" id="langDropdown" style="display:none;">
+                        <div class="lang-option" onclick="switchLang('en')" style="pointer-events:auto;"><span class="flag">🇺🇸</span> English</div>
+                        <div class="lang-option" onclick="switchLang('zh')" style="pointer-events:auto;"><span class="flag">🇨🇳</span> 中文</div>
+                        <div class="lang-option" onclick="switchLang('th')" style="pointer-events:auto;"><span class="flag">🇹🇭</span> ไทย</div>
+                        <div class="lang-option" onclick="switchLang('vi')" style="pointer-events:auto;"><span class="flag">🇻🇳</span> Tiếng Việt</div>
+                        <div class="lang-option" onclick="switchLang('id')" style="pointer-events:auto;"><span class="flag">🇮🇩</span> Bahasa Indonesia</div>
+                        <div class="lang-option" onclick="switchLang('ms')" style="pointer-events:auto;"><span class="flag">🇲🇾</span> Bahasa Melayu</div>
                     </div>
                 </div>
                 <a href="https://api.asiatekai.com" class="btn btn-ghost" data-i18n="nav_signin">Sign In</a>
@@ -3071,21 +3069,23 @@ curl https://api.asiatekai.com/v1/chat/completions \
             }
         }
 
-        document.getElementById('langBtn').addEventListener('click', (e) => {
+        // Global functions for inline onclick handlers
+        function toggleLangMenu(e) {
             e.stopPropagation();
-            document.getElementById('langSwitcher').classList.toggle('open');
-        });
-
-        document.querySelectorAll('.lang-option').forEach(opt => {
-            opt.addEventListener('click', () => {
-                const lang = opt.dataset.lang;
-                setLanguage(lang);
-                document.getElementById('langSwitcher').classList.remove('open');
-            });
-        });
-
-        document.addEventListener('click', () => {
-            document.getElementById('langSwitcher').classList.remove('open');
+            var dd = document.getElementById('langDropdown');
+            dd.style.display = (dd.style.display === 'none' || dd.style.display === '') ? 'block' : 'none';
+        }
+        
+        function switchLang(lang) {
+            setLanguage(lang);
+            document.getElementById('langDropdown').style.display = 'none';
+        }
+        
+        document.addEventListener('click', function(e) {
+            var ls = document.getElementById('langSwitcher');
+            if (ls && !ls.contains(e.target)) {
+                document.getElementById('langDropdown').style.display = 'none';
+            }
         });
 
         initI18n();
