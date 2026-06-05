@@ -2961,12 +2961,9 @@ curl https://api.asiatekai.com/v1/chat/completions \
             return null;
         }
 
-        async function initI18n() {
+        function initI18n() {
+            // First, apply saved or browser language immediately (no blocking)
             let detectedLang = getSavedLanguage();
-            
-            if (!detectedLang) {
-                detectedLang = await detectLanguageFromGeoIP();
-            }
             
             if (!detectedLang) {
                 detectedLang = detectBrowserLanguage();
@@ -2977,6 +2974,15 @@ curl https://api.asiatekai.com/v1/chat/completions \
             }
             
             setLanguage(detectedLang);
+            
+            // Then try GeoIP in background (non-blocking)
+            if (!getSavedLanguage()) {
+                detectLanguageFromGeoIP().then(function(geoLang) {
+                    if (geoLang && geoLang !== detectedLang) {
+                        setLanguage(geoLang);
+                    }
+                }).catch(function() {});
+            }
         }
 
         function setLanguage(lang) {
@@ -3014,7 +3020,9 @@ curl https://api.asiatekai.com/v1/chat/completions \
         }
 
         function switchLang(lang) {
+            if (!i18n[lang]) lang = 'en';
             setLanguage(lang);
+            saveLanguage(lang);
             document.querySelectorAll('.lang-flag').forEach(function(btn) {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
