@@ -1291,76 +1291,33 @@
 
     <!-- i18n Language Switcher Styles -->
     <style>
-        .lang-switcher {
-            position: relative;
-            margin-right: 12px;
-        }
-        .lang-btn {
+        .lang-bar {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
+            gap: 2px;
+            margin-right: 8px;
         }
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--border-color-hover);
-            color: var(--text-primary);
-        }
-        .lang-btn .arrow {
-            font-size: 10px;
-            transition: transform 0.2s;
-        }
-        .lang-switcher.open .lang-btn .arrow {
-            transform: rotate(180deg);
-        }
-        .lang-dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            min-width: 180px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            display: none;
-            z-index: 9999;
-        }
-        /* dropdown toggled via JS inline style */
-        .lang-option {
-            display: flex;
+        .lang-flag {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            border-radius: 8px;
-            color: var(--text-secondary);
-            font-size: 14px;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 2px solid transparent;
             cursor: pointer;
+            background: none;
+            padding: 0;
             transition: all 0.15s;
         }
-        .lang-option:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
+        .lang-flag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-color-hover);
         }
-        .lang-option.active {
-            background: rgba(99, 102, 241, 0.15);
-            color: var(--accent-primary);
-        }
-        .lang-option .flag {
-            font-size: 18px;
-        }
-        .lang-option .native-name {
-            margin-left: auto;
-            font-size: 12px;
-            opacity: 0.7;
+        .lang-flag.active {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
         }
     </style>
 </head>
@@ -1393,20 +1350,13 @@
             
             <div class="nav-cta">
                 <!-- Language Switcher -->
-                <div class="lang-switcher" id="langSwitcher" style="position:relative;">
-                    <button class="lang-btn" id="langBtn" onclick="toggleLangMenu(event)" type="button" style="pointer-events:auto;">
-                        <span id="currentLangFlag">🌐</span>
-                        <span id="currentLangName">English</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="lang-dropdown" id="langDropdown" style="display:none;">
-                        <div class="lang-option" onclick="switchLang('en')" style="pointer-events:auto;"><span class="flag">🇺🇸</span> English</div>
-                        <div class="lang-option" onclick="switchLang('zh')" style="pointer-events:auto;"><span class="flag">🇨🇳</span> 中文</div>
-                        <div class="lang-option" onclick="switchLang('th')" style="pointer-events:auto;"><span class="flag">🇹🇭</span> ไทย</div>
-                        <div class="lang-option" onclick="switchLang('vi')" style="pointer-events:auto;"><span class="flag">🇻🇳</span> Tiếng Việt</div>
-                        <div class="lang-option" onclick="switchLang('id')" style="pointer-events:auto;"><span class="flag">🇮🇩</span> Bahasa Indonesia</div>
-                        <div class="lang-option" onclick="switchLang('ms')" style="pointer-events:auto;"><span class="flag">🇲🇾</span> Bahasa Melayu</div>
-                    </div>
+                <div class="lang-bar">
+                    <button class="lang-flag active" data-lang="en" onclick="switchLang('en')" title="English">🇺🇸</button>
+                    <button class="lang-flag" data-lang="zh" onclick="switchLang('zh')" title="中文">🇨🇳</button>
+                    <button class="lang-flag" data-lang="th" onclick="switchLang('th')" title="ไทย">🇹🇭</button>
+                    <button class="lang-flag" data-lang="vi" onclick="switchLang('vi')" title="Tiếng Việt">🇻🇳</button>
+                    <button class="lang-flag" data-lang="id" onclick="switchLang('id')" title="Bahasa Indonesia">🇮🇩</button>
+                    <button class="lang-flag" data-lang="ms" onclick="switchLang('ms')" title="Bahasa Melayu">🇲🇾</button>
                 </div>
                 <a href="https://api.asiatekai.com" class="btn btn-ghost" data-i18n="nav_signin">Sign In</a>
                 <a href="https://api.asiatekai.com" class="btn btn-primary" data-i18n="nav_get_api_key">Get API Key</a>
@@ -3050,14 +3000,8 @@ curl https://api.asiatekai.com/v1/chat/completions \
         }
 
         function updateLanguageSwitcherUI(lang) {
-            const config = languageConfig[lang];
-            if (config) {
-                document.getElementById('currentLangFlag').textContent = config.flag;
-                document.getElementById('currentLangName').textContent = config.name;
-            }
-            
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.toggle('active', opt.dataset.lang === lang);
+            document.querySelectorAll('.lang-flag').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
         }
 
@@ -3069,24 +3013,12 @@ curl https://api.asiatekai.com/v1/chat/completions \
             }
         }
 
-        // Global functions for inline onclick handlers
-        function toggleLangMenu(e) {
-            e.stopPropagation();
-            var dd = document.getElementById('langDropdown');
-            dd.style.display = (dd.style.display === 'none' || dd.style.display === '') ? 'block' : 'none';
-        }
-        
         function switchLang(lang) {
             setLanguage(lang);
-            document.getElementById('langDropdown').style.display = 'none';
+            document.querySelectorAll('.lang-flag').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
         }
-        
-        document.addEventListener('click', function(e) {
-            var ls = document.getElementById('langSwitcher');
-            if (ls && !ls.contains(e.target)) {
-                document.getElementById('langDropdown').style.display = 'none';
-            }
-        });
 
         initI18n();
     </script>
