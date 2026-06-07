@@ -17,6 +17,7 @@
             --accent-blue: #3b82f6;
             --accent-cyan: #06b6d4;
             --accent-green: #10b981;
+            --accent-orange: #f59e0b;
             --border-color: rgba(255,255,255,0.08);
         }
         body {
@@ -50,6 +51,11 @@
             justify-content: center;
             margin: 0 auto 24px;
             font-size: 40px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         h1 {
             font-size: 28px;
@@ -111,6 +117,8 @@
             border-radius: 12px;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
         }
         .cta-button:hover {
             transform: translateY(-2px);
@@ -129,6 +137,48 @@
         .note strong {
             color: var(--accent-cyan);
         }
+        .status-box {
+            margin-top: 24px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .status-box.checking {
+            background: rgba(245,158,11,0.08);
+            border-color: rgba(245,158,11,0.3);
+        }
+        .status-box.success {
+            background: rgba(16,185,129,0.08);
+            border-color: rgba(16,185,129,0.3);
+        }
+        .status-box.pending {
+            background: rgba(59,130,246,0.08);
+            border-color: rgba(59,130,246,0.3);
+        }
+        .status-text {
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .status-detail {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: var(--accent-orange);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
         .back-link {
             display: inline-block;
             margin-top: 20px;
@@ -139,6 +189,16 @@
         .back-link:hover {
             color: var(--text-primary);
         }
+        .plan-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -146,40 +206,92 @@
         <div class="success-card">
             <div class="success-icon">✓</div>
             <h1>Payment Successful!</h1>
-            <p class="subtitle">Your subscription is now active. Follow these steps to get your API key and start building.</p>
+            <p class="subtitle">Your subscription is now active. Follow these steps to get your API key.</p>
             
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Create Your Account</h3>
-                        <p>Go to <a href="https://api.asiatekai.com" target="_blank">api.asiatekai.com</a> and sign up for a free account with your email.</p>
+                        <p>Go to <a href="https://api.asiatekai.com" target="_blank">api.asiatekai.com</a> and sign up using <strong>the same email</strong> you used for payment.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Contact Us to Activate Your Plan</h3>
-                        <p>Email us at <a href="mailto:support@asiatekai.com">support@asiatekai.com</a> with your username and payment receipt. We'll upgrade your account within 24 hours.</p>
+                        <h3>Automatic Upgrade</h3>
+                        <p>Your account will be automatically upgraded to your paid plan within seconds after registration.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Get Your API Key</h3>
-                        <p>Once upgraded, go to your dashboard → Tokens → Create a new API key. You're all set!</p>
+                        <p>Go to your dashboard → Tokens → Create a new API key. Start building!</p>
                     </div>
                 </div>
             </div>
 
             <a href="https://api.asiatekai.com" target="_blank" class="cta-button">Go to Dashboard →</a>
 
+            <div id="status-box" class="status-box checking" style="display:none;">
+                <div class="status-text"><span class="spinner"></span> Checking your account status...</div>
+                <div class="status-detail" id="status-detail"></div>
+            </div>
+
             <div class="note">
-                <strong>💡 Tip:</strong> While waiting for activation, you can already explore the dashboard and generate a free-tier API key. Your plan benefits will be applied once we upgrade your account.
+                <strong>💡 Important:</strong> Make sure to register with the same email you used for payment. This ensures your account is automatically linked to your subscription.
             </div>
 
             <a href="https://asiatekai.com" class="back-link">← Back to Homepage</a>
         </div>
     </div>
+
+    <script>
+        // Parse plan from URL params (Creem can pass metadata in return URL)
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan') || '';
+        
+        if (plan) {
+            const statusBox = document.getElementById('status-box');
+            const statusDetail = document.getElementById('status-detail');
+            
+            statusBox.style.display = 'block';
+            
+            const planNames = {
+                'pro': 'Pro ($29/month)',
+                'enterprise': 'Enterprise ($99/month)'
+            };
+            
+            statusDetail.textContent = `Plan: ${planNames[plan] || plan}`;
+            
+            // Try to check pending payment status via webhook API
+            setTimeout(async () => {
+                try {
+                    const resp = await fetch('https://api.asiatekai.com/webhook/creem/check-pending', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({email: urlParams.get('email') || ''})
+                    });
+                    
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        if (data.status === 'upgraded') {
+                            statusBox.className = 'status-box success';
+                            statusBox.querySelector('.status-text').innerHTML = 
+                                '✅ Your account has been upgraded! <span class="plan-badge">' + (planNames[data.plan] || data.plan) + '</span>';
+                            statusDetail.textContent = 'Head to your dashboard to create an API key and start building.';
+                        }
+                    }
+                } catch (e) {
+                    // Webhook API might not be deployed yet, that's ok
+                    statusBox.className = 'status-box pending';
+                    statusBox.querySelector('.status-text').innerHTML = 
+                        '⏳ Your payment is confirmed. <span class="plan-badge">' + (planNames[plan] || plan) + '</span>';
+                    statusDetail.textContent = 'Your account will be automatically upgraded when you register. Please use the same email as your payment.';
+                }
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
