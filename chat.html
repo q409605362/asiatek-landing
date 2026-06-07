@@ -489,7 +489,7 @@
         @media (max-width: 768px) {
             .sidebar { display: none; }
             .nav-links a:not(:last-child) { display: none; }
-            .quick-prompts { grid-template-columns: 1fr; }
+            .quick-prompts { grid-template-columns: 1fr !important; }
             .messages { padding: 16px; }
             .input-area { padding: 12px 16px 16px; }
         }
@@ -595,22 +595,42 @@
                     <div class="welcome-icon">💬</div>
                     <h2>Asiatek AI Playground</h2>
                     <p>Try DeepSeek & Qwen models for free. Singapore data centers, 201 languages, OpenAI compatible API.</p>
-                    <div class="quick-prompts">
+                                        <div class="quick-prompts" style="grid-template-columns: repeat(3, 1fr);">
                         <button class="quick-prompt" onclick="sendQuick('Explain the difference between DeepSeek and Qwen models in simple terms')">
                             <span class="qp-icon">🤖</span>
-                            Compare DeepSeek vs Qwen models
+                            Compare DeepSeek vs Qwen
                         </button>
                         <button class="quick-prompt" onclick="sendQuick('Write a Python function to fetch data from a REST API with error handling')">
                             <span class="qp-icon">💻</span>
-                            Write Python code with error handling
+                            Write Python code
                         </button>
-                        <button class="quick-prompt" onclick="sendQuick('你好，请用中文介绍一下你自己')">
+                        <button class="quick-prompt" onclick="sendQuick('Write a Node.js Express server with authentication middleware')">
+                            <span class="qp-icon">⚡</span>
+                            Write Node.js code
+                        </button>
+                        <button class="quick-prompt" onclick="sendQuick('你好，请用中文介绍一下你自己，你支持哪些语言？')">
                             <span class="qp-icon">🇨🇳</span>
-                            Chat in Chinese (中文对话)
+                            中文对话
                         </button>
-                        <button class="quick-prompt" onclick="sendQuick('สวัสดีครับ ช่วยอธิบาย AI API คืออะไร')">
+                        <button class="quick-prompt" onclick="sendQuick('สวัสดีครับ ช่วยอธิบาย AI API คืออะไร และมีประโยชน์อย่างไร')">
                             <span class="qp-icon">🇹🇭</span>
-                            Chat in Thai (ภาษาไทย)
+                            ภาษาไทย
+                        </button>
+                        <button class="quick-prompt" onclick="sendQuick('Xin chào, bạn có thể giải thích AI API là gì không?')">
+                            <span class="qp-icon">🇻🇳</span>
+                            Tiếng Việt
+                        </button>
+                        <button class="quick-prompt" onclick="sendQuick('Halo, bisakah Anda menjelaskan apa itu AI API dalam bahasa Indonesia?')">
+                            <span class="qp-icon">🇮🇩</span>
+                            Bahasa Indonesia
+                        </button>
+                        <button class="quick-prompt" onclick="sendQuick('Halo, boleh terangkan apa itu AI API dalam Bahasa Melayu?')">
+                            <span class="qp-icon">🇲🇾</span>
+                            Bahasa Melayu
+                        </button>
+                        <button class="quick-prompt" onclick="sendQuick('こんにちは、AI APIについて日本語で説明してもらえますか？')">
+                            <span class="qp-icon">🇯🇵</span>
+                            日本語
                         </button>
                     </div>
                 </div>
