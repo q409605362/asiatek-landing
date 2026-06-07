@@ -1,0 +1,10 @@
+# Asiatek AI - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://asiatekai.com/sitemap.xml
+
+# Disallow admin/api pages
+Disallow: /api/
+Disallow: /admin/
