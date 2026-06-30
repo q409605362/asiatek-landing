@@ -1,0 +1,6 @@
+name = "asiatekai-api"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# API Keys will be set as secrets via Cloudflare dashboard
