@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Text Statistics - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online count characters, words, sentences, paragraphs tool. Fast, secure, no installation.">
@@ -17,22 +18,33 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Text Statistics</h1><p class="text-gray-500 mb-4">Count characters, words, sentences, paragraphs</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.text-statistics">Text Statistics</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.text-statistics">Count characters, words, sentences, paragraphs</p>
 <textarea id="input" class="w-full p-3 border rounded-lg font-mono text-sm" rows="6" placeholder="Paste or type your text here..." oninput="calc()"></textarea>
 <div id="stats" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4"></div>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function calc(){var t=document.getElementById("input").value;var c=t.length;var cc=t.replace(/\s/g,"").length;var w=t.trim()?t.trim().split(/\s+/).length:0;var s=t.split(/[.!?]+/).filter(function(x){return x.trim()}).length;var p=t.split(/\n\n+/).filter(function(x){return x.trim()}).length;var lines=t.split("\n").length;var read=Math.ceil(w/200);document.getElementById("stats").innerHTML=[["Characters",c],["Characters (no spaces)",cc],["Words",w],["Sentences",s],["Paragraphs",p],["Lines",lines],["Reading Time",read+" min"]].map(function(x){return'<div class="bg-white p-4 rounded-lg border text-center"><div class="text-2xl font-bold text-blue-600">'+x[1]+'</div><div class="text-xs text-gray-500 mt-1">'+x[0]+'</div></div>'}).join("")}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

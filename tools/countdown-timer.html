@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Countdown Timer - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online set and run countdown timers tool. Fast, secure, no installation.">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Countdown Timer</h1><p class="text-gray-500 mb-4">Set and run countdown timers</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.countdown-timer">Countdown Timer</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.countdown-timer">Set and run countdown timers</p>
 <div class="text-center space-y-6">
 <div class="text-6xl font-mono font-bold text-gray-800" id="display">00:00:00</div>
 <div class="flex justify-center gap-3" id="inputs">
@@ -43,9 +44,20 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>var timer=null,timeLeft=0,running=false;function fmt(s){var h=Math.floor(s/3600);var m=Math.floor(s%3600/60);var sc=s%60;return String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(sc).padStart(2,"0")}function tick(){if(timeLeft>0){timeLeft--;document.getElementById("display").textContent=fmt(timeLeft);update()}else{running=false;clearInterval(timer);document.getElementById("display").textContent="00:00:00";document.getElementById("msg").textContent="⏰ Time's up!";document.getElementById("msg").className="text-lg font-medium text-red-600";try{new Audio("data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgipGBcGBTVHyMcJ2...").play()}catch(e){}}}function start(){if(running)return;var h=parseInt(document.getElementById("h").value)||0;var m=parseInt(document.getElementById("m").value)||0;var s=parseInt(document.getElementById("s").value)||0;if(timeLeft===0)timeLeft=h*3600+m*60+s;if(timeLeft<=0)return;running=true;document.getElementById("msg").textContent="";timer=setInterval(tick,1000)}function pause(){running=false;clearInterval(timer)}function reset(){pause();timeLeft=0;document.getElementById("display").textContent="00:00:00";document.getElementById("msg").textContent=""}function preset(m,s){document.getElementById("h").value=0;document.getElementById("m").value=m;document.getElementById("s").value=s;reset()}function update(){var total=(parseInt(document.getElementById("h").value)||0)*3600+(parseInt(document.getElementById("m").value)||0)*60+(parseInt(document.getElementById("s").value)||0);if(!running&&total>0&&timeLeft===0)document.getElementById("display").textContent=fmt(total)}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HTTP Status Codes - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online http status codes tool. Fast, secure, no installation.">
@@ -17,22 +18,33 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">HTTP Status Codes</h1><p class="text-gray-500 mb-4">Complete HTTP status code reference.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.http-status-codes">HTTP Status Codes</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.http-status-codes">Complete HTTP status code reference.</p>
 <input id="srch" class="w-full p-3 border rounded-lg mb-4" placeholder="Search..." oninput="flt()">
 <div id="codes" class="space-y-2"></div>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>var C=[[100,"Continue","Server received headers."],[200,"OK","Success."],[201,"Created","Resource created."],[204,"No Content","Success, no content."],[301,"Moved Permanently","Resource moved."],[302,"Found","Temporary redirect."],[304,"Not Modified","Not modified."],[400,"Bad Request","Invalid request."],[401,"Unauthorized","Auth required."],[403,"Forbidden","Access denied."],[404,"Not Found","Resource not found."],[405,"Method Not Allowed","Method not supported."],[408,"Request Timeout","Timeout."],[429,"Too Many Requests","Rate limited."],[500,"Internal Server Error","Server error."],[502,"Bad Gateway","Invalid upstream response."],[503,"Service Unavailable","Service down."],[504,"Gateway Timeout","Upstream timeout."]];function rndr(f){var h="";C.forEach(function(c){if(f&&!((c[0]+"").includes(f)||c[1].toLowerCase().includes(f.toLowerCase())))return;var cl=c[0]<300?"bg-green-100":c[0]<400?"bg-blue-100":c[0]<500?"bg-red-100":"bg-orange-100";h+='<div class="flex gap-4 p-3 rounded-lg '+cl+'"><span class="font-mono font-bold w-12">'+c[0]+'</span><div><b>'+c[1]+'</b><div class="text-sm text-gray-600">'+c[2]+"</div></div></div>";});document.getElementById("codes").innerHTML=h;}function flt(){rndr(document.getElementById("srch").value);}rndr();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chmod Calculator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online unix file permission calculator tool. Fast, secure, no installation.">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Chmod Calculator</h1><p class="text-gray-500 mb-4">Unix file permission calculator</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.chmod-calculator">Chmod Calculator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.chmod-calculator">Unix file permission calculator</p>
 <div class="space-y-4">
 <div class="grid grid-cols-4 gap-2 bg-gray-50 p-3 rounded-lg text-sm font-medium"><div></div><div class="text-center">Read</div><div class="text-center">Write</div><div class="text-center">Execute</div></div>
 <div class="grid grid-cols-4 gap-2 items-center"><div class="font-medium">Owner</div><input type="checkbox" id="or" class="justify-self-center" onchange="calc()" checked><input type="checkbox" id="ow" class="justify-self-center" onchange="calc()" checked><input type="checkbox" id="ox" class="justify-self-center" onchange="calc()"></div>
@@ -35,9 +36,20 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function calc(){function v(r,w,x){return(r?4:0)+(w?2:0)+(x?1:0)}var o=v(document.getElementById("or").checked,document.getElementById("ow").checked,document.getElementById("ox").checked);var g=v(document.getElementById("gr").checked,document.getElementById("gw").checked,document.getElementById("gx").checked);var t=v(document.getElementById("tr").checked,document.getElementById("tw").checked,document.getElementById("tx").checked);document.getElementById("octal").textContent=""+o+g+t;function s(n){return(n&4?"r":"-")+(n&2?"w":"-")+(n&1?"x":"-")}document.getElementById("sym").textContent=s(o)+s(g)+s(t)}calc()</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

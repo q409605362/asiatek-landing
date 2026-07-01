@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Word Counter - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online word counter tool. Fast, secure, no installation.">
@@ -17,15 +18,15 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Word Counter</h1>
-<p class="text-gray-500 mb-4">Count words, characters, sentences, and paragraphs.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.word-counter">Word Counter</h1>
+<p class="text-gray-500 mb-4" data-i18n="tool.desc.word-counter">Count words, characters, sentences, and paragraphs.</p>
 <textarea id="input" class="w-full h-48 p-3 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Paste or type your text here..." oninput="count()"></textarea>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
 <div class="bg-blue-50 rounded-lg p-4 text-center"><div id="words" class="text-2xl font-bold text-blue-600">0</div><div class="text-sm text-gray-500">Words</div></div>
@@ -36,9 +37,20 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function count(){var t=document.getElementById("input").value;var w=t.trim()?t.trim().split(/\s+/).length:0;var c=t.length;var s=t.split(/[.!?]+/).filter(x=>x.trim()).length;var p=t.split(/\n\n+/).filter(x=>x.trim()).length;document.getElementById("words").textContent=w;document.getElementById("chars").textContent=c;document.getElementById("sentences").textContent=s;document.getElementById("paragraphs").textContent=p;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CSS Filter Generator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Visual CSS filter generator with presets. Create blur, brightness, contrast, sepia and more effects">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">CSS Filter Generator</h1><p class="text-gray-500 mb-4">Visual CSS filter generator with presets. Create blur, brightness, contrast, sepia and more effects</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.css-filter-generator">CSS Filter Generator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.css-filter-generator">Visual CSS filter generator with presets. Create blur, brightness, contrast, sepia and more effects</p>
 <div class="grid md:grid-cols-2 gap-6">
 <div>
 <img id="preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%234a90d9'/%3E%3Ccircle cx='120' cy='120' r='60' fill='%23e74c3c'/%3E%3Ccircle cx='280' cy='100' r='40' fill='%23f1c40f'/%3E%3Crect x='50' y='200' width='300' height='60' rx='10' fill='%232ecc71'/%3E%3Ctext x='200' y='170' text-anchor='middle' fill='white' font-size='24'%3EPreview%3C/text%3E%3C/svg%3E" class="w-full rounded-lg border" style="max-height:300px;object-fit:cover">
@@ -52,7 +53,7 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>var filters=["blur","brightness","contrast","grayscale","hue","invert","saturate","sepia","opacity"];
@@ -81,5 +82,16 @@ document.getElementById("css-out").textContent="filter: "+filterStr+";"}
 function reset(){filters.forEach(function(f){document.getElementById(f).value=f==="brightness"||f==="contrast"||f==="saturate"||f==="opacity"?100:0});update()}
 function copyCSS(){navigator.clipboard.writeText(document.getElementById("css-out").textContent).then(()=>alert("Copied!"))}
 var ph=document.getElementById("presets");for(var name in presets){var b=document.createElement("button");b.className="bg-gray-100 hover:bg-blue-100 p-1 rounded text-xs";b.textContent=name;b.onclick=function(n){return function(){var p=presets[n];for(var f in p)document.getElementById(f).value=p[f];update()}}(name);ph.appendChild(b)}update()</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

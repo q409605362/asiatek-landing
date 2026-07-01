@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Markdown Preview - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online markdown preview tool. Fast, secure, no installation.">
@@ -17,21 +18,32 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Markdown Preview</h1><p class="text-gray-500 mb-4">Live Markdown editor.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.markdown-preview">Markdown Preview</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.markdown-preview">Live Markdown editor.</p>
 <div class="grid grid-cols-2 gap-4"><div><textarea id="md" class="w-full h-72 p-3 border rounded-lg font-mono text-sm" oninput="pv()" placeholder="# Hello\n\n**Bold** *italic*"></textarea></div><div id="out" class="w-full h-72 p-4 border rounded-lg bg-white overflow-auto prose prose-sm"></div></div>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function pv(){var m=document.getElementById("md").value;var h=m.replace(/^### (.*)$/gim,"<h3>$1</h3>").replace(/^## (.*)$/gim,"<h2>$1</h2>").replace(/^# (.*)$/gim,"<h1>$1</h1>").replace(/\*\*(.*?)\*\*/gim,"<strong>$1</strong>").replace(/\*(.*?)\*/gim,"<em>$1</em>").replace(/`(.*?)`/gim,"<code>$1</code>").replace(/\[(.*?)\]\((.*?)\)/gim,'<a href="$2">$1</a>').replace(/\n/g,"<br>");document.getElementById("out").innerHTML=h;}pv();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

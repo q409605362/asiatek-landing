@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Graph Preview & Meta Tag Generator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Preview how your page looks on Facebook, Twitter, LinkedIn. Generate OG meta tags">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Open Graph Preview & Meta Tag Generator</h1><p class="text-gray-500 mb-4">Preview how your page looks on Facebook, Twitter, LinkedIn. Generate OG meta tags</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.open-graph-preview">Open Graph Preview & Meta Tag Generator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.open-graph-preview">Preview how your page looks on Facebook, Twitter, LinkedIn. Generate OG meta tags</p>
 <div class="space-y-4">
 <div class="grid md:grid-cols-2 gap-3">
 <div><label class="text-sm font-medium">og:title</label><input id="title" type="text" class="w-full p-2 border rounded-lg text-sm" value="My Awesome Article" oninput="preview()"></div>
@@ -49,7 +50,7 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function preview(){var t=document.getElementById("title").value,d=document.getElementById("desc").value,img=document.getElementById("img").value,u=document.getElementById("url").value,tc=document.getElementById("tcard").value,ts=document.getElementById("tsite").value,ot=document.getElementById("type").value;
@@ -58,5 +59,16 @@ document.getElementById("tw-preview").innerHTML='<div style="max-width:500px" cl
 var tags='<meta property="og:title" content="'+t+'" />\n<meta property="og:type" content="'+ot+'" />\n<meta property="og:description" content="'+d+'" />\n<meta property="og:image" content="'+img+'" />\n<meta property="og:url" content="'+u+'" />\n<meta name="twitter:card" content="'+tc+'" />\n<meta name="twitter:site" content="'+ts+'" />\n<meta name="twitter:title" content="'+t+'" />\n<meta name="twitter:description" content="'+d+'" />\n<meta name="twitter:image" content="'+img+'" />';
 document.getElementById("tags").textContent=tags}
 function copy(){navigator.clipboard.writeText(document.getElementById("tags").textContent).then(()=>alert("Copied!"))}preview()</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

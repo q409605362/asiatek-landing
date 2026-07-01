@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🛠️ Asiatek AI</title>
 <meta name="description" content="Free developer tools and AI API infrastructure">
@@ -9,13 +10,38 @@
 </head>
 <body class="bg-gradient-to-b from-gray-50 to-white min-h-screen flex flex-col items-center justify-center">
 <div class="text-center px-4">
-<h1 class="text-4xl font-bold text-gray-900 mb-4">🛠️ Asiatek AI</h1>
-<p class="text-gray-600 mb-8">Free Developer Tools & AI Infrastructure</p>
+
+<select id="lang-selector" class="text-xs px-2 py-1 border rounded bg-white cursor-pointer" onchange="window.changeLanguage(this.value)" style="min-width:70px;">
+<option value="en">English</option>
+<option value="zh">中文</option>
+<option value="es">Español</option>
+<option value="pt">Português</option>
+<option value="ja">日本語</option>
+<option value="ko">한국어</option>
+<option value="ru">Русский</option>
+<option value="ar">العربية</option>
+<option value="hi">हिन्दी</option>
+<option value="de">Deutsch</option>
+<option value="fr">Français</option>
+</select>
+
+<h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="home.title">🛠️ Asiatek AI</h1>
+<p class="text-gray-600 mb-8"><span data-i18n="home.subtitle">Free Developer Tools & AI Infrastructure</span></p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-<a href="/tools" class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 text-lg font-medium shadow-lg">🛠️ 100 Free Tools</a>
-<a href="/pricing.html" class="px-8 py-4 bg-gray-800 text-white rounded-xl hover:bg-gray-900 text-lg font-medium shadow-lg">🤖 AI API</a>
+<a href="/tools" class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 text-lg font-medium shadow-lg" data-i18n="home.tools_btn">>🛠️ 100 Free Tools</a>
+<a href="/pricing.html" class="px-8 py-4 bg-gray-800 text-white rounded-xl hover:bg-gray-900 text-lg font-medium shadow-lg" data-i18n="home.api_btn">>🤖 AI API</a>
 </div>
-<p class="text-sm text-gray-400 mt-6">JSON, Base64, JWT, passwords, converters, timers and more.</p>
+<p class="text-sm text-gray-400 mt-6"><span data-i18n="footer.tagline">JSON, Base64, JWT, passwords, converters, timers and more.</span></p>
 </div>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

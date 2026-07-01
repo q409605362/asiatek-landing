@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BMI Calculator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online bmi calculator tool. Fast, secure, no installation.">
@@ -17,22 +18,33 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">BMI Calculator</h1><p class="text-gray-500 mb-4">Calculate Body Mass Index.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.bmi-calculator">BMI Calculator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.bmi-calculator">Calculate Body Mass Index.</p>
 <div class="flex gap-4 items-end"><div><label class="text-sm text-gray-600">Weight (kg):</label><input id="w" type="number" value="70" class="w-24 p-2 border rounded-lg ml-2"></div><div><label class="text-sm text-gray-600">Height (cm):</label><input id="h" type="number" value="170" class="w-24 p-2 border rounded-lg ml-2"></div><button onclick="calc()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Calculate</button></div>
 <div class="mt-6 text-center"><div id="bmi" class="text-4xl font-bold"></div><div id="cat" class="text-xl mt-2"></div></div>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function calc(){var w=parseFloat(document.getElementById("w").value);var h=parseFloat(document.getElementById("h").value)/100;var b=w/(h*h);document.getElementById("bmi").textContent=b.toFixed(1);var c,cl;if(b<18.5){c="Underweight";cl="text-blue-500";}else if(b<25){c="Normal";cl="text-green-500";}else if(b<30){c="Overweight";cl="text-yellow-500";}else{c="Obese";cl="text-red-500";}document.getElementById("cat").innerHTML='<span class="'+cl+'">'+c+"</span>";}calc();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

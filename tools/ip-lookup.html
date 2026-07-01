@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What Is My IP - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online what is my ip tool. Fast, secure, no installation.">
@@ -17,21 +18,32 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">What Is My IP</h1><p class="text-gray-500 mb-4">Check your public IP address.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.ip-lookup">What Is My IP</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.ip-lookup">Check your public IP address.</p>
 <div id="info" class="space-y-3"></div>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>async function getIP(){try{var r=await fetch("https://api.ipify.org?format=json");var d=await r.json();document.getElementById("info").innerHTML='<div class="bg-blue-50 rounded-lg p-6 text-center"><div class="text-sm text-gray-500">Your IP</div><div class="text-3xl font-bold text-blue-600 font-mono mt-1">'+d.ip+'</div></div><div class="grid grid-cols-2 gap-3 mt-4"><div class="bg-gray-50 p-3 rounded"><div class="text-xs text-gray-500">Platform</div><div class="font-medium text-sm">'+navigator.platform+'</div></div><div class="bg-gray-50 p-3 rounded"><div class="text-xs text-gray-500">Language</div><div class="font-medium text-sm">'+navigator.language+'</div></div></div>';}catch(e){document.getElementById("info").innerHTML='<div class="text-red-600">Failed</div>';}}getIP();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

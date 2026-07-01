@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HTML Formatter - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online format and beautify html code tool. Fast, secure, no installation.">
@@ -17,23 +18,34 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">HTML Formatter</h1><p class="text-gray-500 mb-4">Format and beautify HTML code</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.html-formatter">HTML Formatter</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.html-formatter">Format and beautify HTML code</p>
 <textarea id="input" class="w-full p-3 border rounded-lg font-mono text-sm" rows="8" placeholder="Paste HTML code..."></textarea>
 <div class="flex gap-3 mt-3"><button onclick="fmt()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Format HTML</button><button onclick="min()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Minify</button></div>
 <textarea id="output" class="w-full p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly rows="8"></textarea>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function fmt(){var h=document.getElementById("input").value;var pad=0,out="",lines=h.replace(/>\s*</g,">\n<").split("\n");lines.forEach(function(l){if(l.match(/^<\//))pad--;out+="  ".repeat(Math.max(0,pad))+l.trim()+"\n";if(l.match(/^<[^\/!][^>]*[^\/]>/)&&!l.match(/^<(br|hr|img|input|meta|link)/i))pad++});document.getElementById("output").value=out.trim()}function min(){document.getElementById("output").value=document.getElementById("input").value.replace(/\s+/g," ").replace(/>\s+</g,"><").trim()}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

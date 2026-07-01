@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Case Converter - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online case converter tool. Fast, secure, no installation.">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Case Converter</h1><p class="text-gray-500 mb-4">Convert text between cases.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.case-converter">Case Converter</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.case-converter">Convert text between cases.</p>
 <textarea id="input" class="w-full h-32 p-3 border rounded-lg font-mono text-sm" placeholder="Enter your text..."></textarea>
 <div class="flex flex-wrap gap-2 mt-3">
 <button onclick="c('upper')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">UPPERCASE</button>
@@ -38,9 +39,20 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function c(t){var i=document.getElementById("input").value;var r="";if(t==="upper")r=i.toUpperCase();else if(t==="lower")r=i.toLowerCase();else if(t==="title")r=i.replace(/\w\S*/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase());else if(t==="sentence")r=i.toLowerCase().replace(/(^\.s*\w|[.!?]\s*\w)/g,c=>c.toUpperCase());else if(t==="camel")r=i.toLowerCase().replace(/[^a-z0-9]+(.)/g,(m,c)=>c.toUpperCase());else r=i.toLowerCase().replace(/\s+/g,"_").replace(/[^a-z0-9_]/g,"");document.getElementById("output").value=r;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

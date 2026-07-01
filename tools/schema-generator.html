@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSON-LD Schema Generator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Generate structured data (JSON-LD) for SEO. Article, Product, FAQ, Local Business and more">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">JSON-LD Schema Generator</h1><p class="text-gray-500 mb-4">Generate structured data (JSON-LD) for SEO. Article, Product, FAQ, Local Business and more</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.schema-generator">JSON-LD Schema Generator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.schema-generator">Generate structured data (JSON-LD) for SEO. Article, Product, FAQ, Local Business and more</p>
 <div class="space-y-4">
 <div><label class="text-sm font-medium">Schema Type</label><select id="type" class="w-full p-2 border rounded-lg text-sm" onchange="buildForm()"><option value="article">Article / BlogPost</option><option value="product">Product</option><option value="localBusiness">Local Business</option><option value="person">Person</option><option value="faq">FAQ Page</option><option value="breadcrumb">BreadcrumbList</option><option value="video">Video Object</option><option value="organization">Organization</option></select></div>
 <div id="form" class="space-y-3"></div>
@@ -34,7 +35,7 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>var schemas={
@@ -62,5 +63,16 @@ else if(type==="organization")json={"@context":"https://schema.org","@type":"Org
 for(var k in json)if(json[k]===undefined)delete json[k];
 document.getElementById("output").textContent=JSON.stringify(json,null,2)}
 function copyOut(){navigator.clipboard.writeText(document.getElementById("output").textContent).then(()=>alert("Copied!"))}buildForm()</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

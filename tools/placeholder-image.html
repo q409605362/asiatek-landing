@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Placeholder Image - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online placeholder image tool. Fast, secure, no installation.">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Placeholder Image Generator</h1><p class="text-gray-500 mb-4">Generate placeholder images.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.placeholder-image">Placeholder Image Generator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.placeholder-image">Generate placeholder images.</p>
 <div class="flex gap-3 items-end"><div><label class="text-sm text-gray-600">W:</label><input id="w" type="number" value="400" class="w-20 p-2 border rounded-lg ml-2"></div><div><label class="text-sm text-gray-600">H:</label><input id="h" type="number" value="300" class="w-20 p-2 border rounded-lg ml-2"></div><div><label class="text-sm text-gray-600">Text:</label><input id="text" class="w-32 p-2 border rounded-lg ml-2" placeholder="Optional"></div><div><label class="text-sm text-gray-600">BG:</label><input id="bg" type="color" value="#cccccc" class="w-10 h-10 border rounded ml-2"></div></div>
 <button onclick="gen()" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button>
 <div id="pv" class="mt-4 flex justify-center"></div>
@@ -32,9 +33,20 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function gen(){var w=document.getElementById("w").value;var h=document.getElementById("h").value;var t=document.getElementById("text").value||w+"x"+h;var bg=document.getElementById("bg").value.replace("#","");var u="https://via.placeholder.com/"+w+"x"+h+"/"+bg+"/333333?text="+encodeURIComponent(t);document.getElementById("pv").innerHTML='<img src="'+u+'" class="border rounded shadow">';document.getElementById("url").value=u;}gen();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

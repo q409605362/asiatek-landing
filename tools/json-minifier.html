@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JSON Minifier / Beautifier - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Minify or beautify JSON online. Reduce file size or format for readability">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">JSON Minifier / Beautifier</h1><p class="text-gray-500 mb-4">Minify or beautify JSON online. Reduce file size or format for readability</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.json-minifier">JSON Minifier / Beautifier</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.json-minifier">Minify or beautify JSON online. Reduce file size or format for readability</p>
 <div class="grid md:grid-cols-2 gap-4">
 <div><label class="text-sm font-medium mb-1 block">Input JSON</label><textarea id="input" class="w-full h-64 p-3 border rounded-lg text-sm font-mono" placeholder="Paste JSON here..." oninput="process()"></textarea></div>
 <div><label class="text-sm font-medium mb-1 block">Minified Output</label><textarea id="output" class="w-full h-64 p-3 border rounded-lg text-sm font-mono bg-gray-50" readonly></textarea></div>
@@ -38,12 +39,23 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function mini(){try{var inp=document.getElementById("input").value;var min=JSON.stringify(JSON.parse(inp));document.getElementById("output").value=min;var orig=inp.length,saved=orig-min.length,pct=orig>0?(saved/orig*100).toFixed(1):0;document.getElementById("stats").innerHTML="Original: "+orig+" chars → Minified: "+min.length+" chars · Saved: "+saved+" chars ("+pct+"%)"}catch(e){document.getElementById("output").value="Error: "+e.message;document.getElementById("stats").textContent=""}}
 function beautify(){try{var inp=document.getElementById("input").value;document.getElementById("output").value=JSON.stringify(JSON.parse(inp),null,2);document.getElementById("stats").textContent="Beautified with 2-space indent"}catch(e){document.getElementById("output").value="Error: "+e.message;document.getElementById("stats").textContent=""}}
 function copy(){navigator.clipboard.writeText(document.getElementById("output").value).then(()=>{var b=event.target;b.textContent="Copied!";setTimeout(()=>b.textContent="Copy Output",1500)})}
 function process(){var inp=document.getElementById("input").value;if(inp.trim()){try{JSON.parse(inp);document.getElementById("stats").textContent="Valid JSON ✓"}catch(e){document.getElementById("stats").innerHTML='<span class="text-red-500">Invalid JSON ✗</span>'}}}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MIME Type Lookup - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online find mime type by file extension tool. Fast, secure, no installation.">
@@ -17,22 +18,33 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">MIME Type Lookup</h1><p class="text-gray-500 mb-4">Find MIME type by file extension</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.mime-type-lookup">MIME Type Lookup</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.mime-type-lookup">Find MIME type by file extension</p>
 <input id="ext" class="w-full p-3 border rounded-lg text-sm" placeholder="Enter file extension (e.g. pdf, jpg, json)..." oninput="lookup()">
 <div id="result" class="mt-4 space-y-2"></div>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>var mime={".txt":"text/plain",".html":"text/html",".css":"text/css",".js":"application/javascript",".json":"application/json",".xml":"application/xml",".pdf":"application/pdf",".zip":"application/zip",".gz":"application/gzip",".tar":"application/x-tar",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".gif":"image/gif",".svg":"image/svg+xml",".webp":"image/webp",".ico":"image/x-icon",".mp3":"audio/mpeg",".wav":"audio/wav",".ogg":"audio/ogg",".mp4":"video/mp4",".webm":"video/webm",".avi":"video/x-msvideo",".woff":"font/woff",".woff2":"font/woff2",".ttf":"font/ttf",".otf":"font/otf",".doc":"application/msword",".docx":"application/vnd.openxmlformats-officedocument.wordprocessingml.document",".xls":"application/vnd.ms-excel",".xlsx":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",".ppt":"application/vnd.ms-powerpoint",".pptx":"application/vnd.openxmlformats-officedocument.presentationml.presentation",".csv":"text/csv",".md":"text/markdown",".yaml":"application/x-yaml",".yml":"application/x-yaml",".wasm":"application/wasm",".bmp":"image/bmp",".tiff":"image/tiff",".mpg":"video/mpeg",".mpeg":"video/mpeg",".7z":"application/x-7z-compressed",".rar":"application/vnd.rar",".sql":"application/sql",".rtf":"application/rtf",".swf":"application/x-shockwave-flash"};function lookup(){var v=document.getElementById("ext").value.toLowerCase().trim();if(!v.startsWith("."))v="."+v;var matches=Object.entries(mime).filter(function(e){return e[0].includes(v)||v.includes(e[0])});if(mime[v]){document.getElementById("result").innerHTML='<div class="bg-blue-50 p-4 rounded-lg"><span class="font-mono text-lg text-blue-700">'+mime[v]+'</span><span class="text-gray-500 ml-2">('+v+')</span></div>'}else if(matches.length){document.getElementById("result").innerHTML=matches.map(function(m){return'<div class="bg-gray-50 p-3 rounded-lg"><span class="font-mono text-blue-600">'+m[1]+'</span> <span class="text-gray-400">('+m[0]+')</span></div>'}).join("")}else{document.getElementById("result").innerHTML='<div class="text-gray-400">No results found</div>'}}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

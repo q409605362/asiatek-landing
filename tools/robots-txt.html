@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>robots.txt Generator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Free online robots.txt generator tool. Fast, secure, no installation.">
@@ -17,23 +18,34 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">robots.txt Generator</h1><p class="text-gray-500 mb-4">Generate robots.txt.</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.robots-txt">robots.txt Generator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.robots-txt">Generate robots.txt.</p>
 <div class="space-y-3"><input id="sm" class="w-full p-2 border rounded-lg" placeholder="Sitemap URL"><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="ba" checked> Allow all</label><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="bad"> Block /admin/</label><label class="flex items-center gap-2 text-sm"><input type="checkbox" id="bap"> Block /api/</label></div>
 <button onclick="gen()" class="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button>
 <textarea id="out" class="w-full h-32 p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly></textarea>
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function gen(){var s=document.getElementById("sm").value;var t="User-agent: *\n";if(document.getElementById("ba").checked)t+="Allow: /\n";if(document.getElementById("bad").checked)t+="Disallow: /admin/\n";if(document.getElementById("bap").checked)t+="Disallow: /api/\n";if(s)t+="\nSitemap: "+s+"\n";document.getElementById("out").value=t;}gen();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>

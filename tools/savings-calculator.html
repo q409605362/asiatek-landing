@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Savings Calculator - Free Online Tool | Asiatek AI</title>
 <meta name="description" content="Calculate savings growth with interest and see how long to reach your financial goal">
@@ -17,14 +18,14 @@
 <span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
 </div>
 <div class="flex items-center space-x-4 text-sm">
-<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
-<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+<a href="/" class="text-gray-500 hover:text-gray-900" data-i18n="nav.home">Home</a>
+<a href="/tools" class="text-blue-600 font-medium" data-i18n="nav.tools">All Tools</a>
 </div>
 </div>
 </div>
 </nav>
 <main class="max-w-5xl mx-auto px-4 py-8">
-<h1 class="text-2xl font-bold mb-2">Savings Calculator</h1><p class="text-gray-500 mb-4">Calculate savings growth with interest and see how long to reach your financial goal</p>
+<h1 class="text-2xl font-bold mb-2" data-i18n="tool.title.savings-calculator">Savings Calculator</h1><p class="text-gray-500 mb-4" data-i18n="tool.desc.savings-calculator">Calculate savings growth with interest and see how long to reach your financial goal</p>
 <div class="grid md:grid-cols-2 gap-6">
 <div class="space-y-3">
 <div><label class="text-sm font-medium">Initial Deposit ($)</label><input id="initial" type="number" class="w-full p-2 border rounded-lg text-sm" value="5000" oninput="calc()"></div>
@@ -41,7 +42,7 @@
 </main>
 <footer class="bg-gray-50 border-t mt-12">
 <div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+<span data-i18n="footer.text">© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
 </div>
 </footer>
 <script>function fmt(n){return "$"+Math.round(n).toLocaleString()}
@@ -72,5 +73,16 @@ var bars=yearly.map(function(v,i){var h=Math.max(2,v/maxH*maxH);
 var depPart=Math.min(h,(ini+m*12*i)/maxV*maxH);
 return "<div style='height:"+h+"px' class='flex-1 relative rounded-t overflow-hidden'><div class='absolute bottom-0 w-full bg-blue-300' style='height:"+depPart+"px'></div><div class='absolute bottom-0 w-full bg-green-400' style='height:"+(h-depPart)+"px'></div></div>"}).join("");
 document.getElementById("breakdown").innerHTML="<h3 class='font-medium mb-2 text-sm'>Year-by-Year Breakdown</h3><div class='flex items-end gap-1' style='height:"+maxH+"px'>"+bars+"</div><div class='flex gap-4 text-xs mt-2'><span class='flex items-center'><span class='w-3 h-3 bg-blue-300 mr-1 rounded'></span>Deposits</span><span class='flex items-center'><span class='w-3 h-3 bg-green-400 mr-1 rounded'></span>Interest</span></div>"}calc()</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+<script>
+window.changeLanguage = function(lang) {
+  if (typeof i18nUtils !== 'undefined') {
+    i18nUtils.setLang(lang);
+    // Update selector
+    document.querySelectorAll('#lang-selector').forEach(function(s) { s.value = lang; });
+  }
+};
+</script>
 </body>
 </html>
