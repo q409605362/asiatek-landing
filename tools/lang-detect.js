@@ -7,32 +7,47 @@
   // Configuration
   const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
   const STORAGE_KEY = 'asiatek_lang_detection';
-  const API_URL = 'https://ipapi.co/json/';
+  const IP_APIS = [
+    'https://ipapi.co/json/',
+    'https://ip-api.com/json/?fields=countryCode',
+    'https://api.ipgeolocation.io/ip?fields=country_code'
+  ];
   
   // Country code to language mapping
   const COUNTRY_TO_LANG = {
     // Chinese regions
-    'CN': 'zh', 'TW': 'zh', 'HK': 'zh', 'SG': 'zh',
+    'CN': 'zh', 'TW': 'zh', 'HK': 'zh', 'MO': 'zh', 'SG': 'zh',
     // Japanese
     'JP': 'ja',
     // Korean
-    'KR': 'ko',
+    'KR': 'ko', 'KP': 'ko',
     // Russian
-    'RU': 'ru',
+    'RU': 'ru', 'BY': 'ru', 'KZ': 'ru',
     // Arabic speaking
-    'SA': 'ar', 'AE': 'ar', 'EG': 'ar', 'IQ': 'ar', 'JO': 'ar', 'KW': 'ar', 'LB': 'ar', 'LY': 'ar', 'MA': 'ar', 'OM': 'ar', 'QA': 'ar', 'SY': 'ar', 'TN': 'ar', 'YE': 'ar', 'DZ': 'ar', 'BH': 'ar', 'SD': 'ar', 'SO': 'ar', 'ER': 'ar',
+    'SA': 'ar', 'AE': 'ar', 'EG': 'ar', 'IQ': 'ar', 'JO': 'ar', 'KW': 'ar',
+    'LB': 'ar', 'LY': 'ar', 'MA': 'ar', 'OM': 'ar', 'QA': 'ar', 'SY': 'ar',
+    'TN': 'ar', 'YE': 'ar', 'DZ': 'ar', 'BH': 'ar', 'SD': 'ar', 'PS': 'ar',
     // Hindi speaking
-    'IN': 'hi',
+    'IN': 'hi', 'NP': 'hi',
     // German speaking
     'DE': 'de', 'AT': 'de', 'CH': 'de', 'LI': 'de', 'LU': 'de',
     // French speaking
-    'FR': 'fr', 'BE': 'fr', 'MC': 'fr', 'CA': 'fr',
+    'FR': 'fr', 'BE': 'fr', 'MC': 'fr',
     // Portuguese speaking
-    'BR': 'pt', 'PT': 'pt', 'AO': 'pt', 'MZ': 'pt', 'GW': 'pt', 'CV': 'pt', 'TL': 'pt',
+    'BR': 'pt', 'PT': 'pt', 'AO': 'pt', 'MZ': 'pt',
     // Spanish speaking
-    'ES': 'es', 'MX': 'es', 'AR': 'es', 'CO': 'es', 'CL': 'es', 'PE': 'es', 'VE': 'es', 'EC': 'es', 'UY': 'es', 'PY': 'es', 'BO': 'es', 'HN': 'es', 'GT': 'es', 'SV': 'es', 'NI': 'es', 'CR': 'es', 'PA': 'es', 'DO': 'es', 'CU': 'es', 'PR': 'es',
+    'ES': 'es', 'MX': 'es', 'AR': 'es', 'CO': 'es', 'CL': 'es', 'PE': 'es',
+    'VE': 'es', 'EC': 'es', 'UY': 'es', 'PY': 'es', 'BO': 'es', 'HN': 'es',
+    'GT': 'es', 'SV': 'es', 'NI': 'es', 'CR': 'es', 'PA': 'es', 'DO': 'es',
+    'CU': 'es', 'PR': 'es',
     // English default
-    'US': 'en', 'GB': 'en', 'AU': 'en', 'CA': 'en', 'NZ': 'en', 'IE': 'en', 'ZA': 'en', 'NG': 'en', 'KE': 'en', 'PH': 'en', 'MY': 'en', 'ID': 'en', 'TH': 'en', 'VN': 'en', 'PK': 'en', 'BD': 'en', 'EG': 'en', 'NL': 'en', 'IT': 'en', 'PL': 'en', 'TR': 'en', 'UA': 'en', 'RO': 'en', 'GR': 'en', 'CZ': 'en', 'SE': 'en', 'NO': 'en', 'DK': 'en', 'FI': 'en', 'HU': 'en', 'IL': 'en', 'RS': 'en', 'BG': 'en', 'HR': 'en', 'SK': 'en', 'LT': 'en', 'SI': 'en', 'LV': 'en', 'EE': 'en', 'IE': 'en'
+    'US': 'en', 'GB': 'en', 'AU': 'en', 'CA': 'en', 'NZ': 'en', 'IE': 'en',
+    'ZA': 'en', 'NG': 'en', 'KE': 'en', 'PH': 'en', 'MY': 'en', 'ID': 'en',
+    'TH': 'en', 'VN': 'en', 'PK': 'en', 'BD': 'en', 'NL': 'en', 'IT': 'en',
+    'PL': 'en', 'TR': 'en', 'UA': 'en', 'RO': 'en', 'GR': 'en', 'CZ': 'en',
+    'SE': 'en', 'NO': 'en', 'DK': 'en', 'FI': 'en', 'HU': 'en', 'IL': 'en',
+    'RS': 'en', 'BG': 'en', 'HR': 'en', 'SK': 'en', 'LT': 'en', 'SI': 'en',
+    'LV': 'en', 'EE': 'en'
   };
   
   // Supported languages
@@ -82,18 +97,18 @@
     }
   }
   
-  // Get browser language
+  // Get browser language - with smart Chinese detection
   function getBrowserLang() {
     const navLang = navigator.language || navigator.userLanguage || '';
     const shortLang = navLang.split('-')[0].toLowerCase();
     
-    if (SUPPORTED_LANGS.includes(shortLang)) {
-      return shortLang;
+    // Chinese variants all map to zh
+    if (navLang.toLowerCase().startsWith('zh')) {
+      return 'zh';
     }
     
-    // Check for Chinese variants
-    if (navLang.startsWith('zh')) {
-      return 'zh';
+    if (SUPPORTED_LANGS.includes(shortLang)) {
+      return shortLang;
     }
     
     return 'en';
@@ -101,90 +116,116 @@
   
   // Map country code to language
   function countryToLang(countryCode) {
-    if (!countryCode) return 'en';
-    return COUNTRY_TO_LANG[countryCode.toUpperCase()] || 'en';
+    if (!countryCode) return null;
+    return COUNTRY_TO_LANG[countryCode.toUpperCase()] || null;
   }
   
-  // Detect language from IP
+  // Fetch with timeout
+  function fetchWithTimeout(url, timeout) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    return fetch(url, { signal: controller.signal })
+      .then(response => {
+        clearTimeout(id);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      });
+  }
+  
+  // Try multiple IP APIs in sequence
   function detectFromIP(callback) {
     const cached = getCachedData();
-    if (cached) {
+    if (cached && cached.lang) {
       callback(cached.lang);
       return;
     }
     
-    // Use ipapi.co for geolocation
-    fetch(API_URL)
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
-      .then(data => {
-        if (data && data.country_code) {
-          const lang = countryToLang(data.country_code);
-          setCachedData(data.country_code, lang);
-          callback(lang);
-        } else {
-          callback(getBrowserLang());
-        }
-      })
-      .catch(error => {
-        console.warn('IP detection failed, using browser language:', error);
+    let apiIndex = 0;
+    
+    function tryNext() {
+      if (apiIndex >= IP_APIS.length) {
+        // All APIs failed, fall back to browser language
+        console.warn('All IP APIs failed, using browser language');
         callback(getBrowserLang());
-      });
+        return;
+      }
+      
+      const apiUrl = IP_APIS[apiIndex++];
+      
+      fetchWithTimeout(apiUrl, 3000)
+        .then(data => {
+          // Different APIs return different field names
+          const countryCode = data.country_code || data.countryCode || data.country;
+          if (countryCode) {
+            const lang = countryToLang(countryCode);
+            if (lang) {
+              setCachedData(countryCode, lang);
+              callback(lang);
+            } else {
+              setCachedData(countryCode, 'en');
+              callback('en');
+            }
+          } else {
+            tryNext();
+          }
+        })
+        .catch(() => {
+          tryNext();
+        });
+    }
+    
+    tryNext();
   }
   
   // Main detection function
   function detectLanguage() {
-    // Priority 1: Check if user already selected a language
+    // Priority 1: User explicitly selected language
     const savedLang = localStorage.getItem('asiatek_lang');
     if (savedLang && SUPPORTED_LANGS.includes(savedLang)) {
       return savedLang;
     }
     
-    // Priority 2: Check cache
+    // Priority 2: IP detection cache (7 days)
     const cached = getCachedData();
     if (cached && cached.lang) {
-      // Apply cached language but don't save again
       return cached.lang;
     }
     
-    // Priority 3: Get from IP (async, will update page later)
+    // Priority 3: Get from IP (async, will update page when ready)
     detectFromIP(function(ipLang) {
-      // Only apply if no saved preference
       const currentSaved = localStorage.getItem('asiatek_lang');
       if (!currentSaved && typeof i18nUtils !== 'undefined') {
         i18nUtils.setLang(ipLang);
       }
     });
     
-    // Return browser language immediately while IP detection runs
+    // Return browser language immediately while IP detection runs async
+    // This ensures Chinese browsers show Chinese even if IP API is slow
     return getBrowserLang();
   }
   
-  // Initialize language detection
+  // Initialize
   function init() {
-    // Check if already initialized
     if (window.asiatekLangInitialized) return;
     window.asiatekLangInitialized = true;
     
-    // Run detection
     const detectedLang = detectLanguage();
     
-    // If detected lang is different from current, update
+    // Apply detected language after a short delay
     if (typeof i18nUtils !== 'undefined' && !localStorage.getItem('asiatek_lang')) {
-      // Small delay to ensure i18n.js is loaded
       setTimeout(function() {
-        if (detectedLang !== 'en' && i18n[detectedLang]) {
+        if (i18n[detectedLang]) {
           i18nUtils.setLang(detectedLang);
         }
-      }, 10);
+      }, 50);
     }
   }
   
-  // Create language selector HTML
+  // Create language selector
   function createLanguageSelector() {
-    const currentLang = localStorage.getItem('asiatek_lang') || 'en';
+    const currentLang = localStorage.getItem('asiatek_lang') || 
+                       (getCachedData() ? getCachedData().lang : null) || 
+                       getBrowserLang();
     const isRTL = currentLang === 'ar';
     
     let html = '<select id="lang-selector" class="text-xs px-2 py-1 border rounded bg-white cursor-pointer' + 
@@ -200,14 +241,15 @@
     return html;
   }
   
-  // Change language function (called from selector)
+  // Change language
   window.changeLanguage = function(lang) {
+    localStorage.setItem('asiatek_lang', lang);
     if (typeof i18nUtils !== 'undefined') {
       i18nUtils.setLang(lang);
     }
   };
   
-  // Expose functions globally
+  // Expose
   window.asiatekLang = {
     detect: detectLanguage,
     getSupportedLangs: function() { return SUPPORTED_LANGS; },
@@ -216,7 +258,7 @@
     isRTL: function(lang) { return lang === 'ar'; }
   };
   
-  // Auto-init on DOMContentLoaded
+  // Auto-init
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
