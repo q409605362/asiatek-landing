@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIME Type Lookup - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online find mime type by file extension tool. Fast, secure, no installation.">
+<meta name="keywords" content="mime, type, lookup, online tool, free mime type lookup">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">MIME Type Lookup</h1><p class="text-gray-500 mb-4">Find MIME type by file extension</p>
+<input id="ext" class="w-full p-3 border rounded-lg text-sm" placeholder="Enter file extension (e.g. pdf, jpg, json)..." oninput="lookup()">
+<div id="result" class="mt-4 space-y-2"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var mime={".txt":"text/plain",".html":"text/html",".css":"text/css",".js":"application/javascript",".json":"application/json",".xml":"application/xml",".pdf":"application/pdf",".zip":"application/zip",".gz":"application/gzip",".tar":"application/x-tar",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".gif":"image/gif",".svg":"image/svg+xml",".webp":"image/webp",".ico":"image/x-icon",".mp3":"audio/mpeg",".wav":"audio/wav",".ogg":"audio/ogg",".mp4":"video/mp4",".webm":"video/webm",".avi":"video/x-msvideo",".woff":"font/woff",".woff2":"font/woff2",".ttf":"font/ttf",".otf":"font/otf",".doc":"application/msword",".docx":"application/vnd.openxmlformats-officedocument.wordprocessingml.document",".xls":"application/vnd.ms-excel",".xlsx":"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",".ppt":"application/vnd.ms-powerpoint",".pptx":"application/vnd.openxmlformats-officedocument.presentationml.presentation",".csv":"text/csv",".md":"text/markdown",".yaml":"application/x-yaml",".yml":"application/x-yaml",".wasm":"application/wasm",".bmp":"image/bmp",".tiff":"image/tiff",".mpg":"video/mpeg",".mpeg":"video/mpeg",".7z":"application/x-7z-compressed",".rar":"application/vnd.rar",".sql":"application/sql",".rtf":"application/rtf",".swf":"application/x-shockwave-flash"};function lookup(){var v=document.getElementById("ext").value.toLowerCase().trim();if(!v.startsWith("."))v="."+v;var matches=Object.entries(mime).filter(function(e){return e[0].includes(v)||v.includes(e[0])});if(mime[v]){document.getElementById("result").innerHTML='<div class="bg-blue-50 p-4 rounded-lg"><span class="font-mono text-lg text-blue-700">'+mime[v]+'</span><span class="text-gray-500 ml-2">('+v+')</span></div>'}else if(matches.length){document.getElementById("result").innerHTML=matches.map(function(m){return'<div class="bg-gray-50 p-3 rounded-lg"><span class="font-mono text-blue-600">'+m[1]+'</span> <span class="text-gray-400">('+m[0]+')</span></div>'}).join("")}else{document.getElementById("result").innerHTML='<div class="text-gray-400">No results found</div>'}}</script>
+</body>
+</html>

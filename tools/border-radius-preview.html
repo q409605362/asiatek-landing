@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Border Radius Preview - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online visual css border-radius builder tool. Fast, secure, no installation.">
+<meta name="keywords" content="border, radius, preview, online tool, free border radius preview">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Border Radius Preview</h1><p class="text-gray-500 mb-4">Visual CSS border-radius builder</p>
+<div class="space-y-4">
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div><label class="text-xs font-medium text-gray-600">Top-Left</label><input type="range" id="tl" min="0" max="100" value="10" class="w-full" oninput="update()"><span id="tlv" class="text-xs text-gray-500">10px</span></div>
+<div><label class="text-xs font-medium text-gray-600">Top-Right</label><input type="range" id="tr" min="0" max="100" value="10" class="w-full" oninput="update()"><span id="trv" class="text-xs text-gray-500">10px</span></div>
+<div><label class="text-xs font-medium text-gray-600">Bottom-Right</label><input type="range" id="br" min="0" max="100" value="10" class="w-full" oninput="update()"><span id="brv" class="text-xs text-gray-500">10px</span></div>
+<div><label class="text-xs font-medium text-gray-600">Bottom-Left</label><input type="range" id="bl" min="0" max="100" value="10" class="w-full" oninput="update()"><span id="blv" class="text-xs text-gray-500">10px</span></div>
+</div>
+<div class="flex justify-center p-10 bg-gray-50 rounded-lg"><div id="preview" class="w-48 h-48 bg-blue-500"></div></div>
+<div class="bg-gray-50 p-3 rounded-lg"><code id="css" class="text-sm break-all"></code></div>
+<button onclick="copy()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">Copy CSS</button>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function update(){var tl=document.getElementById("tl").value,tr=document.getElementById("tr").value,br=document.getElementById("br").value,bl=document.getElementById("bl").value;document.getElementById("tlv").textContent=tl+"px";document.getElementById("trv").textContent=tr+"px";document.getElementById("brv").textContent=br+"px";document.getElementById("blv").textContent=bl+"px";var r=tl+"px "+tr+"px "+br+"px "+bl+"px";document.getElementById("preview").style.borderRadius=r;document.getElementById("css").textContent="border-radius: "+r+";"}function copy(){navigator.clipboard.writeText(document.getElementById("css").textContent)}update()</script>
+</body>
+</html>

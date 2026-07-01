@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online convert between px, rem, em units tool. Fast, secure, no installation.">
+<meta name="keywords" content="pixel, converter, online tool, free pixel converter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Pixel Converter</h1><p class="text-gray-500 mb-4">Convert between px, rem, em units</p>
+<div class="space-y-4">
+<div><label class="text-sm font-medium">Base Font Size (px)</label><input id="base" type="number" class="w-full p-2 border rounded-lg text-sm" value="16" oninput="convert()"></div>
+<div><label class="text-sm font-medium">Value to Convert</label><div class="flex gap-3"><input id="val" type="number" class="flex-1 p-2 border rounded-lg text-sm" value="16" oninput="convert()"><select id="unit" class="p-2 border rounded-lg text-sm" onchange="convert()"><option value="px">px</option><option value="rem">rem</option><option value="em">em</option><option value="pt">pt</option></select></div></div>
+<div id="results" class="grid grid-cols-2 gap-2"></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function convert(){var base=parseFloat(document.getElementById("base").value)||16;var val=parseFloat(document.getElementById("val").value)||0;var u=document.getElementById("unit").value;var px;if(u==="px")px=val;else if(u==="rem"||u==="em")px=val*base;else if(u==="pt")px=val*1.333;document.getElementById("results").innerHTML=[["px",Math.round(px)],["rem",(px/base).toFixed(4)],["em",(px/base).toFixed(4)],["pt",(px/1.333).toFixed(2)],["%",(px/base*100).toFixed(2)+"%"]].map(function(x){return'<div class="bg-white p-3 rounded-lg border"><div class="text-xs text-gray-500">'+x[0]+'</div><div class="font-mono text-sm font-medium mt-1">'+x[1]+'</div></div>'}).join("")}convert()</script>
+</body>
+</html>

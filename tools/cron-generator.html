@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Expression Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online build cron expressions visually tool. Fast, secure, no installation.">
+<meta name="keywords" content="cron, expression, generator, online tool, free cron expression generator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Cron Expression Generator</h1><p class="text-gray-500 mb-4">Build cron expressions visually</p>
+<div class="space-y-4">
+<div class="grid grid-cols-5 gap-3">
+<div><label class="text-xs font-medium text-gray-600">Minute</label><input id="min" class="w-full p-2 border rounded text-sm" value="0" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Hour</label><input id="hr" class="w-full p-2 border rounded text-sm" value="*" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Day (Month)</label><input id="dom" class="w-full p-2 border rounded text-sm" value="*" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Month</label><input id="mon" class="w-full p-2 border rounded text-sm" value="*" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Day (Week)</label><input id="dow" class="w-full p-2 border rounded text-sm" value="*" oninput="update()"></div>
+</div>
+<div class="flex flex-wrap gap-2">
+<button onclick="preset('0 0 * * *')" class="px-3 py-1 bg-gray-100 rounded text-xs hover:bg-gray-200">Daily midnight</button>
+<button onclick="preset('0 * * * *')" class="px-3 py-1 bg-gray-100 rounded text-xs hover:bg-gray-200">Every hour</button>
+<button onclick="preset('*/5 * * * *')" class="px-3 py-1 bg-gray-100 rounded text-xs hover:bg-gray-200">Every 5 min</button>
+<button onclick="preset('0 9 * * 1-5')" class="px-3 py-1 bg-gray-100 rounded text-xs hover:bg-gray-200">Weekdays 9am</button>
+<button onclick="preset('0 0 1 * *')" class="px-3 py-1 bg-gray-100 rounded text-xs hover:bg-gray-200">Monthly</button>
+<button onclick="preset('0 0 * * 0')" class="px-3 py-1 bg-gray-100 rounded text-xs hover:bg-gray-200">Every Sunday</button>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg"><div class="text-xs text-gray-500 mb-1">Cron Expression</div><div id="expr" class="text-xl font-mono font-bold text-blue-700">0 * * * *</div><div id="desc" class="text-sm text-gray-600 mt-2"></div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function preset(v){var p=v.split(" ");document.getElementById("min").value=p[0];document.getElementById("hr").value=p[1];document.getElementById("dom").value=p[2];document.getElementById("mon").value=p[3];document.getElementById("dow").value=p[4];update()}function update(){var e=[document.getElementById("min").value,document.getElementById("hr").value,document.getElementById("dom").value,document.getElementById("mon").value,document.getElementById("dow").value].join(" ");document.getElementById("expr").textContent=e;var desc="Runs ";var p=e.split(" ");if(p[4]!=="*")desc+="on day(s) "+p[4]+" ";if(p[2]!=="*")desc+="on day "+p[2]+" ";if(p[3]!=="*")desc+="in month "+p[3]+" ";if(p[1]!=="*")desc+="at hour "+p[1]+" ";if(p[0]!=="*")desc+="at minute "+p[0];if(p[0].startsWith("*/"))desc+="every "+p[0].slice(2)+" minutes";if(p[1].startsWith("*/"))desc+="every "+p[1].slice(2)+" hours";document.getElementById("desc").textContent=desc}update()</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to CSV Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online convert json arrays to csv format tool. Fast, secure, no installation.">
+<meta name="keywords" content="json, to, csv, converter, online tool, free json to csv converter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">JSON to CSV Converter</h1><p class="text-gray-500 mb-4">Convert JSON arrays to CSV format</p>
+<textarea id="input" class="w-full p-3 border rounded-lg font-mono text-sm" rows="6" placeholder='[{"name":"John","age":30},{"name":"Jane","age":25}]'></textarea>
+<div class="flex gap-3 mt-3"><button onclick="convert()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Convert to CSV</button><button onclick="download()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Download CSV</button></div>
+<textarea id="output" class="w-full p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly rows="6"></textarea>
+<div id="info" class="text-sm text-gray-500 mt-2"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function convert(){try{var data=JSON.parse(document.getElementById("input").value);if(!Array.isArray(data))throw new Error("Input must be a JSON array");if(data.length===0){document.getElementById("output").value="";return}var keys=Object.keys(data[0]);var csv=keys.join(",")+"\n"+data.map(function(row){return keys.map(function(k){var v=row[k]===null?"":String(row[k]);return v.includes(",")?'"'+v+'"':v}).join(",")}).join("\n");document.getElementById("output").value=csv;document.getElementById("info").textContent=data.length+" rows, "+keys.length+" columns converted"}catch(e){document.getElementById("output").value="Error: "+e.message}}function download(){var csv=document.getElementById("output").value;if(!csv)return;var blob=new Blob([csv],{type:"text/csv"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="data.csv";a.click()}</script>
+</body>
+</html>

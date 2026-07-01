@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box Shadow Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online visual css box-shadow builder tool. Fast, secure, no installation.">
+<meta name="keywords" content="box, shadow, generator, online tool, free box shadow generator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Box Shadow Generator</h1><p class="text-gray-500 mb-4">Visual CSS box-shadow builder</p>
+<div class="space-y-4">
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div><label class="text-xs font-medium text-gray-600">X Offset</label><input type="range" id="x" min="-50" max="50" value="5" class="w-full" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Y Offset</label><input type="range" id="y" min="-50" max="50" value="5" class="w-full" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Blur</label><input type="range" id="b" min="0" max="100" value="15" class="w-full" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Spread</label><input type="range" id="s" min="-50" max="50" value="0" class="w-full" oninput="update()"></div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div><label class="text-xs font-medium text-gray-600">Color</label><input type="color" id="clr" value="#000000" class="w-full h-10 border rounded cursor-pointer" oninput="update()"></div>
+<div><label class="text-xs font-medium text-gray-600">Opacity</label><input type="range" id="op" min="0" max="100" value="20" class="w-full mt-2" oninput="update()"></div>
+</div>
+<label class="flex items-center gap-2"><input type="checkbox" id="inset" onchange="update()"> Inset shadow</label>
+<div class="flex justify-center p-10 bg-gray-50 rounded-lg"><div id="preview" class="w-48 h-48 bg-white rounded-lg"></div></div>
+<div class="bg-gray-50 p-3 rounded-lg"><code id="css" class="text-sm break-all"></code></div>
+<button onclick="copy()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">Copy CSS</button>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function update(){var x=document.getElementById("x").value,y=document.getElementById("y").value,b=document.getElementById("b").value,s=document.getElementById("s").value,c=document.getElementById("clr").value,op=Math.round(document.getElementById("op").value*2.55).toString(16).padStart(2,"0"),ins=document.getElementById("inset").checked;var shadow=(ins?"inset ":"")+x+"px "+y+"px "+b+"px "+s+"px "+c+op;document.getElementById("preview").style.boxShadow=shadow;document.getElementById("css").textContent="box-shadow: "+shadow+";"}function copy(){navigator.clipboard.writeText(document.getElementById("css").textContent)}update()</script>
+</body>
+</html>

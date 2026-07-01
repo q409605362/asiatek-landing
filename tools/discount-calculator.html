@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discount Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online calculate discounts and savings tool. Fast, secure, no installation.">
+<meta name="keywords" content="discount, calculator, online tool, free discount calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Discount Calculator</h1><p class="text-gray-500 mb-4">Calculate discounts and savings</p>
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Original Price ($)</label><input id="orig" type="number" class="w-full p-2 border rounded-lg text-sm" value="100" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Discount (%)</label><input id="disc" type="number" class="w-full p-2 border rounded-lg text-sm" value="20" oninput="calc()"></div>
+<div id="result" class="bg-green-50 p-4 rounded-lg grid grid-cols-3 gap-4 text-center"></div>
+<div class="flex flex-wrap gap-2"><button onclick="set(10)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">10%</button><button onclick="set(15)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">15%</button><button onclick="set(20)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">20%</button><button onclick="set(25)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">25%</button><button onclick="set(30)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">30%</button><button onclick="set(50)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">50%</button><button onclick="set(70)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">70%</button></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function set(v){document.getElementById("disc").value=v;calc()}function calc(){var o=parseFloat(document.getElementById("orig").value)||0;var d=parseFloat(document.getElementById("disc").value)||0;var saved=o*d/100;var final2=o-saved;document.getElementById("result").innerHTML='<div><div class="text-2xl font-bold text-red-600">$'+saved.toFixed(2)+'</div><div class="text-xs text-gray-500">You Save</div></div><div><div class="text-2xl font-bold text-green-700">$'+final2.toFixed(2)+'</div><div class="text-xs text-gray-500">Final Price</div></div><div><div class="text-2xl font-bold text-blue-600">'+d+'%</div><div class="text-xs text-gray-500">Discount</div></div>'}calc()</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tip Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online calculate tips and split bills tool. Fast, secure, no installation.">
+<meta name="keywords" content="tip, calculator, online tool, free tip calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Tip Calculator</h1><p class="text-gray-500 mb-4">Calculate tips and split bills</p>
+<div class="space-y-4">
+<div><label class="text-sm font-medium">Bill Amount ($)</label><input id="bill" type="number" class="w-full p-2 border rounded-lg text-sm" value="50.00" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Tip Percentage</label>
+<div class="flex gap-2 mt-1"><button onclick="setTip(10)" class="flex-1 p-2 bg-gray-100 rounded text-sm hover:bg-gray-200">10%</button><button onclick="setTip(15)" class="flex-1 p-2 bg-gray-100 rounded text-sm hover:bg-gray-200">15%</button><button onclick="setTip(18)" class="flex-1 p-2 bg-blue-100 rounded text-sm hover:bg-blue-200 font-bold">18%</button><button onclick="setTip(20)" class="flex-1 p-2 bg-gray-100 rounded text-sm hover:bg-gray-200">20%</button><button onclick="setTip(25)" class="flex-1 p-2 bg-gray-100 rounded text-sm hover:bg-gray-200">25%</button></div>
+<input id="tip" type="number" class="w-full p-2 border rounded-lg text-sm mt-2" value="18" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Split Between</label><input id="split" type="number" class="w-full p-2 border rounded-lg text-sm" value="2" min="1" oninput="calc()"></div>
+<div id="result" class="bg-green-50 p-4 rounded-lg grid grid-cols-3 gap-4 text-center"></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function setTip(v){document.getElementById("tip").value=v;calc()}function calc(){var b=parseFloat(document.getElementById("bill").value)||0;var t=parseFloat(document.getElementById("tip").value)||0;var s=parseInt(document.getElementById("split").value)||1;var tip=b*t/100;var total=b+tip;var each=total/s;document.getElementById("result").innerHTML='<div><div class="text-2xl font-bold text-green-700">$'+tip.toFixed(2)+'</div><div class="text-xs text-gray-500">Tip</div></div><div><div class="text-2xl font-bold text-blue-700">$'+total.toFixed(2)+'</div><div class="text-xs text-gray-500">Total</div></div><div><div class="text-2xl font-bold text-purple-700">$'+each.toFixed(2)+'</div><div class="text-xs text-gray-500">Per Person</div></div>'}calc()</script>
+</body>
+</html>

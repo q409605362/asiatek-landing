@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAML Validator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online validate yaml syntax online tool. Fast, secure, no installation.">
+<meta name="keywords" content="yaml, validator, online tool, free yaml validator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">YAML Validator</h1><p class="text-gray-500 mb-4">Validate YAML syntax online</p>
+<textarea id="input" class="w-full p-3 border rounded-lg font-mono text-sm" rows="8" placeholder="Paste YAML to validate..."></textarea>
+<div class="mt-3"><button onclick="validate()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Validate YAML</button></div>
+<div id="result" class="mt-3 p-4 rounded-lg text-sm"></div>
+<p class="text-xs text-gray-400 mt-2">Note: Basic structural validation. For full YAML parsing, use a server-side library.</p>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function validate(){var t=document.getElementById("input").value;var errors=[];var lines=t.split("\n");var indent_stack=[0];lines.forEach(function(l,i){if(!l.trim()||l.trim().startsWith("#"))return;var indent=l.search(/\S/);if(indent%2!==0&&l.trim()!=="---")errors.push("Line "+(i+1)+": Inconsistent indentation ("+indent+" spaces)");if(l.match(/\t/))errors.push("Line "+(i+1)+": Tab character found (YAML requires spaces)");var kv=l.match(/^\s*-?\s*([^:]+):\s*(.*)/);if(kv){var val=kv[2];if(val&&!val.match(/^["'{}\[\]|>]/)&&val.includes(":")&&!val.match(/^["']/))errors.push("Line "+(i+1)+": Value may need quoting (contains colon)")}});if(errors.length===0){document.getElementById("result").className="mt-3 p-4 rounded-lg text-sm bg-green-50 text-green-800";document.getElementById("result").textContent="✅ YAML structure looks valid! "+lines.length+" lines checked."}else{document.getElementById("result").className="mt-3 p-4 rounded-lg text-sm bg-red-50 text-red-800";document.getElementById("result").innerHTML="⚠️ Found "+errors.length+" issue(s):\n"+errors.join("\n").replace(/\n/g,"<br>")}}</script>
+</body>
+</html>

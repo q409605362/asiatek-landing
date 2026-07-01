@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chmod Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online unix file permission calculator tool. Fast, secure, no installation.">
+<meta name="keywords" content="chmod, calculator, online tool, free chmod calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Chmod Calculator</h1><p class="text-gray-500 mb-4">Unix file permission calculator</p>
+<div class="space-y-4">
+<div class="grid grid-cols-4 gap-2 bg-gray-50 p-3 rounded-lg text-sm font-medium"><div></div><div class="text-center">Read</div><div class="text-center">Write</div><div class="text-center">Execute</div></div>
+<div class="grid grid-cols-4 gap-2 items-center"><div class="font-medium">Owner</div><input type="checkbox" id="or" class="justify-self-center" onchange="calc()" checked><input type="checkbox" id="ow" class="justify-self-center" onchange="calc()" checked><input type="checkbox" id="ox" class="justify-self-center" onchange="calc()"></div>
+<div class="grid grid-cols-4 gap-2 items-center"><div class="font-medium">Group</div><input type="checkbox" id="gr" class="justify-self-center" onchange="calc()" checked><input type="checkbox" id="gw" class="justify-self-center" onchange="calc()"><input type="checkbox" id="gx" class="justify-self-center" onchange="calc()"></div>
+<div class="grid grid-cols-4 gap-2 items-center"><div class="font-medium">Others</div><input type="checkbox" id="tr" class="justify-self-center" onchange="calc()" checked><input type="checkbox" id="tw" class="justify-self-center" onchange="calc()"><input type="checkbox" id="tx" class="justify-self-center" onchange="calc()"></div>
+<div class="bg-blue-50 p-4 rounded-lg text-center"><div class="text-4xl font-mono font-bold text-blue-700" id="octal">744</div><div class="text-sm text-gray-500 mt-1" id="sym">rwxr--r--</div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function calc(){function v(r,w,x){return(r?4:0)+(w?2:0)+(x?1:0)}var o=v(document.getElementById("or").checked,document.getElementById("ow").checked,document.getElementById("ox").checked);var g=v(document.getElementById("gr").checked,document.getElementById("gw").checked,document.getElementById("gx").checked);var t=v(document.getElementById("tr").checked,document.getElementById("tw").checked,document.getElementById("tx").checked);document.getElementById("octal").textContent=""+o+g+t;function s(n){return(n&4?"r":"-")+(n&2?"w":"-")+(n&1?"x":"-")}document.getElementById("sym").textContent=s(o)+s(g)+s(t)}calc()</script>
+</body>
+</html>

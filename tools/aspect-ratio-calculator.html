@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspect Ratio Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online calculate image and video aspect ratios tool. Fast, secure, no installation.">
+<meta name="keywords" content="aspect, ratio, calculator, online tool, free aspect ratio calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Aspect Ratio Calculator</h1><p class="text-gray-500 mb-4">Calculate image and video aspect ratios</p>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div><label class="text-sm font-medium">Width</label><input id="w" type="number" class="w-full p-2 border rounded-lg text-sm" value="1920" oninput="calcRatio()"></div>
+<div><label class="text-sm font-medium">Height</label><input id="h" type="number" class="w-full p-2 border rounded-lg text-sm" value="1080" oninput="calcRatio()"></div>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg text-center"><div class="text-3xl font-bold text-blue-700" id="ratio">16:9</div><div class="text-sm text-gray-500 mt-1" id="decimals">1.778:1</div></div>
+<div class="border-t pt-4">
+<label class="text-sm font-medium">Scale to new width:</label>
+<div class="flex gap-3 mt-2"><input id="newW" type="number" class="flex-1 p-2 border rounded-lg text-sm" placeholder="New width" oninput="calcHeight()"><input id="newH" type="number" class="flex-1 p-2 border rounded-lg text-sm bg-gray-50" readonly placeholder="Auto height"></div>
+</div>
+<div class="flex flex-wrap gap-2"><button onclick="set(16,9)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">16:9</button><button onclick="set(4,3)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">4:3</button><button onclick="set(1,1)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">1:1</button><button onclick="set(21,9)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">21:9</button><button onclick="set(9,16)" class="px-3 py-1 bg-gray-100 rounded text-sm hover:bg-gray-200">9:16</button></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function gcd(a,b){return b===0?a:gcd(b,a%b)}function calcRatio(){var w=parseInt(document.getElementById("w").value)||1;var h=parseInt(document.getElementById("h").value)||1;var g=gcd(w,h);document.getElementById("ratio").textContent=(w/g)+":"+(h/g);document.getElementById("decimals").textContent=(w/h).toFixed(3)+":1"}function calcHeight(){var w=parseInt(document.getElementById("w").value)||1;var h=parseInt(document.getElementById("h").value)||1;var nw=parseInt(document.getElementById("newW").value);if(nw)document.getElementById("newH").value=Math.round(nw*h/w)}function set(w,h){document.getElementById("w").value=w*100;document.getElementById("h").value=h*100;calcRatio()}calcRatio()</script>
+</body>
+</html>

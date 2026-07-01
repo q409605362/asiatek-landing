@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Clock - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online check time across multiple timezones tool. Fast, secure, no installation.">
+<meta name="keywords" content="world, clock, online tool, free world clock">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">World Clock</h1><p class="text-gray-500 mb-4">Check time across multiple timezones</p>
+<div id="clocks" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+<div class="mt-4 flex gap-2"><input id="add" class="flex-1 p-2 border rounded-lg text-sm" placeholder="Add timezone (e.g. America/New_York)"><button onclick="addTz()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">Add</button></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var tzs=["Asia/Shanghai","America/New_York","Europe/London","Asia/Tokyo","America/Los_Angeles","Europe/Berlin","Asia/Dubai","Australia/Sydney"];function render(){var now=new Date();document.getElementById("clocks").innerHTML=tzs.map(function(tz,i){try{var t=now.toLocaleString("en-US",{timeZone:tz,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});var d=now.toLocaleString("en-US",{timeZone:tz,weekday:"short",month:"short",day:"numeric"});return'<div class="bg-white p-4 rounded-lg border shadow-sm"><div class="text-xs text-gray-500 mb-1">'+tz.replace(/_/g," ")+'</div><div class="text-3xl font-mono font-bold text-gray-800">'+t+'</div><div class="text-sm text-gray-500">'+d+'</div><button onclick="removeTz('+i+\')" class=\"text-xs text-red-400 hover:text-red-600 mt-2\">Remove</button></div>'}catch(e){return'<div class="bg-red-50 p-4 rounded-lg border text-red-600">Invalid: '+tz+'</div>'}}).join("")}function addTz(){var v=document.getElementById("add").value.trim();if(v){tzs.push(v);document.getElementById("add").value="";render()}}function removeTz(i){tzs.splice(i,1);render()}setInterval(render,1000);render()</script>
+</body>
+</html>

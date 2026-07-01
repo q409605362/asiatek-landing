@@ -1,54 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://asiatekai.com/</loc><priority>1.0</priority></url>
-<url><loc>https://asiatekai.com/tools</loc><priority>1.0</priority></url>
-<url><loc>https://asiatekai.com/tools/word-counter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/case-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/remove-duplicate-lines</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/find-replace</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/text-reverser</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/line-sorter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/whitespace-remover</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/slug-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/base64</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/url-encoder</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/html-entity</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/binary-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/hex-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/morse-code</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/rot13</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/number-base</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/json-formatter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/xml-formatter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/jwt-decoder</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/timestamp-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/regex-tester</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/uuid-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/hash-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/color-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/cron-parser</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/http-status-codes</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/markdown-preview</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/diff-checker</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/sql-formatter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/json-yaml-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/password-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/random-number</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/qr-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/placeholder-image</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/unit-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/percentage-calculator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/temperature-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/bmi-calculator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/age-calculator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/meta-tag-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/keyword-density</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/robots-txt</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/favicon-generator</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/ip-lookup</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/email-signature</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/ascii-table</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/timezone-converter</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/lorem-ipsum</loc><priority>0.8</priority></url>
-<url><loc>https://asiatekai.com/tools/color-picker</loc><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://asiatekai.com/tools/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://asiatekai.com/tools/add-line-numbers.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/age-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/area-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/ascii-table.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/ascii-table-full.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/aspect-ratio-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/base64.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/binary-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/bmi-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/border-radius-preview.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/box-shadow-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/case-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/chmod-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/color-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/color-palette-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/color-picker.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/comma-separator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/countdown-timer.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/cron-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/cron-parser.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/css-gradient-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/css-minifier.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/csv-to-json.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/data-size-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/diff-checker.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/discount-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/dockerfile-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/email-signature.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/env-file-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/extract-emails.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/extract-urls.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/favicon-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/find-replace.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/fuel-cost-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/gitignore-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/hash-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/hex-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/htaccess-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/html-entity.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/html-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/html-to-markdown.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/http-status-codes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/image-to-base64.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/ip-lookup.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/js-minifier.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-to-csv.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-validator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-yaml-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/jwt-decoder.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/jwt-encoder.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/keyword-density.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/line-sorter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/loan-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/lorem-ipsum.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/markdown-preview.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/markdown-to-html.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/meta-tag-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/mime-type-lookup.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/morse-code.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/number-base.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/octal-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/og-meta-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/password-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/password-strength.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/percentage-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/pixel-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/placeholder-image.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/pomodoro-timer.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/qr-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/random-number.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/regex-tester.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/remove-duplicate-lines.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/remove-empty-lines.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/robots-txt.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/rot13.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/screen-info.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/slug-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/speed-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/sql-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/stopwatch.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/temperature-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/text-reverser.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/text-statistics.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/timestamp-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/timezone-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/tip-calculator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/unicode-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/unit-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/url-encoder.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/user-agent-parser.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/uuid-generator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/volume-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/weight-converter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/whitespace-remover.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/word-counter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/world-clock.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/xml-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/xml-to-json.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/yaml-validator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

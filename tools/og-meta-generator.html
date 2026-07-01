@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Graph Meta Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online generate open graph and social meta tags tool. Fast, secure, no installation.">
+<meta name="keywords" content="open, graph, meta, generator, online tool, free open graph meta generator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Open Graph Meta Generator</h1><p class="text-gray-500 mb-4">Generate Open Graph and social meta tags</p>
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Title</label><input id="title" class="flex-1 p-2 border rounded-lg text-sm" placeholder="My Awesome Page"></div>
+<div><label class="text-sm font-medium">Description</label><input id="desc" class="flex-1 p-2 border rounded-lg text-sm" placeholder="A brief description..."></div>
+<div><label class="text-sm font-medium">URL</label><input id="url" class="flex-1 p-2 border rounded-lg text-sm" placeholder="https://example.com/page"></div>
+<div><label class="text-sm font-medium">Image URL</label><input id="img" class="flex-1 p-2 border rounded-lg text-sm" placeholder="https://example.com/image.jpg"></div>
+<div><label class="text-sm font-medium">Type</label><select id="type" class="flex-1 p-2 border rounded-lg text-sm"><option>website</option><option>article</option><option>profile</option><option>product</option></select></div>
+<div><label class="text-sm font-medium">Site Name</label><input id="site" class="flex-1 p-2 border rounded-lg text-sm" placeholder="My Website"></div>
+<div><label class="text-sm font-medium">Twitter Handle</label><input id="tw" class="flex-1 p-2 border rounded-lg text-sm" placeholder="@username"></div>
+<button onclick="gen()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate Meta Tags</button>
+<textarea id="output" class="w-full p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly rows="12"></textarea>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function gen(){var t=document.getElementById("title").value,d=document.getElementById("desc").value,u=document.getElementById("url").value,i=document.getElementById("img").value,tp=document.getElementById("type").value,s=document.getElementById("site").value,tw=document.getElementById("tw").value;var h='<!-- Open Graph / Facebook -->\n<meta property="og:type" content="'+tp+'">\n<meta property="og:title" content="'+t+'">\n<meta property="og:description" content="'+d+'">\n<meta property="og:url" content="'+u+'">\n<meta property="og:image" content="'+i+'">\n<meta property="og:site_name" content="'+s+'">\n\n<!-- Twitter -->\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="'+t+'">\n<meta name="twitter:description" content="'+d+'">\n<meta name="twitter:image" content="'+i+'">'+(tw?'\n<meta name="twitter:site" content="'+tw+'">':"")+"\n\n<!-- Standard -->\n<title>"+t+"</title>\n<meta name=\"description\" content=\""+d+"\">";document.getElementById("output").value=h}</script>
+</body>
+</html>

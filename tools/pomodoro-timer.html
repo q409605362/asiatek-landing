@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Timer - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online productivity timer with work/break cycles tool. Fast, secure, no installation.">
+<meta name="keywords" content="pomodoro, timer, online tool, free pomodoro timer">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Pomodoro Timer</h1><p class="text-gray-500 mb-4">Productivity timer with work/break cycles</p>
+<div class="text-center space-y-6">
+<div class="text-6xl font-mono font-bold text-gray-800" id="display">25:00</div>
+<div id="phase" class="text-lg font-medium text-red-600">🍅 Work Time</div>
+<div class="flex justify-center gap-3">
+<button onclick="start()" id="startBtn" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-lg">Start</button>
+<button onclick="pause()" class="px-6 py-3 bg-gray-200 rounded-lg hover:bg-gray-300 text-lg">Pause</button>
+<button onclick="reset()" class="px-6 py-3 bg-gray-200 rounded-lg hover:bg-gray-300 text-lg">Reset</button>
+</div>
+<div class="flex justify-center gap-6 text-sm text-gray-500">
+<div>Work: <input id="work" type="number" value="25" min="1" max="60" class="w-16 p-1 border rounded text-center"> min</div>
+<div>Break: <input id="brk" type="number" value="5" min="1" max="30" class="w-16 p-1 border rounded text-center"> min</div>
+</div>
+<div class="text-sm text-gray-400">Sessions completed: <span id="count" class="font-bold text-gray-600">0</span></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var timer=null,timeLeft=25*60,running=false,isWork=true,sessions=0;function update(){var m=Math.floor(timeLeft/60);var s=timeLeft%60;document.getElementById("display").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");document.title=(running?"▶ ":"")+document.getElementById("display").textContent+" - Pomodoro"}function tick(){if(timeLeft>0){timeLeft--;update()}else{if(isWork){sessions++;document.getElementById("count").textContent=sessions}isWork=!isWork;timeLeft=isWork?parseInt(document.getElementById("work").value)*60:parseInt(document.getElementById("brk").value)*60;document.getElementById("phase").textContent=isWork?"🍅 Work Time":"☕ Break Time";document.getElementById("phase").className=isWork?"text-lg font-medium text-red-600":"text-lg font-medium text-green-600";update()}}function start(){if(!running){running=true;timer=setInterval(tick,1000);update()}}function pause(){running=false;clearInterval(timer);update()}function reset(){pause();isWork=true;timeLeft=parseInt(document.getElementById("work").value)*60;document.getElementById("phase").textContent="🍅 Work Time";document.getElementById("phase").className="text-lg font-medium text-red-600";update()}update()</script>
+</body>
+</html>
