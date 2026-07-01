@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base32 Encoder/Decoder - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Encode or decode Base32 strings.">
+<meta name="keywords" content="base32 encoder decoder">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Base32 Encoder/Decoder</h1>
+<p class="text-gray-500 mb-4">Encode or decode Base32 strings.</p>
+<div class="flex gap-2 mb-3"><button id="eb" onclick="sm('e')" class="px-4 py-2 rounded-lg text-sm bg-indigo-600 text-white">Encode</button><button id="db" onclick="sm('d')" class="px-4 py-2 rounded-lg text-sm bg-gray-200">Decode</button></div><textarea id="input" class="w-full h-32 p-3 border rounded-lg font-mono text-sm" placeholder="Enter text..."></textarea><div class="flex gap-3 mt-3"><button onclick="proc()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700" id="pb">Encode</button></div><textarea id="output" class="w-full h-32 p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly></textarea>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var m="e",B32="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";function sm(x){m=x;document.getElementById("eb").className=x==="e"?"px-4 py-2 rounded-lg text-sm bg-indigo-600 text-white":"px-4 py-2 rounded-lg text-sm bg-gray-200";document.getElementById("db").className=x==="d"?"px-4 py-2 rounded-lg text-sm bg-indigo-600 text-white":"px-4 py-2 rounded-lg text-sm bg-gray-200";document.getElementById("pb").textContent=x==="e"?"Encode":"Decode";}function enc32(s){let r="";for(let i=0;i<s.length;i+=5){let bits=0,n=Math.min(5,s.length-i);for(let j=0;j<n;j++)bits=(bits<<8)+s.charCodeAt(i+j);for(let j=0;j<8;j++){if(n<5&&j>=n*8/5*2)break;r+=B32[(bits>>>(32-j*5-5))&31]||"";}while(n<5){r+="=";n++;}}return r;}function dec32(s){let r="",bits=0,b=0;s=s.replace(/=+$/,"");for(let i=0;i<s.length;i++){let v=B32.indexOf(s[i].toUpperCase());if(v<0)continue;bits=(bits<<5)+v;b+=5;if(b>=8){r+=String.fromCharCode((bits>>>(b-8))&255);b-=8;}}return r;}function proc(){try{var i=document.getElementById("input").value;document.getElementById("output").value=m==="e"?enc32(i):dec32(i);}catch(e){document.getElementById("output").value="Error";}}}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

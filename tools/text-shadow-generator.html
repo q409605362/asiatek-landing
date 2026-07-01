@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Text Shadow Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Create CSS text shadow effects.">
+<meta name="keywords" content="text shadow css">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">CSS Text Shadow Generator</h1>
+<p class="text-gray-500 mb-4">Create CSS text shadow effects.</p>
+<div class="grid grid-cols-4 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">X</label><input type="number" id="x" value="2" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Y</label><input type="number" id="y" value="2" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Blur</label><input type="number" id="blur" value="4" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Color</label><input type="color" id="color" value="#000000" class="w-full h-10 cursor-pointer"></div></div><div class="text-center p-12 bg-gray-100 rounded-lg mb-4"><p id="preview" style="font-size:32px;font-weight:bold;text-shadow:2px 2px 4px #000000;">Sample Text</p></div><div class="flex gap-3"><button onclick="copy()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">Copy CSS</button></div><pre id="css" class="mt-4 p-4 bg-gray-800 text-green-400 rounded-lg text-sm"></pre>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function update(){var x=document.getElementById("x").value;var y=document.getElementById("y").value;var blur=document.getElementById("blur").value;var c=document.getElementById("color").value;var shadow=x+"px "+y+"px "+blur+"px "+c;document.getElementById("preview").style.textShadow=shadow;document.getElementById("css").textContent="text-shadow: "+shadow+";";}function copy(){navigator.clipboard.writeText(document.getElementById("css").textContent);}update();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

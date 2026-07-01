@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pace Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert running pace between min/km and min/mile.">
+<meta name="keywords" content="pace converter running min/km">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Pace Converter</h1>
+<p class="text-gray-500 mb-4">Convert running pace between min/km and min/mile.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Minutes</label><input type="number" id="min" value="5" min="0" class="w-full p-2 border rounded-lg"></div>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Seconds</label><input type="number" id="sec" value="0" min="0" max="59" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Per</label><select id="per" class="w-full p-2 border rounded-lg"><option value="km">km</option><option value="mi">mile</option></select></div></div>
+<div class="flex gap-3"><button onclick="convert()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Convert</button></div>
+<div class="grid grid-cols-3 gap-4 mt-4"><div class="p-4 bg-blue-50 rounded-lg text-center"><div class="text-2xl font-bold" id="r-km">5:00</div><div class="text-sm text-gray-600">min/km</div></div><div class="p-4 bg-green-50 rounded-lg text-center"><div class="text-2xl font-bold" id="r-mi">8:03</div><div class="text-sm text-gray-600">min/mile</div></div><div class="p-4 bg-purple-50 rounded-lg text-center"><div class="text-2xl font-bold" id="r-kmh">12.00</div><div class="text-sm text-gray-600">km/h</div></div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fmt(s){var m=Math.floor(s);var sec=Math.round((s-m)*60);return m+":"+sec.toString().padStart(2,"0");}function convert(){var m=parseInt(document.getElementById("min").value)||0;var s=parseInt(document.getElementById("sec").value)||0;var per=document.getElementById("per").value;var paceKm=per==="km"?m+s/60:m*1.60934+s/60*1.60934;var paceMi=per==="mi"?m+s/60:m/1.60934+s/60/1.60934;var kmh=60/paceKm;document.getElementById("r-km").textContent=fmt(paceKm);document.getElementById("r-mi").textContent=fmt(paceMi);document.getElementById("r-kmh").textContent=kmh.toFixed(2);}convert();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

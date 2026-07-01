@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Header Analyzer - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Analyze email headers for security info.">
+<meta name="keywords" content="email header analyzer security">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Email Header Analyzer</h1>
+<p class="text-gray-500 mb-4">Analyze email headers for security info.</p>
+<textarea id="input" class="w-full h-64 p-3 border rounded-lg font-mono text-sm" placeholder="Paste email headers...">From: sender@example.com
+To: recipient@example.com
+Subject: Test Email
+Authentication-Results: spf=pass dmarc=pass</textarea>
+<div class="flex gap-3 mt-3"><button onclick="analyze()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Analyze</button></div>
+<div id="result" class="mt-4 p-4 bg-gray-50 border rounded-lg space-y-2"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function analyze(){var text=document.getElementById("input").value;var lines=text.split("\n");var headers=[];lines.forEach(function(l){var idx=l.indexOf(":");if(idx>0){var k=l.substr(0,idx).trim();var v=l.substr(idx+1).trim();headers.push({k,v});}});var html='<h3 class="font-bold mb-3">Parsed Headers</h3>';var security=[];headers.forEach(function(h){var color="bg-white";if(h.k.toLowerCase().includes("from"))color="bg-blue-50";else if(h.k.toLowerCase().includes("spf")||h.k.toLowerCase().includes("dkim")||h.k.toLowerCase().includes("dmarc"))color="bg-green-50";html+='<div class="p-2 '+color+' rounded"><span class="font-bold text-blue-600">'+h.k+':</span> <span class="text-gray-700">'+h.v+'</span></div>';if(h.k.toLowerCase().includes("spf")||h.k.toLowerCase().includes("dkim")||h.k.toLowerCase().includes("dmarc"))security.push(h);});if(security.length){html+='<h3 class="font-bold mt-4 mb-2">Security Results</h3><div class="p-3 bg-green-100 rounded text-green-800">';security.forEach(function(s){html+=s.k+": "+s.v+" ✓<br>";});html+='</div>';}document.getElementById("result").innerHTML=html;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

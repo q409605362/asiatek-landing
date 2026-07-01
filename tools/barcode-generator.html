@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcode Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Generate Code128 barcodes.">
+<meta name="keywords" content="barcode code128 generator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Barcode Generator</h1>
+<p class="text-gray-500 mb-4">Generate Code128 barcodes.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Data</label><input type="text" id="data" value="123456789" class="w-full p-3 border rounded-lg font-mono"></div>
+<div class="flex gap-3"><button onclick="generate()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button></div>
+<div class="mt-4 text-center"><canvas id="canvas" class="mx-auto border rounded-lg"></canvas></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var START_B=[104,206,217],STOP=211;var C128=[212,193,194,195,198,199,200,201,202,160,161,162,165,168,169,170,173,176,177,178,181,185,188,200,203,204,206,207,209,212,216,220,221,222,224,227,232,233,236,237,240,241,243,247,252,253,254,255,256,257,259];function encode(data){var codes=[];var sum=START_B[0];codes.push(START_B[0]);for(var i=0;i<data.length;i++){var c=data.charCodeAt(i)-32;if(c<0||c>103)c=0;codes.push(C128[c]);sum+=c*(i+1);}codes.push(sum%103);codes.push(STOP);return codes;}function generate(){var data=document.getElementById("data").value;if(!data)return;var codes=encode(data);var canvas=document.getElementById("canvas");var w=4;canvas.width=codes.reduce(function(a,c){return a+(c&32?w:w*2)+(c&64?w:w*2);},0);canvas.height=100;var ctx=canvas.getContext("2d");ctx.fillStyle="white";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle="black";var x=0;codes.forEach(function(c){var w1=(c&32?1:2)*w;var w2=(c&64?1:2)*w;ctx.fillRect(x,0,w1,100);x+=w1;ctx.fillRect(x,0,w2,100);x+=w2;});}generate();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

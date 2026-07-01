@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Thumbnail Downloader - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Download YouTube video thumbnails.">
+<meta name="keywords" content="youtube thumbnail download">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">YouTube Thumbnail Downloader</h1>
+<p class="text-gray-500 mb-4">Download YouTube video thumbnails.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">YouTube Video URL or ID</label><input type="text" id="url" placeholder="https://youtube.com/watch?v=VIDEO_ID" class="w-full p-3 border rounded-lg"></div>
+<div class="flex gap-3"><button onclick="fetchThumbnails()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Get Thumbnails</button></div>
+<div id="thumbs" class="grid grid-cols-2 gap-4 mt-4"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fetchThumbnails(){var input=document.getElementById("url").value;var videoId="";var match=input.match(/(?:youtube\.com\\/watch\\?v=|youtu\\.be\\/)([^&\\s]+)/);if(match)videoId=match[1];if(!videoId){document.getElementById("thumbs").innerHTML='<div class="col-span-2 text-red-600">Invalid YouTube URL</div>';return;}var sizes=[{name:"Max Resolution",key:"maxresdefault"},{name:"HD (720p)",key:"hq720"},{name:"Medium (480p)",key:"mqdefault"}];var html="";sizes.forEach(function(s){var url="https://img.youtube.com/vi/"+videoId+"/"+s.key+".jpg";html+='<div class="p-4 bg-white border rounded-lg"><p class="text-sm font-bold mb-2">'+s.name+'</p><img src="'+url+'" alt="'+s.name+'" class="w-full rounded" onerror="this.src=\'https://via.placeholder.com/480x360?text=Not+Available\'"><a href="'+url+'" download class="block mt-2 text-center px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">Download</a></div>';});document.getElementById("thumbs").innerHTML=html;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

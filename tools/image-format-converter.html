@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Format Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert images between PNG, JPG, WebP.">
+<meta name="keywords" content="image converter png jpg webp">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Image Format Converter</h1>
+<p class="text-gray-500 mb-4">Convert images between PNG, JPG, WebP.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Select Image</label><input type="file" id="file" accept="image/*" class="w-full p-2 border rounded-lg"></div>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Output Format</label><select id="format" class="w-full p-2 border rounded-lg"><option value="image/png">PNG</option><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option></select></div><div><label class="block text-sm text-gray-600 mb-1">Quality</label><input type="range" id="quality" min="10" max="100" value="90" class="w-full"><span id="qVal">90%</span></div></div>
+<div class="flex gap-3"><button onclick="convert()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Convert</button></div>
+<div id="preview" class="mt-4 text-center hidden"><img id="outImg" class="max-w-full mx-auto rounded-lg"><a id="download" class="mt-2 inline-block px-4 py-2 bg-green-600 text-white rounded-lg">Download</a></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>document.getElementById("quality").oninput=function(){document.getElementById("qVal").textContent=this.value+"%";};function convert(){var file=document.getElementById("file").files[0];if(!file)return;var fmt=document.getElementById("format").value;var q=document.getElementById("quality").value/100;var img=new Image();img.onload=function(){var canvas=document.createElement("canvas");canvas.width=img.width;canvas.height=img.height;canvas.getContext("2d").drawImage(img,0,0);var data=canvas.toDataURL(fmt,q);document.getElementById("outImg").src=data;document.getElementById("preview").classList.remove("hidden");document.getElementById("download").href=data;document.getElementById("download").download="image."+(fmt==="image/png"?"png":fmt==="image/jpeg"?"jpg":"webp");};img.src=URL.createObjectURL(file);}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

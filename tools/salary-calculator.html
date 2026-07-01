@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salary Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert annual salary to monthly and hourly rates.">
+<meta name="keywords" content="salary income hourly rate">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Salary Calculator</h1>
+<p class="text-gray-500 mb-4">Convert annual salary to monthly and hourly rates.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Annual Salary</label><div class="flex gap-2"><span class="p-2 bg-gray-100 rounded-l">$</span><input type="number" id="salary" value="60000" class="w-full p-2 border rounded-r-lg"></div></div>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Work Hours/Week</label><input type="number" id="hours" value="40" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Weeks/Year</label><input type="number" id="weeks" value="52" class="w-full p-2 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="calc()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Calculate</button></div>
+<div class="grid grid-cols-2 gap-4 mt-4"><div class="p-4 bg-blue-50 rounded-lg text-center"><div class="text-3xl font-bold" id="monthly">$5,000</div><div class="text-gray-600">Monthly</div></div><div class="p-4 bg-green-50 rounded-lg text-center"><div class="text-3xl font-bold" id="hourly">$28.85</div><div class="text-gray-600">Hourly</div></div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function calc(){var s=parseFloat(document.getElementById("salary").value)||0;var h=parseFloat(document.getElementById("hours").value)||40;var w=parseFloat(document.getElementById("weeks").value)||52;document.getElementById("monthly").textContent="$"+(s/12).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,",");document.getElementById("hourly").textContent="$"+(s/(w*h)).toFixed(2);}calc();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

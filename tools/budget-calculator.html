@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate budget using the 50/30/20 rule.">
+<meta name="keywords" content="budget 50 30 20 finance">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Budget Calculator</h1>
+<p class="text-gray-500 mb-4">Calculate budget using the 50/30/20 rule.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Monthly Income (After Tax)</label><div class="flex gap-2"><span class="p-2 bg-gray-100 rounded-l">$</span><input type="number" id="income" value="5000" class="w-full p-2 border rounded-r-lg"></div></div>
+<div class="flex gap-3"><button onclick="calc()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Calculate</button></div>
+<div class="mt-6 space-y-4"><div class="p-4 bg-blue-50 rounded-lg"><div class="flex justify-between"><span class="font-bold">Needs (50%)</span><span class="text-2xl font-bold">$0</span></div><div class="w-full bg-blue-200 rounded-full h-3 mt-2"><div class="bg-blue-500 h-3 rounded-full" style="width:50%"></div></div></div><div class="p-4 bg-green-50 rounded-lg"><div class="flex justify-between"><span class="font-bold">Wants (30%)</span><span class="text-2xl font-bold">$0</span></div></div><div class="p-4 bg-purple-50 rounded-lg"><div class="flex justify-between"><span class="font-bold">Savings (20%)</span><span class="text-2xl font-bold">$0</span></div></div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function calc(){var i=parseFloat(document.getElementById("income").value)||0;var divs=document.querySelectorAll(".space-y-4 > div");var amounts=[i*0.5,i*0.3,i*0.2];divs.forEach((d,i)=>{d.querySelector(".text-2xl").textContent="$"+amounts[i].toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,",");});}calc();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

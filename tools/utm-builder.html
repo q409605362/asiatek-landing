@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTM Builder - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Build UTM tracking URLs.">
+<meta name="keywords" content="utm tracking url builder">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">UTM Builder</h1>
+<p class="text-gray-500 mb-4">Build UTM tracking URLs.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Base URL</label><input type="url" id="base" placeholder="https://example.com" class="w-full p-2 border rounded-lg"></div>
+<div class="grid grid-cols-3 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Source</label><input type="text" id="source" placeholder="google" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Medium</label><input type="text" id="medium" placeholder="cpc" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Campaign</label><input type="text" id="campaign" placeholder="summer-sale" class="w-full p-2 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="build()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Build URL</button></div>
+<div class="mt-4 p-4 bg-gray-50 border rounded-lg"><p class="text-sm text-gray-600 mb-2">Tracking URL:</p><div id="result" class="font-mono text-sm break-all"></div><button onclick="copy()" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Copy</button></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function build(){var base=document.getElementById("base").value;if(!base)return;var params=[];var add=function(id,name){var v=document.getElementById(id).value;if(v)params.push("utm_"+name+"="+encodeURIComponent(v));};add("source","source");add("medium","medium");add("campaign","campaign");var url=base+(base.includes("?")?"&":"?")+params.join("&");document.getElementById("result").textContent=url;}function copy(){navigator.clipboard.writeText(document.getElementById("result").textContent);}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

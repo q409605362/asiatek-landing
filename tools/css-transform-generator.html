@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Transform Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Visual CSS transform generator.">
+<meta name="keywords" content="css transform rotate scale">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">CSS Transform Generator</h1>
+<p class="text-gray-500 mb-4">Visual CSS transform generator.</p>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Rotate <span id="rV">0°</span></label><input type="range" id="r" min="-180" max="180" value="0" class="w-full" oninput="update()"></div><div><label class="block text-sm text-gray-600 mb-1">Scale <span id="sV">1</span></label><input type="range" id="s" min="0.5" max="2" step="0.1" value="1" class="w-full" oninput="update()"></div></div><div class="text-center p-12 bg-gray-100 rounded-lg mb-4 min-h-[200px] flex items-center justify-center"><div id="preview" class="w-24 h-24 bg-blue-500 text-white flex items-center justify-center font-bold rounded">BOX</div></div><div class="flex gap-3"><button onclick="reset()" class="px-4 py-2 bg-gray-200 rounded-lg">Reset</button><button onclick="copy()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Copy CSS</button></div><pre id="css" class="mt-4 p-4 bg-gray-800 text-green-400 rounded-lg text-sm"></pre>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function update(){var r=document.getElementById("r").value;var s=document.getElementById("s").value;document.getElementById("rV").textContent=r+"°";document.getElementById("sV").textContent=s;document.getElementById("preview").style.transform="rotate("+r+"deg) scale("+s+")";document.getElementById("css").textContent="transform: rotate("+r+"deg) scale("+s+");";}function reset(){document.getElementById("r").value=0;document.getElementById("s").value=1;update();}function copy(){navigator.clipboard.writeText(document.getElementById("css").textContent);}update();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

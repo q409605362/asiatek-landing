@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Advanced scientific calculator.">
+<meta name="keywords" content="scientific calculator math">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Scientific Calculator</h1>
+<p class="text-gray-500 mb-4">Advanced scientific calculator.</p>
+<div class="mb-4"><input type="text" id="display" class="w-full p-4 text-right text-2xl border rounded-lg font-mono bg-gray-50" readonly value="0"></div>
+<div class="grid grid-cols-5 gap-2 mb-2"><button onclick="btn('sin')" class="p-2 bg-gray-200 rounded-lg">sin</button><button onclick="btn('cos')" class="p-2 bg-gray-200 rounded-lg">cos</button><button onclick="btn('tan')" class="p-2 bg-gray-200 rounded-lg">tan</button><button onclick="btn('log')" class="p-2 bg-gray-200 rounded-lg">log</button><button onclick="btn('sqrt')" class="p-2 bg-gray-200 rounded-lg">√</button></div>
+<div class="grid grid-cols-4 gap-2 mb-2"><button onclick="btn('7')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">7</button><button onclick="btn('8')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">8</button><button onclick="btn('9')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">9</button><button onclick="btn('/')" class="p-3 bg-blue-200 rounded-lg">÷</button></div>
+<div class="grid grid-cols-4 gap-2 mb-2"><button onclick="btn('4')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">4</button><button onclick="btn('5')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">5</button><button onclick="btn('6')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">6</button><button onclick="btn('*')" class="p-3 bg-blue-200 rounded-lg">×</button></div>
+<div class="grid grid-cols-4 gap-2 mb-2"><button onclick="btn('1')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">1</button><button onclick="btn('2')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">2</button><button onclick="btn('3')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">3</button><button onclick="btn('-')" class="p-3 bg-blue-200 rounded-lg">-</button></div>
+<div class="grid grid-cols-4 gap-2"><button onclick="btn('0')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">0</button><button onclick="btn('.')" class="p-3 bg-white border rounded-lg hover:bg-gray-50">.</button><button onclick="calcResult()" class="p-3 bg-green-500 text-white rounded-lg hover:bg-green-600">=</button><button onclick="btn('+')" class="p-3 bg-blue-200 rounded-lg">+</button></div>
+<div class="mt-2"><button onclick="clearDisplay()" class="w-full p-2 bg-red-200 rounded-lg hover:bg-red-300">Clear</button></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var expr="";function btn(v){if(v==="sin")expr+="Math.sin(";else if(v==="cos")expr+="Math.cos(";else if(v==="tan")expr+="Math.tan(";else if(v==="log")expr+="Math.log10(";else if(v==="sqrt")expr+="Math.sqrt(";else expr+=v;document.getElementById("display").value=expr;}function clearDisplay(){expr="";document.getElementById("display").value="0";}function calcResult(){try{document.getElementById("display").value=eval(expr);expr=document.getElementById("display").value;}catch(e){document.getElementById("display").value="Error";expr="";}}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

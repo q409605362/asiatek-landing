@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text to Binary Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert text to binary and vice versa.">
+<meta name="keywords" content="text binary converter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Text to Binary Converter</h1>
+<p class="text-gray-500 mb-4">Convert text to binary and vice versa.</p>
+<div class="flex gap-2 mb-3"><button id="eb" onclick="sm('e')" class="px-4 py-2 rounded-lg text-sm bg-blue-600 text-white">Text→Binary</button><button id="db" onclick="sm('d')" class="px-4 py-2 rounded-lg text-sm bg-gray-200">Binary→Text</button></div><textarea id="input" class="w-full h-32 p-3 border rounded-lg font-mono text-sm" placeholder="Enter text..."></textarea><div class="flex gap-3 mt-3"><button onclick="proc()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" id="pb">Convert</button><button onclick="sw()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Swap</button></div><textarea id="output" class="w-full h-32 p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly></textarea>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var m="e";function sm(x){m=x;document.getElementById("eb").className=x==="e"?"px-4 py-2 rounded-lg text-sm bg-blue-600 text-white":"px-4 py-2 rounded-lg text-sm bg-gray-200";document.getElementById("db").className=x==="d"?"px-4 py-2 rounded-lg text-sm bg-blue-600 text-white":"px-4 py-2 rounded-lg text-sm bg-gray-200";}function t2b(s){let r="";for(let i=0;i<s.length;i++)r+=s.charCodeAt(i).toString(2).padStart(8,"0");return r;}function b2t(s){let r="";s=s.replace(/\s/g,"");for(let i=0;i<s.length;i+=8)r+=String.fromCharCode(parseInt(s.substr(i,8),2));return r;}function proc(){try{var i=document.getElementById("input").value;document.getElementById("output").value=m==="e"?t2b(i):b2t(i);}catch(e){document.getElementById("output").value="Error";}}function sw(){var i=document.getElementById("input");var o=document.getElementById("output");var t=i.value;i.value=o.value;o.value=t;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

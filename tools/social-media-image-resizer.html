@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Image Resizer - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Resize images for social media platforms.">
+<meta name="keywords" content="social media image size resize">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Social Media Image Resizer</h1>
+<p class="text-gray-500 mb-4">Resize images for social media platforms.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Select Image</label><input type="file" id="file" accept="image/*" class="w-full p-2 border rounded-lg"></div>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Platform</label><select id="platform" class="w-full p-2 border rounded-lg"><option value="fb-post">Facebook Post (1200x630)</option><option value="ig-post">Instagram Post (1080x1080)</option><option value="ig-story">Instagram Story (1080x1920)</option><option value="twitter-post">Twitter Post (1200x675)</option><option value="youtube-thumb">YouTube Thumbnail (1280x720)</option></select></div>
+<div class="flex gap-3"><button onclick="resize()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Resize</button></div>
+<div id="preview" class="mt-4 text-center hidden"><canvas id="canvas" class="max-w-full mx-auto border rounded-lg"></canvas><a id="download" class="mt-2 inline-block px-4 py-2 bg-green-600 text-white rounded-lg">Download</a></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var sizes={fb:{post:[1200,630]},ig:{post:[1080,1080],story:[1080,1920]},twitter:{post:[1200,675]},youtube:{thumb:[1280,720]}};function resize(){var file=document.getElementById("file").files[0];if(!file)return;var p=document.getElementById("platform").value.split("-");var size=sizes[p[0]][p[1]];var img=new Image();img.onload=function(){var canvas=document.getElementById("canvas");canvas.width=size[0];canvas.height=size[1];var ctx=canvas.getContext("2d");ctx.fillStyle="white";ctx.fillRect(0,0,size[0],size[1]);var scale=Math.min(size[0]/img.width,size[1]/img.height);var w=img.width*scale,h=img.height*scale;ctx.drawImage(img,(size[0]-w)/2,(size[1]-h)/2,w,h);document.getElementById("preview").classList.remove("hidden");document.getElementById("download").href=canvas.toDataURL("image/png");document.getElementById("download").download="social-image.png";};img.src=URL.createObjectURL(file);}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

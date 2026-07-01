@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favicon Preview - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Preview favicon at multiple sizes.">
+<meta name="keywords" content="favicon icon preview">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Favicon Preview</h1>
+<p class="text-gray-500 mb-4">Preview favicon at multiple sizes.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Image URL or Base64</label><input type="text" id="url" placeholder="https://example.com/favicon.ico" class="w-full p-2 border rounded-lg"></div>
+<div class="flex gap-3"><button onclick="preview()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Preview</button></div>
+<div class="grid grid-cols-5 gap-4 mt-4" id="sizes"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function preview(){var u=document.getElementById("url").value;if(!u)return;var sizes=[16,32,48,64,128,256];var html="";sizes.forEach(function(s){html+='<div class="text-center"><div class="w-16 h-16 mx-auto bg-gray-100 flex items-center justify-center rounded-lg border"><img src="'+u+'" width="'+s+'" height="'+s+'" alt="" onerror="this.style.display=\'none\'"></div><div class="text-xs text-gray-500 mt-1">'+s+'x'+s+'</div></div>';});document.getElementById("sizes").innerHTML=html;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

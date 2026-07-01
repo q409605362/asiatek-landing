@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Crop Tool - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Crop images in the browser.">
+<meta name="keywords" content="image crop tool">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Image Crop Tool</h1>
+<p class="text-gray-500 mb-4">Crop images in the browser.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Select Image</label><input type="file" id="file" accept="image/*" class="w-full p-2 border rounded-lg"></div>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Crop Area (x, y, width, height)</label><div class="grid grid-cols-4 gap-2"><input type="number" id="x" value="0" placeholder="x" class="p-2 border rounded-lg"><input type="number" id="y" value="0" placeholder="y" class="p-2 border rounded-lg"><input type="number" id="w" value="100" placeholder="w" class="p-2 border rounded-lg"><input type="number" id="h" value="100" placeholder="h" class="p-2 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="crop()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Crop</button></div>
+<div id="preview" class="mt-4 text-center hidden"><img id="outImg" class="max-w-full mx-auto rounded-lg"><a id="download" class="mt-2 inline-block px-4 py-2 bg-green-600 text-white rounded-lg">Download</a></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function crop(){var file=document.getElementById("file").files[0];if(!file)return;var x=parseInt(document.getElementById("x").value)||0;var y=parseInt(document.getElementById("y").value)||0;var w=parseInt(document.getElementById("w").value)||100;var h=parseInt(document.getElementById("h").value)||100;var img=new Image();img.onload=function(){var canvas=document.createElement("canvas");canvas.width=w;canvas.height=h;canvas.getContext("2d").drawImage(img,x,y,w,h,0,0,w,h);var data=canvas.toDataURL("image/png");document.getElementById("outImg").src=data;document.getElementById("preview").classList.remove("hidden");document.getElementById("download").href=data;document.getElementById("download").download="cropped.png";};img.src=URL.createObjectURL(file);}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

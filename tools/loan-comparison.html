@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Comparison Tool - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Compare two loan offers side by side.">
+<meta name="keywords" content="loan mortgage comparison">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Loan Comparison Tool</h1>
+<p class="text-gray-500 mb-4">Compare two loan offers side by side.</p>
+<div class="grid grid-cols-2 gap-4 mb-4"><div class="p-4 border rounded-lg"><h3 class="font-bold mb-3">Loan A</h3><label class="block text-sm mb-1">Amount</label><input type="number" id="a1" value="200000" class="w-full p-2 border rounded-lg mb-2"><label class="block text-sm mb-1">Rate (%)</label><input type="number" id="a2" value="6.5" step="0.1" class="w-full p-2 border rounded-lg mb-2"><label class="block text-sm mb-1">Term (years)</label><input type="number" id="a3" value="30" class="w-full p-2 border rounded-lg"></div><div class="p-4 border rounded-lg"><h3 class="font-bold mb-3">Loan B</h3><label class="block text-sm mb-1">Amount</label><input type="number" id="b1" value="200000" class="w-full p-2 border rounded-lg mb-2"><label class="block text-sm mb-1">Rate (%)</label><input type="number" id="b2" value="5.9" step="0.1" class="w-full p-2 border rounded-lg mb-2"><label class="block text-sm mb-1">Term (years)</label><input type="number" id="b3" value="30" class="w-full p-2 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="compare()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Compare</button></div>
+<div id="result" class="mt-4 grid grid-cols-2 gap-4"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function monthlyPayment(p,r,n){r=r/100/12;n=n*12;return p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);}function compare(){var a1=parseFloat(document.getElementById("a1").value)||0;var a2=parseFloat(document.getElementById("a2").value)||0;var a3=parseFloat(document.getElementById("a3").value)||1;var b1=parseFloat(document.getElementById("b1").value)||0;var b2=parseFloat(document.getElementById("b2").value)||0;var b3=parseFloat(document.getElementById("b3").value)||1;var ma=monthlyPayment(a1,a2,a3);var mb=monthlyPayment(b1,b2,b3);var ta=a3*12*ma;var tb=b3*12*mb;document.getElementById("result").innerHTML='<div class="p-4 bg-blue-50 rounded-lg text-center"><div class="text-2xl font-bold">$'+ma.toFixed(2)+'</div><div class="text-sm">Monthly</div><div class="text-xl font-bold mt-2">$'+ta.toFixed(2)+'</div><div class="text-sm">Total</div></div><div class="p-4 bg-green-50 rounded-lg text-center"><div class="text-2xl font-bold">$'+mb.toFixed(2)+'</div><div class="text-sm">Monthly</div><div class="text-xl font-bold mt-2">$'+tb.toFixed(2)+'</div><div class="text-sm">Total</div></div><div class="col-span-2 p-4 bg-gray-100 rounded-lg text-center"><b>Savings:</b> $'+Math.abs(ta-tb).toFixed(2)+(ta<tb?" with Loan A":" with Loan B")+'</div>';}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

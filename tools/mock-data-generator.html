@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Data Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Generate realistic mock JSON data.">
+<meta name="keywords" content="mock data fake data">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Mock Data Generator</h1>
+<p class="text-gray-500 mb-4">Generate realistic mock JSON data.</p>
+<div class="grid grid-cols-3 gap-4 mb-3"><div><label class="block text-sm text-gray-600 mb-1">Type</label><select id="type" class="w-full p-2 border rounded-lg"><option value="users">Users</option><option value="products">Products</option><option value="orders">Orders</option></select></div><div><label class="block text-sm text-gray-600 mb-1">Count</label><input type="number" id="count" value="5" min="1" max="100" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Seed</label><input type="number" id="seed" value="12345" class="w-full p-2 border rounded-lg"></div></div><div class="flex gap-3 mt-3"><button onclick="gen()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button></div><textarea id="output" class="w-full h-64 p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly></textarea>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var fn=["John","Jane","Bob","Alice","Mike","Sarah"];var ln=["Smith","Johnson","Williams","Brown","Jones"];var dom=["gmail.com","yahoo.com","outlook.com"];function rng(s){s=(s*9301+49297)%233280;return s/233280;}function gen(){var type=document.getElementById("type").value;var n=parseInt(document.getElementById("count").value)||1;var s=parseInt(document.getElementById("seed").value)||1;var data=[];for(var i=0;i<n;i++){var r=rng(s+i);if(type==="users")data.push({id:i+1,name:fn[Math.floor(r*6)]+" "+ln[Math.floor(r*5)],email:(fn[Math.floor(r*6)]+"."+ln[Math.floor(r*5)]+"@"+dom[Math.floor(r*3)]).toLowerCase()});else if(type==="products")data.push({id:i+1,name:"Product "+(i+1),price:parseFloat((r*500+10).toFixed(2))});else data.push({id:i+1,orderId:"ORD-"+(1000+i),customer:fn[Math.floor(r*6)]+" "+ln[Math.floor(r*5)],total:parseFloat((r*1000+50).toFixed(2))});}document.getElementById("output").value=JSON.stringify(data,null,2);}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

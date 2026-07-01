@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Difference Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate days between two dates.">
+<meta name="keywords" content="date difference days calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Date Difference Calculator</h1>
+<p class="text-gray-500 mb-4">Calculate days between two dates.</p>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Start Date</label><input type="date" id="start" class="w-full p-3 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">End Date</label><input type="date" id="end" class="w-full p-3 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="calc()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Calculate</button></div>
+<div class="mt-4 p-6 bg-blue-50 rounded-lg text-center"><div class="text-4xl font-bold" id="days">0</div><div class="text-sm text-gray-600">Days</div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function calc(){var s=new Date(document.getElementById("start").value);var e=new Date(document.getElementById("end").value);if(isNaN(s)||isNaN(e))return;var diff=Math.abs(e-s);var days=Math.floor(diff/(1000*60*60*24));document.getElementById("days").textContent=days;}var today=new Date().toISOString().split("T")[0];document.getElementById("start").value=today;document.getElementById("end").value=today;</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

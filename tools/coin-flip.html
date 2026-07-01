@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coin Flip Simulator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Flip a virtual coin.">
+<meta name="keywords" content="coin flip heads tails random">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Coin Flip Simulator</h1>
+<p class="text-gray-500 mb-4">Flip a virtual coin.</p>
+<div class="flex flex-col items-center py-12"><button onclick="flip()" id="coin" class="w-48 h-48 bg-yellow-400 rounded-full text-8xl font-bold shadow-lg flex items-center justify-center transform transition-transform hover:scale-105">?</button><div class="mt-6 text-4xl font-bold" id="result">-</div><div class="mt-4 text-gray-600">Heads: <span id="h">0</span> | Tails: <span id="t">0</span></div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var heads=0,tails=0;function flip(){var r=Math.random()<0.5;var coin=document.getElementById("coin");coin.textContent=r?"H":"T";coin.style.background=r?"#3b82f6":"#ef4444";coin.style.color="white";document.getElementById("result").textContent=r?"Heads!":"Tails!";if(r)heads++;else tails++;document.getElementById("h").textContent=heads;document.getElementById("t").textContent=tails;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

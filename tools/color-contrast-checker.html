@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Contrast Checker - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Check WCAG color contrast ratio.">
+<meta name="keywords" content="color contrast wcag accessibility">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Color Contrast Checker</h1>
+<p class="text-gray-500 mb-4">Check WCAG color contrast ratio.</p>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Foreground</label><input type="color" id="fg" value="#000000" class="w-full h-12 cursor-pointer"><input type="text" id="fgHex" value="#000000" class="w-full p-2 border rounded-lg mt-1 font-mono"></div><div><label class="block text-sm text-gray-600 mb-1">Background</label><input type="color" id="bg" value="#ffffff" class="w-full h-12 cursor-pointer"><input type="text" id="bgHex" value="#ffffff" class="w-full p-2 border rounded-lg mt-1 font-mono"></div></div><div class="grid grid-cols-4 gap-4 mb-4"><div><div class="text-sm text-gray-600">Ratio</div><div id="ratio" class="text-2xl font-bold">21:1</div></div><div><div class="text-sm text-gray-600">AA Normal</div><div id="aa" class="text-lg font-bold text-green-600">✓ Pass</div></div><div><div class="text-sm text-gray-600">AA Large</div><div id="aaL" class="text-lg font-bold text-green-600">✓ Pass</div></div><div><div class="text-sm text-gray-600">AAA</div><div id="aaa" class="text-lg font-bold text-green-600">✓ Pass</div></div></div><div id="preview" class="p-8 rounded-lg text-center" style="background:#ffffff;"><p style="font-size:16px;color:#000000;">Normal text</p><p style="font-size:24px;font-weight:bold;color:#000000;">Large text</p></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function lum(r,g,b){var a=[r,g,b].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return a[0]*.2126+a[1]*.7152+a[2]*.0722;}function h2rgb(h){var m=h.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);return m?{r:parseInt(m[1],16),g:parseInt(m[2],16),b:parseInt(m[3],16)}:null;}function check(){var fg=document.getElementById("fgHex").value;var bg=document.getElementById("bgHex").value;var fRgb=h2rgb(fg),bRgb=h2rgb(bg);if(!fRgb||!bRgb)return;var l1=lum(fRgb.r,fRgb.g,fRgb.b),l2=lum(bRgb.r,bRgb.g,bRgb.b);var ratio=(Math.max(l1,l2)+.05)/(Math.min(l1,l2)+.05);document.getElementById("ratio").textContent=ratio.toFixed(2)+":1";var pass=(r,el)=>{if(r>=4.5){el.textContent="✓ Pass";el.className="text-lg font-bold text-green-600";}else{el.textContent="✗ Fail";el.className="text-lg font-bold text-red-600";}};pass(ratio,document.getElementById("aa"));pass(ratio*1.5,document.getElementById("aaL"));document.getElementById("aaa").textContent=ratio>=7?"✓ Pass":"✗ Fail";document.getElementById("aaa").className=ratio>=7?"text-lg font-bold text-green-600":"text-lg font-bold text-red-600";var p=document.getElementById("preview");p.style.background=bg;p.querySelectorAll("p").forEach(el=>el.style.color=fg);}document.getElementById("fg").oninput=function(){document.getElementById("fgHex").value=this.value;check();};document.getElementById("bg").oninput=function(){document.getElementById("bgHex").value=this.value;check();};document.getElementById("fgHex").onchange=function(){document.getElementById("fg").value=this.value;check();};document.getElementById("bgHex").onchange=function(){document.getElementById("bg").value=this.value;check();};check();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

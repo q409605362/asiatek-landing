@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake Data Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Generate fake personal data.">
+<meta name="keywords" content="fake data mock data test data">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Fake Data Generator</h1>
+<p class="text-gray-500 mb-4">Generate fake personal data.</p>
+<div class="grid grid-cols-3 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Count</label><input type="number" id="count" value="5" min="1" max="100" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Seed</label><input type="number" id="seed" value="123" class="w-full p-2 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="generate()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button></div>
+<div id="result" class="mt-4 space-y-2"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var fn=["James","Mary","John","Patricia","Robert","Jennifer","Michael","Linda","William","Elizabeth"];var ln=["Smith","Johnson","Williams","Brown","Jones","Davis","Miller","Wilson","Moore","Taylor"];var dom=["gmail.com","yahoo.com","outlook.com"];function rng(s){s=(s*9301+49297)%233280;return s/233280;}function generate(){var n=parseInt(document.getElementById("count").value)||1;var seed=parseInt(document.getElementById("seed").value)||1;var html="";for(var i=0;i<n;i++){var r=rng(seed+i);var name=fn[Math.floor(r*10)]+" "+ln[Math.floor(r*10)];var email=(fn[Math.floor(r*10)]+"."+ln[Math.floor(r*10)]+"@"+dom[Math.floor(r*3)]).toLowerCase();var phone="("+Math.floor(r*900+100)+") "+Math.floor(r*900+100)+"-"+Math.floor(r*9000+1000);html+='<div class="p-3 bg-white border rounded-lg"><b>Name:</b> '+name+"<br><b>Email:</b> "+email+"<br><b>Phone:</b> "+phone+'</div>';}document.getElementById("result").innerHTML=html;}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

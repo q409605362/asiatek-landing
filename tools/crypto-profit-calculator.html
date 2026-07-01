@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Profit Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate cryptocurrency trading profit.">
+<meta name="keywords" content="crypto bitcoin profit">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Crypto Profit Calculator</h1>
+<p class="text-gray-500 mb-4">Calculate cryptocurrency trading profit.</p>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Buy Price</label><div class="flex gap-2"><span class="p-2 bg-gray-100 rounded-l">$</span><input type="number" id="buy" value="30000" class="w-full p-2 border rounded-r-lg"></div></div><div><label class="block text-sm text-gray-600 mb-1">Sell Price</label><div class="flex gap-2"><span class="p-2 bg-gray-100 rounded-l">$</span><input type="number" id="sell" value="40000" class="w-full p-2 border rounded-r-lg"></div></div></div>
+<div class="grid grid-cols-2 gap-4 mb-4"><div><label class="block text-sm text-gray-600 mb-1">Amount (coins)</label><input type="number" id="amount" value="1" class="w-full p-2 border rounded-lg"></div><div><label class="block text-sm text-gray-600 mb-1">Fee (%)</label><input type="number" id="fee" value="0.5" step="0.1" class="w-full p-2 border rounded-lg"></div></div>
+<div class="flex gap-3"><button onclick="calc()" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700">Calculate</button></div>
+<div id="result" class="mt-4 p-6 bg-white border rounded-lg text-center hidden"><div class="text-3xl font-bold" id="profit">$0</div><div id="roi" class="text-xl mt-2">0%</div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function calc(){var buy=parseFloat(document.getElementById("buy").value)||0;var sell=parseFloat(document.getElementById("sell").value)||0;var amt=parseFloat(document.getElementById("amount").value)||1;var fee=parseFloat(document.getElementById("fee").value)||0;var cost=buy*amt*(1+fee/100);var revenue=sell*amt*(1-fee/100);var profit=revenue-cost;var roi=(profit/cost)*100;document.getElementById("profit").textContent=(profit>=0?"":"-")+"$"+Math.abs(profit).toFixed(2);document.getElementById("profit").className=(profit>=0?"text-3xl font-bold text-green-600":"text-3xl font-bold text-red-600");document.getElementById("roi").textContent=(roi>=0?"":"-")+Math.abs(roi).toFixed(2)+"% ROI";document.getElementById("roi").className=(roi>=0?"text-xl mt-2 text-green-600":"text-xl mt-2 text-red-600");document.getElementById("result").classList.remove("hidden");}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

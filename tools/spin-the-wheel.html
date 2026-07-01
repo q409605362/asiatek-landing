@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spin the Wheel - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Create a wheel with options and spin it.">
+<meta name="keywords" content="wheel spin random picker">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Spin the Wheel</h1>
+<p class="text-gray-500 mb-4">Create a wheel with options and spin it.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Options (one per line)</label><textarea id="options" class="w-full h-32 p-2 border rounded-lg">Pizza
+Burger
+Sushi
+Tacos</textarea></div>
+<div class="flex gap-3 mb-4"><button onclick="init()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Create Wheel</button><button onclick="spin()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">SPIN!</button></div>
+<div class="text-center"><canvas id="wheel" width="400" height="400" class="mx-auto"></canvas><div class="mt-4 text-3xl font-bold" id="winner">-</div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var items=[],canvas,ctx,currentRotation=0;function init(){items=document.getElementById("options").value.split("\n").filter(o=>o.trim());canvas=document.getElementById("wheel");ctx=canvas.getContext("2d");draw();}function draw(){ctx.clearRect(0,0,400,400);var slice=2*Math.PI/items.length;items.forEach(function(item,i){ctx.beginPath();ctx.moveTo(200,200);ctx.arc(200,200,180,i*slice,(i+1)*slice);ctx.fillStyle=["#ef4444","#3b82f6","#22c55e","#f59e0b","#8b5cf6","#ec4899","#06b6d4","#84cc16"][i%8];ctx.fill();ctx.save();ctx.translate(200,200);ctx.rotate(i*slice+slice/2);ctx.fillStyle="white";ctx.font="bold 16px sans-serif";ctx.textAlign="right";ctx.fillText(item.substring(0,12),170,5);ctx.restore();});}function spin(){var target=Math.random()*2*Math.PI*5;currentRotation+=target;setTimeout(function(){var slice=2*Math.PI/items.length;var angle=(2*Math.PI-currentRotation%(2*Math.PI))%(2*Math.PI);var winner=Math.floor(angle/slice);document.getElementById("winner").textContent=items[winner]+" wins!";},3000);draw();}init();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

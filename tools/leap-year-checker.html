@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leap Year Checker - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Check if a year is a leap year.">
+<meta name="keywords" content="leap year">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Leap Year Checker</h1>
+<p class="text-gray-500 mb-4">Check if a year is a leap year.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Year</label><input type="number" id="year" value="2024" class="w-full p-3 border rounded-lg text-xl"></div>
+<div class="flex gap-3"><button onclick="check()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Check</button></div>
+<div class="mt-4 p-6 bg-blue-50 rounded-lg text-center"><div class="text-4xl font-bold" id="result">-</div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function check(){var y=parseInt(document.getElementById("year").value);if(isNaN(y))return;var leap=(y%4===0&&y%100!==0)||(y%400===0);document.getElementById("result").textContent=y+(leap?" is a Leap Year":" is NOT a Leap Year");document.getElementById("result").className=(leap?"text-4xl font-bold text-green-600":"text-4xl font-bold text-red-600");}check();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

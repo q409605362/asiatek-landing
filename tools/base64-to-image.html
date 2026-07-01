@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 to Image Preview - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Preview Base64 encoded images.">
+<meta name="keywords" content="base64 image preview">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Base64 to Image Preview</h1>
+<p class="text-gray-500 mb-4">Preview Base64 encoded images.</p>
+<textarea id="input" class="w-full h-32 p-3 border rounded-lg font-mono text-sm" placeholder="Paste Base64 (data:image/...)..."></textarea><div class="flex gap-3 mt-3"><button onclick="preview()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Preview</button><button onclick="clearAll()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Clear</button></div><div id="preview-container" class="mt-4 p-4 bg-gray-100 rounded-lg text-center hidden"><img id="preview-img" class="max-w-full mx-auto" alt=""><p id="img-info" class="mt-2 text-sm text-gray-600"></p></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function preview(){var i=document.getElementById("input").value.trim();if(!i){alert("Paste Base64 data first");return;}document.getElementById("preview-container").classList.remove("hidden");document.getElementById("preview-img").src=i;document.getElementById("img-info").textContent="Size: "+(i.length/1024).toFixed(1)+" KB";}function clearAll(){document.getElementById("input").value="";document.getElementById("preview-container").classList.add("hidden");}</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>

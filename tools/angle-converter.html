@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angle Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert between angle units.">
+<meta name="keywords" content="angle converter degrees radians">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Angle Converter</h1>
+<p class="text-gray-500 mb-4">Convert between angle units.</p>
+<div class="mb-4"><label class="block text-sm text-gray-600 mb-1">Value</label><input type="number" id="val" value="180" class="w-full p-3 border rounded-lg text-xl"></div>
+<div id="results" class="grid grid-cols-3 gap-4 mt-4"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+<span>© 2026 Asiatek AI</span> · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function convert(){var v=parseFloat(document.getElementById("val").value)||0;var toDeg=v;var toRad=v*Math.PI/180;var toGrad=v/0.9;document.getElementById("results").innerHTML='<div class="p-4 bg-blue-50 rounded-lg text-center"><div class="text-2xl font-bold">'+toDeg.toFixed(6)+'°</div></div><div class="p-4 bg-green-50 rounded-lg text-center"><div class="text-2xl font-bold">'+toRad.toFixed(6)+' rad</div></div><div class="p-4 bg-purple-50 rounded-lg text-center"><div class="text-2xl font-bold">'+toGrad.toFixed(6)+' grad</div></div>';}convert();</script>
+<script src="/tools/lang-detect.js"></script>
+<script src="/tools/i18n.js"></script>
+</body>
+</html>
