@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Visual CSS Flexbox layout generator with live preview. Experiment with flex properties">
+<meta name="keywords" content="flexbox generator, CSS flex, flexbox playground, CSS layout, visual flexbox">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Flexbox Generator</h1><p class="text-gray-500 mb-4">Visual CSS Flexbox layout generator with live preview. Experiment with flex properties</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">flex-direction</label><select id="fd" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>row</option><option>row-reverse</option><option>column</option><option>column-reverse</option></select></div>
+<div><label class="text-sm font-medium">justify-content</label><select id="jc" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>flex-start</option><option>flex-end</option><option>center</option><option>space-between</option><option>space-around</option><option>space-evenly</option></select></div>
+<div><label class="text-sm font-medium">align-items</label><select id="ai" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>stretch</option><option>flex-start</option><option>flex-end</option><option>center</option><option>baseline</option></select></div>
+<div><label class="text-sm font-medium">flex-wrap</label><select id="fw" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>nowrap</option><option>wrap</option><option>wrap-reverse</option></select></div>
+<div><label class="text-sm font-medium">gap (px)</label><input id="gap" type="number" class="w-full p-2 border rounded-lg text-sm" value="10" oninput="update()"></div>
+<div><label class="text-sm font-medium">Items Count</label><input id="count" type="number" class="w-full p-2 border rounded-lg text-sm" value="6" min="1" max="20" oninput="update()"></div>
+<div><label class="text-sm font-medium">Container Height (px)</label><input id="ch" type="number" class="w-full p-2 border rounded-lg text-sm" value="300" oninput="update()"></div>
+<div><label class="text-sm font-medium">Item flex</label><input id="iflex" type="text" class="w-full p-2 border rounded-lg text-sm" value="" placeholder="e.g. 1 1 auto" oninput="update()"></div>
+</div>
+<div>
+<div id="preview" class="border-2 border-dashed border-blue-300 rounded-lg p-2 bg-white" style="height:300px"></div>
+</div>
+</div>
+<div class="mt-4 grid md:grid-cols-2 gap-4">
+<div><label class="text-xs font-medium">CSS Code</label><pre id="css-out" class="bg-gray-900 text-green-400 p-3 rounded-lg text-xs overflow-x-auto"></pre><button onclick="copyCSS()" class="mt-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">Copy CSS</button></div>
+<div><label class="text-xs font-medium">HTML Preview</label><pre id="html-out" class="bg-gray-900 text-yellow-400 p-3 rounded-lg text-xs overflow-x-auto"></pre></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function update(){var fd=document.getElementById("fd").value,jc=document.getElementById("jc").value,ai=document.getElementById("ai").value,fw=document.getElementById("fw").value,gap=document.getElementById("gap").value,count=parseInt(document.getElementById("count").value)||1,ch=document.getElementById("ch").value,iflex=document.getElementById("iflex").value;
+var p=document.getElementById("preview");p.style.display="flex";p.style.flexDirection=fd;p.style.justifyContent=jc;p.style.alignItems=ai;p.style.flexWrap=fw;p.style.gap=gap+"px";p.style.height=ch+"px";
+var items="";for(var i=0;i<count;i++){items+='<div style="'+(iflex?"flex:"+iflex+";":"")+'width:60px;min-height:40px;background:hsl('+(i*60)+',70%,60%);border-radius:6px;display:flex;align-items:center;justify-content:center;color:white;font-size:12px;font-weight:bold">'+(i+1)+'</div>'}
+p.innerHTML=items;
+document.getElementById("css-out").textContent=".container {\n  display: flex;\n  flex-direction: "+fd+";\n  justify-content: "+jc+";\n  align-items: "+ai+";\n  flex-wrap: "+fw+";\n  gap: "+gap+"px;\n}";
+document.getElementById("html-out").textContent='<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>'}
+function copyCSS(){navigator.clipboard.writeText(document.getElementById("css-out").textContent).then(()=>alert("Copied!"))}update()</script>
+</body>
+</html>

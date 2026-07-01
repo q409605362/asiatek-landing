@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON-LD Schema Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Generate structured data (JSON-LD) for SEO. Article, Product, FAQ, Local Business and more">
+<meta name="keywords" content="JSON-LD generator, schema markup, structured data, SEO schema, rich snippets">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">JSON-LD Schema Generator</h1><p class="text-gray-500 mb-4">Generate structured data (JSON-LD) for SEO. Article, Product, FAQ, Local Business and more</p>
+<div class="space-y-4">
+<div><label class="text-sm font-medium">Schema Type</label><select id="type" class="w-full p-2 border rounded-lg text-sm" onchange="buildForm()"><option value="article">Article / BlogPost</option><option value="product">Product</option><option value="localBusiness">Local Business</option><option value="person">Person</option><option value="faq">FAQ Page</option><option value="breadcrumb">BreadcrumbList</option><option value="video">Video Object</option><option value="organization">Organization</option></select></div>
+<div id="form" class="space-y-3"></div>
+<div class="flex gap-2"><button onclick="generate()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">Generate JSON-LD</button><button onclick="copyOut()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm">Copy</button></div>
+<div><label class="text-sm font-medium">JSON-LD Output</label><pre id="output" class="bg-gray-900 text-green-400 p-4 rounded-lg text-xs overflow-x-auto mt-1"></pre></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var schemas={
+article:{fields:[{id:"headline",label:"Headline",type:"text",req:true},{id:"author",label:"Author Name",type:"text",req:true},{id:"datePublished",label:"Date Published",type:"date",req:true},{id:"dateModified",label:"Date Modified",type:"date"},{id:"description",label:"Description",type:"textarea"},{id:"image",label:"Image URL",type:"text"}]},
+product:{fields:[{id:"name",label:"Product Name",type:"text",req:true},{id:"description",label:"Description",type:"textarea"},{id:"brand",label:"Brand",type:"text"},{id:"price",label:"Price",type:"number"},{id:"currency",label:"Currency",type:"text",def:"USD"},{id:"availability",label:"Availability",type:"select",opts:["InStock","OutOfStock","PreOrder"]}]},
+localBusiness:{fields:[{id:"name",label:"Business Name",type:"text",req:true},{id:"address",label:"Street Address",type:"text"},{id:"city",label:"City",type:"text"},{id:"state",label:"State/Province",type:"text"},{id:"zip",label:"Postal Code",type:"text"},{id:"phone",label:"Telephone",type:"text"},{id:"url",label:"Website URL",type:"text"},{id:"priceRange",label:"Price Range",type:"text",def:"$$"}]},
+person:{fields:[{id:"name",label:"Full Name",type:"text",req:true},{id:"jobTitle",label:"Job Title",type:"text"},{id:"url",label:"Website URL",type:"text"},{id:"email",label:"Email",type:"text"},{id:"sameAs",label:"Social Profiles (comma-separated URLs)",type:"text"}]},
+faq:{fields:[{id:"q1",label:"Question 1",type:"text",req:true},{id:"a1",label:"Answer 1",type:"textarea",req:true},{id:"q2",label:"Question 2",type:"text"},{id:"a2",label:"Answer 2",type:"textarea"},{id:"q3",label:"Question 3",type:"text"},{id:"a3",label:"Answer 3",type:"textarea"}]},
+breadcrumb:{fields:[{id:"name1",label:"Page 1 Name",type:"text",def:"Home"},{id:"url1",label:"Page 1 URL",type:"text",def:"https://example.com/"},{id:"name2",label:"Page 2 Name",type:"text"},{id:"url2",label:"Page 2 URL",type:"text"},{id:"name3",label:"Page 3 Name",type:"text"},{id:"url3",label:"Page 3 URL",type:"text"}]},
+video:{fields:[{id:"name",label:"Video Title",type:"text",req:true},{id:"description",label:"Description",type:"textarea"},{id:"thumbnailUrl",label:"Thumbnail URL",type:"text"},{id:"uploadDate",label:"Upload Date",type:"date"},{id:"duration",label:"Duration (ISO 8601, e.g. PT2M30S)",type:"text"},{id:"embedUrl",label:"Embed URL",type:"text"}]},
+organization:{fields:[{id:"name",label:"Organization Name",type:"text",req:true},{id:"url",label:"Website URL",type:"text"},{id:"logo",label:"Logo URL",type:"text"},{id:"phone",label:"Telephone",type:"text"},{id:"address",label:"Address",type:"text"}]}
+};
+function buildForm(){var type=document.getElementById("type").value;var s=schemas[type];var html="";s.fields.forEach(f=>{var req=f.req?" *":"";if(f.type==="textarea")html+='<div><label class="text-sm font-medium">'+f.label+req+'</label><textarea id="f_'+f.id+'" class="w-full p-2 border rounded-lg text-sm" rows="2">'+(f.def||"")+'</textarea></div>';else if(f.type==="select")html+='<div><label class="text-sm font-medium">'+f.label+req+'</label><select id="f_'+f.id+'" class="w-full p-2 border rounded-lg text-sm">'+f.opts.map(o=>"<option>"+o+"</option>").join("")+'</select></div>';else html+='<div><label class="text-sm font-medium">'+f.label+req+'</label><input id="f_'+f.id+'" type="'+f.type+'" class="w-full p-2 border rounded-lg text-sm" value="'+(f.def||"")+'"></div>'});document.getElementById("form").innerHTML=html}
+function val(id){var el=document.getElementById("f_"+id);return el?el.value.trim():""}
+function generate(){var type=document.getElementById("type").value;var s=schemas[type];var out={};s.fields.forEach(f=>{var v=val(f.id);if(v)out[f.id]=v});
+var json={};
+if(type==="article")json={"@context":"https://schema.org","@type":"Article",headline:out.headline,author:{"@type":"Person",name:out.author},datePublished:out.datePublished,dateModified:out.dateModified,description:out.description,image:out.image};
+else if(type==="product")json={"@context":"https://schema.org","@type":"Product",name:out.name,description:out.description,brand:{"@type":"Brand",name:out.brand},offers:{"@type":"Offer",price:out.price,priceCurrency:out.currency,availability:"https://schema.org/"+(out.availability||"InStock")}};
+else if(type==="localBusiness")json={"@context":"https://schema.org","@type":"LocalBusiness",name:out.name,telephone:out.phone,url:out.url,priceRange:out.priceRange,address:{"@type":"PostalAddress",streetAddress:out.address,addressLocality:out.city,addressRegion:out.state,postalCode:out.zip}};
+else if(type==="person")json={"@context":"https://schema.org","@type":"Person",name:out.name,jobTitle:out.jobTitle,url:out.url,email:out.email,sameAs:out.sameAs?out.sameAs.split(",").map(s=>s.trim()):undefined};
+else if(type==="faq"){var entities=[];for(var i=1;i<=3;i++){var q=out["q"+i],a=out["a"+i];if(q&&a)entities.push({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}})}json={"@context":"https://schema.org","@type":"FAQPage",mainEntity:entities}}
+else if(type==="breadcrumb"){var items=[];for(var i=1;i<=3;i++){var n=out["name"+i],u=out["url"+i];if(n&&u)items.push({"@type":"ListItem",position:i,name:n,item:u})}json={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:items}}
+else if(type==="video")json={"@context":"https://schema.org","@type":"VideoObject",name:out.name,description:out.description,thumbnailUrl:out.thumbnailUrl,uploadDate:out.uploadDate,duration:out.duration,embedUrl:out.embedUrl};
+else if(type==="organization")json={"@context":"https://schema.org","@type":"Organization",name:out.name,url:out.url,logo:out.logo,telephone:out.phone,address:{"@type":"PostalAddress",streetAddress:out.address}};
+for(var k in json)if(json[k]===undefined)delete json[k];
+document.getElementById("output").textContent=JSON.stringify(json,null,2)}
+function copyOut(){navigator.clipboard.writeText(document.getElementById("output").textContent).then(()=>alert("Copied!"))}buildForm()</script>
+</body>
+</html>

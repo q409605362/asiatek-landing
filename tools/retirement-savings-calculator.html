@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retirement Savings Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Plan your retirement with compound growth projections and 4% withdrawal rule">
+<meta name="keywords" content="retirement calculator, 401k, savings planner, nest egg, retirement income">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Retirement Savings Calculator</h1><p class="text-gray-500 mb-4">Plan your retirement with compound growth projections and 4% withdrawal rule</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Current Age</label><input id="age" type="number" class="w-full p-2 border rounded-lg text-sm" value="30" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Retirement Age</label><input id="retireAge" type="number" class="w-full p-2 border rounded-lg text-sm" value="65" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Current Savings ($)</label><input id="current" type="number" class="w-full p-2 border rounded-lg text-sm" value="50000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Monthly Contribution ($)</label><input id="monthly" type="number" class="w-full p-2 border rounded-lg text-sm" value="1000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Expected Annual Return (%)</label><input id="returnRate" type="number" class="w-full p-2 border rounded-lg text-sm" value="7" step="0.1" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Desired Annual Retirement Income ($)</label><input id="income" type="number" class="w-full p-2 border rounded-lg text-sm" value="60000" oninput="calc()"></div>
+</div>
+<div>
+<div id="result" class="bg-blue-50 p-4 rounded-lg space-y-3"></div>
+<div id="timeline" class="mt-4 bg-gray-50 p-4 rounded-lg"></div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fmt(n){return "$"+Math.round(n).toLocaleString()}
+function calc(){
+var age=parseInt(document.getElementById("age").value)||30;
+var retAge=parseInt(document.getElementById("retireAge").value)||65;
+var cur=parseFloat(document.getElementById("current").value)||0;
+var monthly=parseFloat(document.getElementById("monthly").value)||0;
+var rate=parseFloat(document.getElementById("returnRate").value)/100;
+var income=parseFloat(document.getElementById("income").value)||0;
+var years=retAge-age;var mr=rate/12;var n=years*12;
+var balance=cur;
+for(var i=0;i<n;i++){balance=balance*(1+mr)+monthly}
+var needed=income/rate*25;
+var pct=(balance/needed*100);
+var shortfall=Math.max(0,needed-balance);
+var extraNeeded=shortfall>0?(shortfall/(Math.pow(1+rate,years)-1)*rate/12):0;
+document.getElementById("result").innerHTML=
+"<div class='text-3xl font-bold "+(pct>=100?"text-green-600":"text-orange-600")+"'>"+pct.toFixed(1)+"%</div><div class='text-sm text-gray-500'>Retirement Goal Progress</div>"+
+"<div class='w-full bg-gray-200 rounded-full h-3 mt-2'><div class='h-3 rounded-full "+(pct>=100?"bg-green-500":"bg-blue-500")+"' style='width:"+Math.min(100,pct)+"%'></div></div>"+
+"<div class='grid grid-cols-2 gap-2 mt-3 text-sm'>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Nest Egg at "+retAge+"</span><br><b>"+fmt(balance)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Target (25x income)</span><br><b>"+fmt(needed)+"</b></div>"+
+"<div class='bg-white p-2 rounded col-span-2'><span class='text-gray-500'>Monthly Income (4% rule)</span><br><b>"+fmt(balance*0.04/12)+"/mo</b></div>"+
+(shortfall>0?"<div class='bg-red-50 p-2 rounded col-span-2 text-sm'>⚠️ Shortfall: <b>"+fmt(shortfall)+"</b>. Save extra <b>"+fmt(extraNeeded)+"</b>/mo to close gap.</div>":"<div class='bg-green-50 p-2 rounded col-span-2 text-sm text-green-700'>✅ You're on track! Surplus: "+fmt(balance-needed)+"</div>")+"</div>";
+var yearly=[cur],b=cur;for(var i=1;i<=years;i++){for(var j=0;j<12;j++){b=b*(1+mr)+monthly}yearly.push(b)}
+var maxH=150,maxV=yearly[yearly.length-1];
+var bars=yearly.map(function(v,i){var h=Math.max(2,v/maxV*maxH);return "<div style='height:"+h+"px' class='flex-1 "+(v>=needed?"bg-green-400":"bg-blue-400")+" rounded-t' title='Age "+(age+i)+": "+fmt(v)+"'></div>"}).join("");
+document.getElementById("timeline").innerHTML="<h3 class='font-medium mb-2 text-sm'>Savings Growth (green = above target)</h3><div class='flex items-end gap-px' style='height:"+maxH+"px'>"+bars+"</div><div class='flex justify-between text-xs text-gray-400 mt-1'><span>Age "+age+"</span><span>Age "+retAge+"</span></div>"}calc()</script>
+</body>
+</html>

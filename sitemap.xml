@@ -102,4 +102,24 @@
   <url><loc>https://asiatekai.com/tools/xml-formatter.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://asiatekai.com/tools/xml-to-json.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://asiatekai.com/tools/yaml-validator.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://asiatekai.com/tools/mortgage-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/compound-interest-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/investment-return-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/retirement-savings-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/auto-loan-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/savings-calculator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/currency-converter.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/css-filter-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/flexbox-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/css-grid-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/css-animation-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-to-typescript.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-to-python.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-to-go.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-to-java.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/json-minifier.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/schema-generator.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/open-graph-preview.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/image-resizer.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://asiatekai.com/tools/number-to-words.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

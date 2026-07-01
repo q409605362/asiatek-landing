@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savings Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate savings growth with interest and see how long to reach your financial goal">
+<meta name="keywords" content="savings calculator, interest calculator, savings goal, deposit calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Savings Calculator</h1><p class="text-gray-500 mb-4">Calculate savings growth with interest and see how long to reach your financial goal</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Initial Deposit ($)</label><input id="initial" type="number" class="w-full p-2 border rounded-lg text-sm" value="5000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Monthly Deposit ($)</label><input id="monthly" type="number" class="w-full p-2 border rounded-lg text-sm" value="500" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Annual Interest Rate (%)</label><input id="rate" type="number" class="w-full p-2 border rounded-lg text-sm" value="4.5" step="0.1" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Savings Goal ($)</label><input id="goal" type="number" class="w-full p-2 border rounded-lg text-sm" value="50000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Period (years)</label><input id="years" type="number" class="w-full p-2 border rounded-lg text-sm" value="5" oninput="calc()"></div>
+</div>
+<div>
+<div id="result" class="bg-blue-50 p-4 rounded-lg space-y-3"></div>
+<div id="breakdown" class="mt-4 bg-gray-50 p-4 rounded-lg"></div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fmt(n){return "$"+Math.round(n).toLocaleString()}
+function calc(){
+var ini=parseFloat(document.getElementById("initial").value)||0;
+var m=parseFloat(document.getElementById("monthly").value)||0;
+var r=parseFloat(document.getElementById("rate").value)/100/12;
+var goal=parseFloat(document.getElementById("goal").value)||0;
+var y=parseInt(document.getElementById("years").value)||1;
+var n=y*12,bal=ini,totalDep=ini;
+for(var i=0;i<n;i++){bal=bal*(1+r)+m;totalDep+=m}
+var interest=bal-totalDep;
+var pctGoal=goal>0?(bal/goal*100):0;
+var monthsToGoal=0,b=ini;
+if(m>0&&r>0){monthsToGoal=Math.ceil(Math.log((goal*r+m)/(ini*r+m))/Math.log(1+r))}
+else if(m>0){monthsToGoal=Math.ceil((goal-ini)/m)}
+var yearsToGoal=(monthsToGoal/12).toFixed(1);
+document.getElementById("result").innerHTML=
+"<div class='text-3xl font-bold text-blue-700'>"+fmt(bal)+"</div><div class='text-sm text-gray-500'>After "+y+" years</div>"+
+"<div class='w-full bg-gray-200 rounded-full h-3 mt-2'><div class='h-3 rounded-full bg-green-500' style='width:"+Math.min(100,pctGoal)+"%'></div></div><div class='text-xs text-gray-500'>"+pctGoal.toFixed(1)+"% of goal</div>"+
+"<div class='grid grid-cols-2 gap-2 mt-3 text-sm'>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Total Deposits</span><br><b>"+fmt(totalDep)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Interest Earned</span><br><b class='text-green-600'>"+fmt(interest)+"</b></div>"+
+"<div class='bg-white p-2 rounded col-span-2'><span class='text-gray-500'>Time to reach "+fmt(goal)+" goal</span><br><b class='text-blue-600'>"+yearsToGoal+" years ("+monthsToGoal+" months)</b></div></div>";
+var yearly=[ini],b2=ini;for(var i=1;i<=y;i++){for(var j=0;j<12;j++){b2=b2*(1+r)+m}yearly.push(b2)}
+var maxH=150,maxV=yearly[yearly.length-1];
+var bars=yearly.map(function(v,i){var h=Math.max(2,v/maxH*maxH);
+var depPart=Math.min(h,(ini+m*12*i)/maxV*maxH);
+return "<div style='height:"+h+"px' class='flex-1 relative rounded-t overflow-hidden'><div class='absolute bottom-0 w-full bg-blue-300' style='height:"+depPart+"px'></div><div class='absolute bottom-0 w-full bg-green-400' style='height:"+(h-depPart)+"px'></div></div>"}).join("");
+document.getElementById("breakdown").innerHTML="<h3 class='font-medium mb-2 text-sm'>Year-by-Year Breakdown</h3><div class='flex items-end gap-1' style='height:"+maxH+"px'>"+bars+"</div><div class='flex gap-4 text-xs mt-2'><span class='flex items-center'><span class='w-3 h-3 bg-blue-300 mr-1 rounded'></span>Deposits</span><span class='flex items-center'><span class='w-3 h-3 bg-green-400 mr-1 rounded'></span>Interest</span></div>"}calc()</script>
+</body>
+</html>

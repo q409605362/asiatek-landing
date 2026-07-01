@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Return Calculator (ROI) - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate ROI, CAGR and compare your returns against S&P 500 benchmark">
+<meta name="keywords" content="ROI calculator, investment return, CAGR, annualized return, compare performance">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Investment Return Calculator (ROI)</h1><p class="text-gray-500 mb-4">Calculate ROI, CAGR and compare your returns against S&P 500 benchmark</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Initial Investment ($)</label><input id="initial" type="number" class="w-full p-2 border rounded-lg text-sm" value="10000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Final Value ($)</label><input id="final" type="number" class="w-full p-2 border rounded-lg text-sm" value="18000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Investment Period (years)</label><input id="years" type="number" class="w-full p-2 border rounded-lg text-sm" value="5" step="0.5" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Annual Contributions ($)</label><input id="contrib" type="number" class="w-full p-2 border rounded-lg text-sm" value="0" oninput="calc()"></div>
+</div>
+<div>
+<div id="result" class="bg-blue-50 p-4 rounded-lg space-y-3"></div>
+<div id="comparison" class="mt-4 bg-gray-50 p-4 rounded-lg"></div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fmt(n){return "$"+Math.round(n).toLocaleString()}
+function calc(){
+var ini=parseFloat(document.getElementById("initial").value)||0;
+var fin=parseFloat(document.getElementById("final").value)||0;
+var y=parseFloat(document.getElementById("years").value)||1;
+var c=parseFloat(document.getElementById("contrib").value)||0;
+var totalInvested=ini+c*y;
+var profit=fin-totalInvested;
+var roi=(profit/totalInvested*100);
+var cagr=(Math.pow(fin/ini,1/y)-1)*100;
+var sp500=ini*Math.pow(1.1,y)+c*(Math.pow(1.1,y)-1)/0.1;
+document.getElementById("result").innerHTML=
+"<div class='text-3xl font-bold "+(roi>=0?"text-green-600":"text-red-600")+"'>"+roi.toFixed(2)+"%</div><div class='text-sm text-gray-500'>Total Return on Investment</div>"+
+"<div class='grid grid-cols-2 gap-2 mt-3 text-sm'>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Total Invested</span><br><b>"+fmt(totalInvested)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Profit/Loss</span><br><b class='"+(profit>=0?"text-green-600":"text-red-600")+"'>"+(profit>=0?"+":"")+fmt(profit)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>CAGR (Annualized)</span><br><b>"+cagr.toFixed(2)+"%</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Annual Return</span><br><b>"+(roi/y).toFixed(2)+"%</b></div></div>";
+document.getElementById("comparison").innerHTML=
+"<h3 class='font-medium mb-2 text-sm'>vs S&P 500 (avg 10%/yr)</h3>"+
+"<div class='flex items-center gap-4 text-sm'>"+
+"<div class='flex-1'><div class='text-gray-500'>Your Investment</div><div class='font-bold text-lg'>"+fmt(fin)+"</div></div>"+
+"<div class='flex-1'><div class='text-gray-500'>If in S&P 500</div><div class='font-bold text-lg'>"+fmt(sp500)+"</div></div>"+
+"<div class='flex-1'><div class='text-gray-500'>Difference</div><div class='font-bold text-lg "+(fin>=sp500?"text-green-600":"text-red-600")+"'>"+(fin>=sp500?"+":"")+fmt(fin-sp500)+"</div></div></div>"}calc()</script>
+</body>
+</html>

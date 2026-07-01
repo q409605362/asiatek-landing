@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Grid Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Visual CSS Grid layout generator with live preview. Build responsive grid layouts">
+<meta name="keywords" content="CSS grid generator, CSS grid layout, grid playground, responsive grid, visual grid">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">CSS Grid Generator</h1><p class="text-gray-500 mb-4">Visual CSS Grid layout generator with live preview. Build responsive grid layouts</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Columns Count</label><input id="cols" type="number" class="w-full p-2 border rounded-lg text-sm" value="3" min="1" max="12" oninput="update()"></div>
+<div><label class="text-sm font-medium">Column Sizes (e.g., 1fr 2fr 1fr or 100px auto)</label><input id="colSizes" type="text" class="w-full p-2 border rounded-lg text-sm" value="1fr 1fr 1fr" oninput="update()"></div>
+<div><label class="text-sm font-medium">Row Sizes (e.g., auto, 100px 1fr)</label><input id="rowSizes" type="text" class="w-full p-2 border rounded-lg text-sm" value="auto" oninput="update()"></div>
+<div><label class="text-sm font-medium">Gap (px)</label><input id="gap" type="number" class="w-full p-2 border rounded-lg text-sm" value="10" oninput="update()"></div>
+<div><label class="text-sm font-medium">justify-items</label><select id="ji" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>stretch</option><option>start</option><option>end</option><option>center</option></select></div>
+<div><label class="text-sm font-medium">align-items</label><select id="ali" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>stretch</option><option>start</option><option>end</option><option>center</option></select></div>
+<div><label class="text-sm font-medium">Items Count</label><input id="count" type="number" class="w-full p-2 border rounded-lg text-sm" value="9" min="1" max="30" oninput="update()"></div>
+</div>
+<div>
+<div id="preview" class="border-2 border-dashed border-purple-300 rounded-lg p-2 bg-white"></div>
+</div>
+</div>
+<div class="mt-4"><label class="text-xs font-medium">CSS Code</label><pre id="css-out" class="bg-gray-900 text-green-400 p-3 rounded-lg text-xs overflow-x-auto"></pre><button onclick="copyCSS()" class="mt-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">Copy CSS</button></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function update(){var cols=parseInt(document.getElementById("cols").value)||3;var colS=document.getElementById("colSizes").value||"1fr";var rowS=document.getElementById("rowSizes").value||"auto";var gap=document.getElementById("gap").value;var ji=document.getElementById("ji").value;var ali=document.getElementById("ali").value;var count=parseInt(document.getElementById("count").value)||1;
+var p=document.getElementById("preview");p.style.display="grid";p.style.gridTemplateColumns=colS;p.style.gridTemplateRows=rowS;p.style.gap=gap+"px";p.style.justifyItems=ji;p.style.alignItems=ali;
+var items="";for(var i=0;i<count;i++){items+='<div style="background:hsl('+(i*37)+',60%,65%);padding:20px;border-radius:6px;text-align:center;color:white;font-weight:bold;min-height:50px;display:flex;align-items:center;justify-content:center">'+(i+1)+'</div>'}
+p.innerHTML=items;
+document.getElementById("css-out").textContent=".grid-container {\n  display: grid;\n  grid-template-columns: "+colS+";\n  grid-template-rows: "+rowS+";\n  gap: "+gap+"px;\n  justify-items: "+ji+";\n  align-items: "+ali+";\n}"}
+function copyCSS(){navigator.clipboard.writeText(document.getElementById("css-out").textContent).then(()=>alert("Copied!"))}update()</script>
+</body>
+</html>

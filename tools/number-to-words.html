@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number to Words Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert any number to words in English. Supports decimals, negatives, and currency format">
+<meta name="keywords" content="number to words, convert number, number to text, spell out number, number words">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Number to Words Converter</h1><p class="text-gray-500 mb-4">Convert any number to words in English. Supports decimals, negatives, and currency format</p>
+<div class="max-w-2xl mx-auto space-y-4">
+<div><label class="text-sm font-medium">Enter a number</label><input id="num" type="text" class="w-full p-3 border rounded-lg text-lg" value="12345" oninput="convert()" placeholder="e.g. 12345 or 3.14"></div>
+<div class="grid md:grid-cols-2 gap-4">
+<div><label class="text-xs font-medium text-gray-500">English</label><div id="en" class="bg-blue-50 p-4 rounded-lg text-lg"></div></div>
+<div><label class="text-xs font-medium text-gray-500">Currency Format</label><div id="currency" class="bg-green-50 p-4 rounded-lg"></div></div>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button onclick="setNum(0)" class="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-sm">0</button>
+<button onclick="setNum(42)" class="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-sm">42</button>
+<button onclick="setNum(1000000)" class="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-sm">1,000,000</button>
+<button onclick="setNum(3.14159)" class="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-sm">3.14159</button>
+<button onclick="setNum(-9999)" class="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-sm">-9,999</button>
+<button onclick="setNum(1234567890)" class="bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded text-sm">1,234,567,890</button>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var ones=["","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+var tens=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+var scales=["","thousand","million","billion","trillion","quadrillion"];
+function convertChunk(n){if(n===0)return"";var s="";if(n>=100){s+=ones[Math.floor(n/100)]+" hundred ";n%=100}if(n>=20){s+=tens[Math.floor(n/10)]+" ";n%=10}if(n>0)s+=ones[n]+" ";return s}
+function numToWords(num){if(num===0)return"zero";var neg=num<0;if(neg)num=Math.abs(num);var parts=num.toString().split(".");var intPart=parseInt(parts[0]);var decPart=parts[1]||"";
+var chunks=[];while(intPart>0){chunks.push(intPart%1000);intPart=Math.floor(intPart/1000)}
+var words="";for(var i=chunks.length-1;i>=0;i--){if(chunks[i]>0)words+=convertChunk(chunks[i])+(scales[i]?scales[i]+" ":"")}
+words=words.trim();if(decPart){words+=" point";for(var i=0;i<decPart.length;i++)words+=" "+ones[parseInt(decPart[i])]}
+return(neg?"negative ":"")+words.trim()}
+function toCurrency(num){var neg=num<0;if(neg)num=Math.abs(num);var dollars=Math.floor(num);var cents=Math.round((num-dollars)*100);
+var dw=numToWords(dollars);var result=(neg?"Negative ":"")+dw.charAt(0).toUpperCase()+dw.slice(1)+" dollar"+(dollars!==1?"s":"");
+if(cents>0)result+=" and "+numToWords(cents)+" cent"+(cents!==1?"s":"");return result}
+function convert(){var n=parseFloat(document.getElementById("num").value);if(isNaN(n)){document.getElementById("en").textContent="Enter a valid number";document.getElementById("currency").textContent="";return}
+document.getElementById("en").textContent=numToWords(n);document.getElementById("currency").textContent=toCurrency(n)}
+function setNum(n){document.getElementById("num").value=n;convert()}convert()</script>
+</body>
+</html>

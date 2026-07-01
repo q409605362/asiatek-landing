@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Graph Preview & Meta Tag Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Preview how your page looks on Facebook, Twitter, LinkedIn. Generate OG meta tags">
+<meta name="keywords" content="open graph preview, OG tags, social media preview, meta tag generator, twitter card">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Open Graph Preview & Meta Tag Generator</h1><p class="text-gray-500 mb-4">Preview how your page looks on Facebook, Twitter, LinkedIn. Generate OG meta tags</p>
+<div class="space-y-4">
+<div class="grid md:grid-cols-2 gap-3">
+<div><label class="text-sm font-medium">og:title</label><input id="title" type="text" class="w-full p-2 border rounded-lg text-sm" value="My Awesome Article" oninput="preview()"></div>
+<div><label class="text-sm font-medium">og:type</label><input id="type" type="text" class="w-full p-2 border rounded-lg text-sm" value="article" oninput="preview()"></div>
+<div class="col-span-2"><label class="text-sm font-medium">og:description</label><textarea id="desc" class="w-full p-2 border rounded-lg text-sm" rows="2" oninput="preview()">This is a compelling description that will appear in social media shares.</textarea></div>
+<div><label class="text-sm font-medium">og:image URL</label><input id="img" type="text" class="w-full p-2 border rounded-lg text-sm" value="https://via.placeholder.com/1200x630/4a90d9/ffffff?text=OG+Image" oninput="preview()"></div>
+<div><label class="text-sm font-medium">og:url</label><input id="url" type="text" class="w-full p-2 border rounded-lg text-sm" value="https://example.com/article" oninput="preview()"></div>
+<div><label class="text-sm font-medium">twitter:card</label><select id="tcard" class="w-full p-2 border rounded-lg text-sm" onchange="preview()"><option>summary_large_image</option><option>summary</option></select></div>
+<div><label class="text-sm font-medium">twitter:site</label><input id="tsite" type="text" class="w-full p-2 border rounded-lg text-sm" value="@username" oninput="preview()"></div>
+</div>
+<div class="mt-6">
+<h3 class="font-medium mb-3">📱 Live Preview</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div><h4 class="text-xs font-medium text-gray-500 mb-2">Facebook / LinkedIn</h4>
+<div class="border rounded-lg overflow-hidden max-w-md" id="fb-preview"></div></div>
+<div><h4 class="text-xs font-medium text-gray-500 mb-2">Twitter/X</h4>
+<div class="border rounded-lg overflow-hidden max-w-md" id="tw-preview"></div></div>
+</div>
+</div>
+<div class="mt-4"><label class="text-sm font-medium">Generated Meta Tags</label><pre id="tags" class="bg-gray-900 text-green-400 p-4 rounded-lg text-xs overflow-x-auto mt-1"></pre><button onclick="copy()" class="mt-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">Copy Tags</button></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function preview(){var t=document.getElementById("title").value,d=document.getElementById("desc").value,img=document.getElementById("img").value,u=document.getElementById("url").value,tc=document.getElementById("tcard").value,ts=document.getElementById("tsite").value,ot=document.getElementById("type").value;
+document.getElementById("fb-preview").innerHTML='<div style="max-width:500px"><img src="'+img+'" class="w-full" style="height:260px;object-fit:cover;background:#eee" onerror="this.style.background='#4a90d9';this.alt='Image'"><div class="p-3 bg-gray-100"><div class="text-xs text-gray-500 uppercase">'+u+'</div><div class="font-bold text-sm mt-1">'+t+'</div><div class="text-xs text-gray-600 mt-1 line-clamp-2">'+d+'</div></div></div>';
+document.getElementById("tw-preview").innerHTML='<div style="max-width:500px" class="'+(tc==="summary_large_image"?"":"flex")+'"><img src="'+img+'" class="'+(tc==="summary_large_image"?"w-full":"w-28 h-28 object-cover border-r")+'" style="background:#eee" onerror="this.style.background='#4a90d9'"><div class="p-3"><div class="text-xs text-gray-500">'+u+'</div><div class="font-bold text-sm mt-1">'+t+'</div><div class="text-xs text-gray-600 mt-1">'+d+'</div></div></div>';
+var tags='<meta property="og:title" content="'+t+'" />\n<meta property="og:type" content="'+ot+'" />\n<meta property="og:description" content="'+d+'" />\n<meta property="og:image" content="'+img+'" />\n<meta property="og:url" content="'+u+'" />\n<meta name="twitter:card" content="'+tc+'" />\n<meta name="twitter:site" content="'+ts+'" />\n<meta name="twitter:title" content="'+t+'" />\n<meta name="twitter:description" content="'+d+'" />\n<meta name="twitter:image" content="'+img+'" />';
+document.getElementById("tags").textContent=tags}
+function copy(){navigator.clipboard.writeText(document.getElementById("tags").textContent).then(()=>alert("Copied!"))}preview()</script>
+</body>
+</html>

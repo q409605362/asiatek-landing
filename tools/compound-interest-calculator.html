@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compound Interest Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate compound interest with regular contributions and visualize investment growth">
+<meta name="keywords" content="compound interest, investment calculator, savings growth, future value">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Compound Interest Calculator</h1><p class="text-gray-500 mb-4">Calculate compound interest with regular contributions and visualize investment growth</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Initial Investment ($)</label><input id="principal" type="number" class="w-full p-2 border rounded-lg text-sm" value="10000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Monthly Contribution ($)</label><input id="monthly" type="number" class="w-full p-2 border rounded-lg text-sm" value="500" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Annual Interest Rate (%)</label><input id="rate" type="number" class="w-full p-2 border rounded-lg text-sm" value="7" step="0.1" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Investment Period (years)</label><input id="years" type="number" class="w-full p-2 border rounded-lg text-sm" value="20" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Compound Frequency</label><select id="freq" class="w-full p-2 border rounded-lg text-sm" onchange="calc()"><option value="12">Monthly</option><option value="4">Quarterly</option><option value="1">Annually</option><option value="365">Daily</option></select></div>
+</div>
+<div>
+<div id="result" class="bg-blue-50 p-4 rounded-lg space-y-3"></div>
+<div id="growth" class="mt-4 bg-gray-50 p-4 rounded-lg"></div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fmt(n){return "$"+Math.round(n).toLocaleString()}
+function calc(){
+var p=parseFloat(document.getElementById("principal").value)||0;
+var m=parseFloat(document.getElementById("monthly").value)||0;
+var r=parseFloat(document.getElementById("rate").value)/100;
+var y=parseInt(document.getElementById("years").value)||1;
+var f=parseInt(document.getElementById("freq").value);
+var rf=r/f,n=f*y;
+var balance=p;var totalDeposits=p;var data=[];
+for(var i=0;i<n;i++){
+if(i%(f/12)===0&&i>0){balance+=m;totalDeposits+=m}
+balance*=(1+rf);
+if((i+1)%f===0)data.push({year:(i+1)/f,balance:balance})}
+var totalInterest=balance-totalDeposits;
+document.getElementById("result").innerHTML=
+"<div class='text-3xl font-bold text-blue-700'>"+fmt(balance)+"</div><div class='text-sm text-gray-500'>Future Value</div>"+
+"<div class='grid grid-cols-2 gap-2 mt-3 text-sm'>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Total Deposits</span><br><b>"+fmt(totalDeposits)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Total Interest</span><br><b class='text-green-600'>"+fmt(totalInterest)+"</b></div>"+
+"<div class='bg-white p-2 rounded col-span-2'><span class='text-gray-500'>Interest Earned</span><br><b class='text-green-600'>"+(totalDeposits>0?(totalInterest/totalDeposits*100).toFixed(1):0)+"%</b></div></div>";
+var maxH=200,maxV=data.length>0?data[data.length-1].balance:1;
+var bars=data.map(function(d,i){var h=d.balance/maxH*maxV*maxV/maxV/maxV;return "<div style='height:"+h+"px' class='flex-1 bg-blue-400 hover:bg-blue-600 rounded-t' title='Year "+d.year+": "+fmt(d.balance)+"'></div>"}).join("");
+document.getElementById("growth").innerHTML="<h3 class='font-medium mb-2 text-sm'>Growth Over Time</h3><div class='flex items-end gap-px' style='height:"+maxH+"px'>"+bars+"</div><div class='flex justify-between text-xs text-gray-400 mt-1'><span>Year 1</span><span>Year "+y+"</span></div>"}calc()</script>
+</body>
+</html>

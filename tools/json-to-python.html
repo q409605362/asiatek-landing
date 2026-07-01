@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to Python Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert JSON to Python dataclass, TypedDict, or Pydantic model instantly">
+<meta name="keywords" content="JSON to Python, JSON to dataclass, JSON to Pydantic, JSON to TypedDict">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">JSON to Python Converter</h1><p class="text-gray-500 mb-4">Convert JSON to Python dataclass, TypedDict, or Pydantic model instantly</p>
+<div class="grid md:grid-cols-2 gap-4">
+<div><label class="text-sm font-medium mb-1 block">JSON Input</label><textarea id="input" class="w-full h-64 p-3 border rounded-lg text-sm font-mono" oninput="convert()"></textarea><div class="mt-1"><button onclick="sample()" class="text-xs text-blue-600 hover:underline">Load Sample</button><label class="ml-3 text-xs"><select id="mode" onchange="convert()" class="border rounded px-1"><option value="dataclass">@dataclass</option><option value="typeddict">TypedDict</option><option value="pydantic">Pydantic</option><option value="plain">Plain dict</option></select></label></div><div id="error" class="text-red-500 text-xs mt-1"></div></div>
+<div><label class="text-sm font-medium mb-1 block">Python Output</label><textarea id="output" class="w-full h-64 p-3 border rounded-lg text-sm font-mono bg-gray-50" readonly></textarea><div class="mt-1"><button onclick="copy()" class="text-xs text-blue-600 hover:underline">Copy Output</button></div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function pyType(v){if(v===null)return "None";if(Array.isArray(v)){if(v.length===0)return "List[Any]";var t=pyType(v[0]);return "List["+t+"]"}switch(typeof v){case "string":return "str";case "number":return "int" if Number.isInteger(v) else "float";case "boolean":return "bool";case "object":return null;default:return "Any"}}
+function toSnake(s){return s.replace(/[A-Z]/g,m=>"_"+m.toLowerCase()).replace(/^_/,"")}
+function convert(){try{document.getElementById("error").textContent="";var json=JSON.parse(document.getElementById("input").value);if(!json||typeof json!=="object")return;
+var mode=document.getElementById("mode").value;var classes=[];var imports=new Set();
+function process(obj,name){var fields=[];var subTypes=[];for(var k in obj){if(!obj.hasOwnProperty(k))continue;var v=obj[k];var fname=toSnake(k);var t=pyType(v);if(t===null){var ref=name+fname.replace(/^_/,"").split("_").map(w=>w[0].toUpperCase()+w.slice(1)).join("");process(v,ref);t="""+ref+"""}if(t.includes("List"))imports.add("from typing import List, Any");if(t.includes("Any"))imports.add("from typing import Any");fields.push({key:k,fname:fname,type:t,val:v})}
+if(mode==="dataclass"){imports.add("from dataclasses import dataclass");var lines=["@dataclass","class "+name+":"];fields.forEach(f=>{lines.push("    "+f.fname+": "+f.type)});classes.unshift(lines.join("\n"))}
+else if(mode==="pydantic"){imports.add("from pydantic import BaseModel");var lines=["class "+name+"(BaseModel):"];fields.forEach(f=>{lines.push("    "+f.fname+": "+f.type)});classes.unshift(lines.join("\n"))}
+else if(mode==="typeddict"){imports.add("from typing import TypedDict");var lines=["class "+name+"(TypedDict):"];fields.forEach(f=>{lines.push("    "+f.key+": "+f.type)});classes.unshift(lines.join("\n"))}
+else{var lines=["# "+name];fields.forEach(f=>{lines.push("#   "+f.key+": "+f.type)});classes.unshift(lines.join("\n"))}}
+process(json,"Root");var imp=Array.from(imports).join("\n");document.getElementById("output").value=(imp?imp+"\n\n":"")+classes.join("\n\n")}catch(e){document.getElementById("error").textContent="Invalid JSON: "+e.message}}
+function copy(){navigator.clipboard.writeText(document.getElementById("output").value).then(()=>{var b=event.target;b.textContent="Copied!";setTimeout(()=>b.textContent="Copy Output",1500)})}
+function sample(){document.getElementById("input").value=JSON.stringify({name:"John",age:30,tags:["admin","user"],address:{city:"NYC",zip:"10001"}},null,2);convert()}
+document.getElementById("input").value='{"name":"John","age":30,"tags":["admin","user"],"address":{"city":"NYC"}}';convert()</script>
+</body>
+</html>

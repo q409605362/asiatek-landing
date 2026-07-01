@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to TypeScript Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert JSON objects to TypeScript interfaces instantly. Supports nested objects and arrays">
+<meta name="keywords" content="JSON to TypeScript, JSON to interface, JSON to TS, convert JSON">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">JSON to TypeScript Converter</h1><p class="text-gray-500 mb-4">Convert JSON objects to TypeScript interfaces instantly. Supports nested objects and arrays</p>
+<div class="grid md:grid-cols-2 gap-4">
+<div><label class="text-sm font-medium mb-1 block">JSON Input</label><textarea id="input" class="w-full h-64 p-3 border rounded-lg text-sm font-mono" placeholder='{
+  "name": "John",
+  "age": 30,
+  "tags": ["admin", "user"],
+  "address": {"city": "NYC"}
+}' oninput="convert()"></textarea><div class="mt-1"><button onclick="sample()" class="text-xs text-blue-600 hover:underline">Load Sample</button></div><div id="error" class="text-red-500 text-xs mt-1"></div></div>
+<div><label class="text-sm font-medium mb-1 block">TypeScript Interfaces</label><textarea id="output" class="w-full h-64 p-3 border rounded-lg text-sm font-mono bg-gray-50" readonly></textarea><div class="mt-1"><button onclick="copy()" class="text-xs text-blue-600 hover:underline">Copy Output</button><label class="ml-3 text-xs"><input type="checkbox" id="optional" onchange="convert()"> Mark all as optional</label><label class="ml-3 text-xs"><input type="checkbox" id="readonly" onchange="convert()"> Add readonly</label></div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function getType(v){if(v===null)return "null";if(Array.isArray(v)){if(v.length===0)return "any[]";var t=getType(v[0]);return v.every(e=>getType(e)===t)?t+"[]":"any[]"}switch(typeof v){case "string":return "string";case "number":return Number.isInteger(v)?"number":"number";case "boolean":return "boolean";case "object":return null;default:return "any"}}
+function convert(){try{document.getElementById("error").textContent="";var json=JSON.parse(document.getElementById("input").value);if(!json||typeof json!=="object"){document.getElementById("output").value="// Input must be a JSON object";return}
+var optional=document.getElementById("optional").checked;var readonly=document.getElementById("readonly").checked;var interfaces=[];var prefix="R"+Math.random().toString(36).substr(2,4);
+function process(obj,name){var lines=[];for(var k in obj){if(!obj.hasOwnProperty(k))continue;var v=obj[k];var opt=optional?"?":"";var ro=readonly?"readonly ":"";var t=getType(v);if(t===null){var ref=name+k.charAt(0).toUpperCase()+k.slice(1);process(v,ref);t=ref}lines.push("  "+ro+k+opt+": "+t+";")}interfaces.unshift("export interface "+name+" {\n"+lines.join("\n")+"\n}")}
+process(json,"Root");document.getElementById("output").value=interfaces.join("\n\n")}catch(e){document.getElementById("error").textContent="Invalid JSON: "+e.message}}
+function copy(){navigator.clipboard.writeText(document.getElementById("output").value).then(()=>{var b=event.target;b.textContent="Copied!";setTimeout(()=>b.textContent="Copy Output",1500)})}
+function sample(){document.getElementById("input").value=JSON.stringify({name:"John Doe",age:30,isActive:true,tags:["admin","user"],address:{street:"123 Main St",city:"New York",zip:"10001"},orders:[{id:1,total:99.99,date:"2024-01-01"}]},null,2);convert()}
+document.getElementById("input").value='{"name":"John","age":30,"tags":["admin","user"],"address":{"city":"NYC"}}';convert()</script>
+</body>
+</html>

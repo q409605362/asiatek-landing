@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Animation Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Generate CSS keyframe animations with live preview. Fade, slide, bounce, rotate and more">
+<meta name="keywords" content="CSS animation generator, keyframes, CSS transitions, animation playground">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">CSS Animation Generator</h1><p class="text-gray-500 mb-4">Generate CSS keyframe animations with live preview. Fade, slide, bounce, rotate and more</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Animation Type</label><select id="type" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option value="fadeIn">Fade In</option><option value="slideUp">Slide Up</option><option value="slideLeft">Slide Left</option><option value="scale">Scale Up</option><option value="rotate">Rotate</option><option value="bounce">Bounce</option><option value="shake">Shake</option><option value="pulse">Pulse</option><option value="flip">Flip</option></select></div>
+<div><label class="text-sm font-medium">Duration (s)</label><input id="dur" type="number" class="w-full p-2 border rounded-lg text-sm" value="1" step="0.1" min="0.1" oninput="update()"></div>
+<div><label class="text-sm font-medium">Delay (s)</label><input id="delay" type="number" class="w-full p-2 border rounded-lg text-sm" value="0" step="0.1" min="0" oninput="update()"></div>
+<div><label class="text-sm font-medium">Timing Function</label><select id="timing" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>ease</option><option>linear</option><option>ease-in</option><option>ease-out</option><option>ease-in-out</option></select></div>
+<div><label class="text-sm font-medium">Iteration</label><select id="iter" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="infinite">Infinite</option></select></div>
+<div><label class="text-sm font-medium">Direction</label><select id="dir" class="w-full p-2 border rounded-lg text-sm" onchange="update()"><option>normal</option><option>reverse</option><option>alternate</option><option>alternate-reverse</option></select></div>
+<button onclick="replay()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm w-full">▶ Replay Animation</button>
+</div>
+<div class="flex items-center justify-center bg-gray-100 rounded-lg p-8" style="min-height:300px">
+<div id="box" class="bg-blue-500 rounded-lg p-6 text-white font-bold text-xl" style="width:150px;height:150px;display:flex;align-items:center;justify-content:center">Animate Me</div>
+</div>
+</div>
+<div class="mt-4 grid md:grid-cols-2 gap-4">
+<div><label class="text-xs font-medium">CSS Animation Code</label><pre id="css-out" class="bg-gray-900 text-green-400 p-3 rounded-lg text-xs overflow-x-auto" style="max-height:300px"></pre></div>
+<div><label class="text-xs font-medium">Preview (click Replay)</label><div id="live" class="bg-gray-50 p-4 rounded-lg text-center text-sm text-gray-500">Click "Replay Animation" to preview</div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var keyframes={
+fadeIn:"0%{opacity:0}100%{opacity:1}",
+slideUp:"0%{opacity:0;transform:translateY(50px)}100%{opacity:1;transform:translateY(0)}",
+slideLeft:"0%{opacity:0;transform:translateX(50px)}100%{opacity:1;transform:translateX(0)}",
+scale:"0%{transform:scale(0)}100%{transform:scale(1)}",
+rotate:"0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}",
+bounce:"0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-30px)}60%{transform:translateY(-15px)}",
+shake:"0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-10px)}20%,40%,60%,80%{transform:translateX(10px)}",
+pulse:"0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}",
+flip:"0%{transform:perspective(400px) rotateY(0)}100%{transform:perspective(400px) rotateY(360deg)}"
+};
+function update(){var type=document.getElementById("type").value,dur=document.getElementById("dur").value,delay=document.getElementById("delay").value,timing=document.getElementById("timing").value,iter=document.getElementById("iter").value,dir=document.getElementById("dir").value;
+var style=document.getElementById("dyn-style")||document.createElement("style");style.id="dyn-style";
+style.textContent="@keyframes "+type+"{"+keyframes[type]+"}\n.box{animation:"+type+" "+dur+"s "+timing+" "+delay+"s "+iter+" "+dir+"}";
+document.head.appendChild(style);
+var box=document.getElementById("box");box.className="box bg-blue-500 rounded-lg p-6 text-white font-bold text-xl";box.style.cssText="width:150px;height:150px;display:flex;align-items:center;justify-content:center";
+var css="@keyframes "+type+" {\n"+keyframes[type].replace(/\}/g,"}\n  ").replace(/\{/g," {\n    ").replace(/;/g,";\n    ").trim()+"\n}\n\n.element {\n  animation: "+type+" "+dur+"s "+timing+" "+delay+"s "+iter+" "+dir+";\n}";
+document.getElementById("css-out").textContent=css}
+function replay(){var box=document.getElementById("box");box.style.animation="none";box.offsetHeight;var type=document.getElementById("type").value,dur=document.getElementById("dur").value,timing=document.getElementById("timing").value,delay=document.getElementById("delay").value,iter=document.getElementById("iter").value,dir=document.getElementById("dir").value;box.style.animation=type+" "+dur+"s "+timing+" "+delay+"s "+iter+" "+dir}update()</script>
+</body>
+</html>

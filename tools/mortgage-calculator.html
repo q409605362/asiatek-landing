@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Calculate monthly mortgage payments with amortization schedule, taxes and insurance">
+<meta name="keywords" content="mortgage calculator, home loan, amortization, monthly payment, property tax">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Mortgage Calculator</h1><p class="text-gray-500 mb-4">Calculate monthly mortgage payments with amortization schedule, taxes and insurance</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div><label class="text-sm font-medium">Home Price ($)</label><input id="price" type="number" class="w-full p-2 border rounded-lg text-sm" value="350000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Down Payment ($)</label><input id="down" type="number" class="w-full p-2 border rounded-lg text-sm" value="70000" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Annual Interest Rate (%)</label><input id="rate" type="number" class="w-full p-2 border rounded-lg text-sm" value="6.5" step="0.1" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Loan Term (years)</label><input id="years" type="number" class="w-full p-2 border rounded-lg text-sm" value="30" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Property Tax ($/year)</label><input id="tax" type="number" class="w-full p-2 border rounded-lg text-sm" value="3500" oninput="calc()"></div>
+<div><label class="text-sm font-medium">Home Insurance ($/year)</label><input id="insurance" type="number" class="w-full p-2 border rounded-lg text-sm" value="1200" oninput="calc()"></div>
+</div>
+<div>
+<div id="result" class="bg-blue-50 p-4 rounded-lg space-y-3"></div>
+<div id="chart" class="mt-4 bg-gray-50 p-4 rounded-lg"></div>
+<details class="mt-4"><summary class="text-sm font-medium cursor-pointer text-blue-600">View Amortization Schedule</summary><div id="schedule" class="mt-2 max-h-96 overflow-y-auto text-xs"></div></details>
+</div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function fmt(n){return "$"+n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,",")}
+function calc(){
+var price=parseFloat(document.getElementById("price").value)||0;
+var down=parseFloat(document.getElementById("down").value)||0;
+var rate=parseFloat(document.getElementById("rate").value)/100/12;
+var years=parseInt(document.getElementById("years").value)||1;
+var tax=parseFloat(document.getElementById("tax").value)||0;
+var ins=parseFloat(document.getElementById("insurance").value)||0;
+var loan=price-down;var n=years*12;
+if(loan<=0){document.getElementById("result").innerHTML="<p class='text-red-500'>Loan amount must be positive</p>";return}
+var m,interest,total;
+if(rate===0){m=loan/n;interest=0;total=loan}
+else{m=loan*rate*Math.pow(1+rate,n)/(Math.pow(1+rate,n)-1);total=m*n;interest=total-loan}
+var monthlyTax=tax/12,monthlyIns=ins/12,totalMonthly=m+monthlyTax+monthlyIns;
+document.getElementById("result").innerHTML=
+"<div class='text-3xl font-bold text-blue-700'>"+fmt(totalMonthly)+"<span class='text-sm font-normal text-gray-500'>/mo</span></div>"+
+"<div class='grid grid-cols-2 gap-2 text-sm'>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Principal & Interest</span><br><b>"+fmt(m)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Property Tax</span><br><b>"+fmt(monthlyTax)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Insurance</span><br><b>"+fmt(monthlyIns)+"</b></div>"+
+"<div class='bg-white p-2 rounded'><span class='text-gray-500'>Total Interest</span><br><b class='text-red-600'>"+fmt(interest)+"</b></div>"+
+"</div>";
+var pPct=(loan/total*100).toFixed(1),iPct=(interest/total*100).toFixed(1),tPct=(tax*years/(total+tax*years)*100).toFixed(1),insPct=(ins*years/(total+ins*years)*100).toFixed(1);
+document.getElementById("chart").innerHTML=
+"<h3 class='font-medium mb-2'>Payment Breakdown</h3>"+
+"<div class='space-y-1'>"+
+"<div class='flex items-center'><div class='w-3 h-3 bg-blue-600 rounded mr-2'></div><span class='text-xs flex-1'>Principal</span><span class='text-xs font-medium'>"+pPct+"%</span></div>"+
+"<div class='flex items-center'><div class='w-3 h-3 bg-red-500 rounded mr-2'></div><span class='text-xs flex-1'>Interest</span><span class='text-xs font-medium'>"+iPct+"%</span></div>"+
+"<div class='flex items-center'><div class='w-3 h-3 bg-yellow-500 rounded mr-2'></div><span class='text-xs flex-1'>Tax</span><span class='text-xs font-medium'>"+tPct+"%</span></div>"+
+"<div class='flex items-center'><div class='w-3 h-3 bg-green-500 rounded mr-2'></div><span class='text-xs flex-1'>Insurance</span><span class='text-xs font-medium'>"+insPct+"%</span></div>"+
+"</div>";
+var bal=loan,sch="<table class='w-full border-collapse'><thead><tr class='bg-gray-100'><th class='p-1 text-left border'>#</th><th class='p-1 text-right border'>Payment</th><th class='p-1 text-right border'>Principal</th><th class='p-1 text-right border'>Interest</th><th class='p-1 text-right border'>Balance</th></tr></thead><tbody>";
+for(var i=1;i<=Math.min(n,360);i++){
+var intPay=bal*rate,prinPay=m-intPay;bal-=prinPay;if(bal<0)bal=0;
+if(i%12===0||i===1||i===n)sch+="<tr><td class='p-1 border'>"+i+"</td><td class='p-1 text-right border'>"+fmt(m)+"</td><td class='p-1 text-right border'>"+fmt(prinPay)+"</td><td class='p-1 text-right border'>"+fmt(intPay)+"</td><td class='p-1 text-right border'>"+fmt(bal)+"</td></tr>"}
+sch+="</tbody></table>";
+document.getElementById("schedule").innerHTML=sch}calc()</script>
+</body>
+</html>

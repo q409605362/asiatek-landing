@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to Java Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Convert JSON to Java POJO, Record or Gson-annotated class instantly">
+<meta name="keywords" content="JSON to Java, JSON to POJO, JSON to Java class, JSON to record">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">JSON to Java Converter</h1><p class="text-gray-500 mb-4">Convert JSON to Java POJO, Record or Gson-annotated class instantly</p>
+<div class="grid md:grid-cols-2 gap-4">
+<div><label class="text-sm font-medium mb-1 block">JSON Input</label><textarea id="input" class="w-full h-64 p-3 border rounded-lg text-sm font-mono" oninput="convert()"></textarea><div class="mt-1"><button onclick="sample()" class="text-xs text-blue-600 hover:underline">Load Sample</button><label class="ml-3 text-xs"><select id="mode" onchange="convert()" class="border rounded px-1"><option value="pojo">POJO</option><option value="record">Record (Java 16+)</option><option value="gson">Gson</option></select></label></div><div id="error" class="text-red-500 text-xs mt-1"></div></div>
+<div><label class="text-sm font-medium mb-1 block">Java Output</label><textarea id="output" class="w-full h-64 p-3 border rounded-lg text-sm font-mono bg-gray-50" readonly></textarea><div class="mt-1"><button onclick="copy()" class="text-xs text-blue-600 hover:underline">Copy Output</button></div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function javaType(v){if(v===null)return "Object";if(Array.isArray(v)){if(v.length===0)return "List<Object>";return "List<"+javaType(v[0])+">"}switch(typeof v){case "string":return "String";case "number":return Number.isInteger(v)?"int":"double";case "boolean":return "boolean";case "object":return null;default:return "Object"}}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function convert(){try{document.getElementById("error").textContent="";var json=JSON.parse(document.getElementById("input").value);if(!json||typeof json!=="object")return;
+var mode=document.getElementById("mode").value;var classes=[];
+function process(obj,name){var fields=[];for(var k in obj){if(!obj.hasOwnProperty(k))continue;var v=obj[k];var t=javaType(v);var fn=k;if(t===null){var ref=cap(k);process(v,ref);t=ref}fields.push({name:fn,type:t})}
+if(mode==="record"){var params=fields.map(f=>f.type+" "+f.name).join(", ");classes.unshift("public record "+cap(name)+"("+params+") {}")}
+else if(mode==="gson"){var lines=["public class "+cap(name)+" {"];fields.forEach(f=>{lines.push("    @SerializedName(\""+f.name+"\")");lines.push("    private "+f.type+" "+f.name+";")});fields.forEach(f=>{var fn=cap(f.name);lines.push("    public "+f.type+" get"+fn+"() { return "+f.name+"; }");lines.push("    public void set"+fn+"("+f.type+" "+f.name+") { this."+f.name+" = "+f.name+"; }"});lines.push("}");classes.unshift(lines.join("\n"))}
+else{var lines=["public class "+cap(name)+" {"];fields.forEach(f=>{lines.push("    private "+f.type+" "+f.name+";")});fields.forEach(f=>{var fn=cap(f.name);lines.push("    public "+f.type+" get"+fn+"() { return "+f.name+"; }");lines.push("    public void set"+fn+"("+f.type+" "+f.name+") { this."+f.name+" = "+f.name+"; }"});lines.push("}");classes.unshift(lines.join("\n"))}}
+process(json,"Root");document.getElementById("output").value=classes.join("\n\n")}catch(e){document.getElementById("error").textContent="Invalid JSON: "+e.message}}
+function copy(){navigator.clipboard.writeText(document.getElementById("output").value).then(()=>{var b=event.target;b.textContent="Copied!";setTimeout(()=>b.textContent="Copy Output",1500)})}
+function sample(){document.getElementById("input").value=JSON.stringify({name:"John",age:30,tags:["admin","user"],address:{city:"NYC"}},null,2);convert()}
+document.getElementById("input").value='{"name":"John","age":30,"tags":["admin","user"],"address":{"city":"NYC"}}';convert()</script>
+</body>
+</html>

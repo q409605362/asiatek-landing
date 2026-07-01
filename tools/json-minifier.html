@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Minifier / Beautifier - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Minify or beautify JSON online. Reduce file size or format for readability">
+<meta name="keywords" content="JSON minifier, JSON beautifier, JSON formatter, compress JSON, reduce JSON size">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">JSON Minifier / Beautifier</h1><p class="text-gray-500 mb-4">Minify or beautify JSON online. Reduce file size or format for readability</p>
+<div class="grid md:grid-cols-2 gap-4">
+<div><label class="text-sm font-medium mb-1 block">Input JSON</label><textarea id="input" class="w-full h-64 p-3 border rounded-lg text-sm font-mono" placeholder="Paste JSON here..." oninput="process()"></textarea></div>
+<div><label class="text-sm font-medium mb-1 block">Minified Output</label><textarea id="output" class="w-full h-64 p-3 border rounded-lg text-sm font-mono bg-gray-50" readonly></textarea></div>
+</div>
+<div class="mt-4 flex gap-4 items-center flex-wrap">
+<button onclick="mini()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm">Minify</button>
+<button onclick="beautify()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm">Beautify</button>
+<button onclick="copy()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm">Copy Output</button>
+<div id="stats" class="text-sm text-gray-500"></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function mini(){try{var inp=document.getElementById("input").value;var min=JSON.stringify(JSON.parse(inp));document.getElementById("output").value=min;var orig=inp.length,saved=orig-min.length,pct=orig>0?(saved/orig*100).toFixed(1):0;document.getElementById("stats").innerHTML="Original: "+orig+" chars → Minified: "+min.length+" chars · Saved: "+saved+" chars ("+pct+"%)"}catch(e){document.getElementById("output").value="Error: "+e.message;document.getElementById("stats").textContent=""}}
+function beautify(){try{var inp=document.getElementById("input").value;document.getElementById("output").value=JSON.stringify(JSON.parse(inp),null,2);document.getElementById("stats").textContent="Beautified with 2-space indent"}catch(e){document.getElementById("output").value="Error: "+e.message;document.getElementById("stats").textContent=""}}
+function copy(){navigator.clipboard.writeText(document.getElementById("output").value).then(()=>{var b=event.target;b.textContent="Copied!";setTimeout(()=>b.textContent="Copy Output",1500)})}
+function process(){var inp=document.getElementById("input").value;if(inp.trim()){try{JSON.parse(inp);document.getElementById("stats").textContent="Valid JSON ✓"}catch(e){document.getElementById("stats").innerHTML='<span class="text-red-500">Invalid JSON ✗</span>'}}}</script>
+</body>
+</html>
