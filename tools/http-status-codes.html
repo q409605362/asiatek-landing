@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTTP Status Codes - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online http status codes tool. Fast, secure, no installation.">
+<meta name="keywords" content="http status codes, online tool, free http status codes">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">HTTP Status Codes</h1><p class="text-gray-500 mb-4">Complete HTTP status code reference.</p>
+<input id="srch" class="w-full p-3 border rounded-lg mb-4" placeholder="Search..." oninput="flt()">
+<div id="codes" class="space-y-2"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var C=[[100,"Continue","Server received headers."],[200,"OK","Success."],[201,"Created","Resource created."],[204,"No Content","Success, no content."],[301,"Moved Permanently","Resource moved."],[302,"Found","Temporary redirect."],[304,"Not Modified","Not modified."],[400,"Bad Request","Invalid request."],[401,"Unauthorized","Auth required."],[403,"Forbidden","Access denied."],[404,"Not Found","Resource not found."],[405,"Method Not Allowed","Method not supported."],[408,"Request Timeout","Timeout."],[429,"Too Many Requests","Rate limited."],[500,"Internal Server Error","Server error."],[502,"Bad Gateway","Invalid upstream response."],[503,"Service Unavailable","Service down."],[504,"Gateway Timeout","Upstream timeout."]];function rndr(f){var h="";C.forEach(function(c){if(f&&!((c[0]+"").includes(f)||c[1].toLowerCase().includes(f.toLowerCase())))return;var cl=c[0]<300?"bg-green-100":c[0]<400?"bg-blue-100":c[0]<500?"bg-red-100":"bg-orange-100";h+='<div class="flex gap-4 p-3 rounded-lg '+cl+'"><span class="font-mono font-bold w-12">'+c[0]+'</span><div><b>'+c[1]+'</b><div class="text-sm text-gray-600">'+c[2]+"</div></div></div>";});document.getElementById("codes").innerHTML=h;}function flt(){rndr(document.getElementById("srch").value);}rndr();</script>
+</body>
+</html>

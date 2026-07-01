@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCII Table - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online ascii table tool. Fast, secure, no installation.">
+<meta name="keywords" content="ascii table, online tool, free ascii table">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">ASCII Table</h1><p class="text-gray-500 mb-4">Complete ASCII character reference.</p>
+<div class="overflow-x-auto"><table class="w-full text-sm border-collapse"><thead><tr class="bg-gray-100"><th class="p-2 border text-left">Dec</th><th class="p-2 border text-left">Hex</th><th class="p-2 border text-left">Char</th></tr></thead><tbody id="tb"></tbody></table></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var h="";for(var i=0;i<128;i++){var c=(i>31&&i<127)?String.fromCharCode(i):"";h+="<tr><td class=\"p-2 border\">"+i+"</td><td class=\"p-2 border\">"+i.toString(16).toUpperCase().padStart(2,"0")+"</td><td class=\"p-2 border font-mono text-lg\">"+c+"</td></tr>";}document.getElementById("tb").innerHTML=h;</script>
+</body>
+</html>

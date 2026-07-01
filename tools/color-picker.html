@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Picker - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online color picker tool. Fast, secure, no installation.">
+<meta name="keywords" content="color picker, online tool, free color picker">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Color Picker</h1><p class="text-gray-500 mb-4">Pick colors and get values in all formats.</p>
+<input type="color" id="pk" value="#3b82f6" class="w-full h-20 border rounded-lg cursor-pointer" oninput="pick(this.value)">
+<div id="vals" class="mt-4 space-y-2"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function pick(h){var r=parseInt(h.substr(1,2),16),g=parseInt(h.substr(3,2),16),b=parseInt(h.substr(5,2),16);document.getElementById("vals").innerHTML='<div class="bg-gray-50 p-3 rounded"><b>HEX:</b> '+h.toUpperCase()+'</div><div class="bg-gray-50 p-3 rounded"><b>RGB:</b> rgb('+r+", "+g+", "+b+')</div><div class="bg-gray-50 p-3 rounded"><b>RGB %:</b> rgb('+Math.round(r/255*100)+"%, "+Math.round(g/255*100)+"%, "+Math.round(b/255*100)+'%)</div>';}pick("#3b82f6");</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Signature Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online email signature generator tool. Fast, secure, no installation.">
+<meta name="keywords" content="email signature generator, online tool, free email signature generator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Email Signature Generator</h1><p class="text-gray-500 mb-4">Create professional email signatures.</p>
+<div class="space-y-2"><input id="nm" class="w-full p-2 border rounded-lg" placeholder="Name" oninput="gen()"><input id="tl" class="w-full p-2 border rounded-lg" placeholder="Title" oninput="gen()"><input id="em" class="w-full p-2 border rounded-lg" placeholder="Email" oninput="gen()"><input id="ph" class="w-full p-2 border rounded-lg" placeholder="Phone" oninput="gen()"></div>
+<div class="mt-4"><label class="text-sm text-gray-600">Preview:</label><div id="pv" class="border rounded-lg p-4 mt-1 bg-white"></div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function gen(){var n=document.getElementById("nm").value||"Your Name";var t=document.getElementById("tl").value;var e=document.getElementById("em").value;var p=document.getElementById("ph").value;document.getElementById("pv").innerHTML='<table style="font-family:Arial"><tr><td style="border-left:3px solid #3b82f6;padding-left:12px"><strong>'+n+"</strong>"+(t?"<br><span style='color:#666;font-size:13px'>"+t+"</span>":"")+(e?"<br><a href='mailto:"+e+"' style='color:#3b82f6;font-size:13px'>"+e+"</a>":"")+(p?"<br><span style='color:#666;font-size:13px'>"+p+"</span>":"")+"</td></tr></table>";}gen();</script>
+</body>
+</html>

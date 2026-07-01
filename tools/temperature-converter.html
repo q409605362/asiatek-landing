@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online temperature converter tool. Fast, secure, no installation.">
+<meta name="keywords" content="temperature converter, online tool, free temperature converter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Temperature Converter</h1><p class="text-gray-500 mb-4">Convert Celsius, Fahrenheit, Kelvin.</p>
+<div class="grid grid-cols-3 gap-4"><div><label class="text-sm text-gray-600">Celsius:</label><input id="c" class="w-full p-2 border rounded-lg font-mono mt-1" oninput="cv('c')"></div><div><label class="text-sm text-gray-600">Fahrenheit:</label><input id="f" class="w-full p-2 border rounded-lg font-mono mt-1" oninput="cv('f')"></div><div><label class="text-sm text-gray-600">Kelvin:</label><input id="k" class="w-full p-2 border rounded-lg font-mono mt-1" oninput="cv('k')"></div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function cv(x){var c,f,k;if(x==='c'){c=parseFloat(document.getElementById('c').value);f=c*9/5+32;k=c+273.15;}else if(x==='f'){f=parseFloat(document.getElementById('f').value);c=(f-32)*5/9;k=c+273.15;}else{k=parseFloat(document.getElementById('k').value);c=k-273.15;f=c*9/5+32;}if(x!=='c')document.getElementById('c').value=c.toFixed(2);if(x!=='f')document.getElementById('f').value=f.toFixed(2);if(x!=='k')document.getElementById('k').value=k.toFixed(2);}</script>
+</body>
+</html>

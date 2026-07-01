@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online case converter tool. Fast, secure, no installation.">
+<meta name="keywords" content="case converter, online tool, free case converter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Case Converter</h1><p class="text-gray-500 mb-4">Convert text between cases.</p>
+<textarea id="input" class="w-full h-32 p-3 border rounded-lg font-mono text-sm" placeholder="Enter your text..."></textarea>
+<div class="flex flex-wrap gap-2 mt-3">
+<button onclick="c('upper')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">UPPERCASE</button>
+<button onclick="c('lower')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">lowercase</button>
+<button onclick="c('title')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Title Case</button>
+<button onclick="c('sentence')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Sentence</button>
+<button onclick="c('camel')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">camelCase</button>
+<button onclick="c('snake')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">snake_case</button>
+</div>
+<textarea id="output" class="w-full h-32 p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly></textarea>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function c(t){var i=document.getElementById("input").value;var r="";if(t==="upper")r=i.toUpperCase();else if(t==="lower")r=i.toLowerCase();else if(t==="title")r=i.replace(/\w\S*/g,w=>w[0].toUpperCase()+w.slice(1).toLowerCase());else if(t==="sentence")r=i.toLowerCase().replace(/(^\.s*\w|[.!?]\s*\w)/g,c=>c.toUpperCase());else if(t==="camel")r=i.toLowerCase().replace(/[^a-z0-9]+(.)/g,(m,c)=>c.toUpperCase());else r=i.toLowerCase().replace(/\s+/g,"_").replace(/[^a-z0-9_]/g,"");document.getElementById("output").value=r;}</script>
+</body>
+</html>

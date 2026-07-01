@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://asiatekai.com/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://asiatekai.com/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://asiatekai.com/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="th" href="https://asiatekai.com/?lang=th"/>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://asiatekai.com/?lang=vi"/>
-    <xhtml:link rel="alternate" hreflang="id" href="https://asiatekai.com/?lang=id"/>
-    <xhtml:link rel="alternate" hreflang="ms" href="https://asiatekai.com/?lang=ms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://asiatekai.com/"/>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://asiatekai.com/blog.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://asiatekai.com/chat.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://asiatekai.com/docs.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://asiatekai.com/pricing.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://asiatekai.com/</loc><priority>1.0</priority></url>
+<url><loc>https://asiatekai.com/tools</loc><priority>1.0</priority></url>
+<url><loc>https://asiatekai.com/tools/word-counter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/case-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/remove-duplicate-lines</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/find-replace</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/text-reverser</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/line-sorter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/whitespace-remover</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/slug-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/base64</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/url-encoder</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/html-entity</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/binary-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/hex-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/morse-code</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/rot13</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/number-base</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/json-formatter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/xml-formatter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/jwt-decoder</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/timestamp-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/regex-tester</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/uuid-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/hash-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/color-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/cron-parser</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/http-status-codes</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/markdown-preview</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/diff-checker</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/sql-formatter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/json-yaml-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/password-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/random-number</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/qr-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/placeholder-image</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/unit-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/percentage-calculator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/temperature-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/bmi-calculator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/age-calculator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/meta-tag-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/keyword-density</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/robots-txt</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/favicon-generator</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/ip-lookup</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/email-signature</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/ascii-table</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/timezone-converter</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/lorem-ipsum</loc><priority>0.8</priority></url>
+<url><loc>https://asiatekai.com/tools/color-picker</loc><priority>0.8</priority></url>
 </urlset>

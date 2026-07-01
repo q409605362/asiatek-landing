@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is My IP - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online what is my ip tool. Fast, secure, no installation.">
+<meta name="keywords" content="what is my ip, online tool, free what is my ip">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">What Is My IP</h1><p class="text-gray-500 mb-4">Check your public IP address.</p>
+<div id="info" class="space-y-3"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>async function getIP(){try{var r=await fetch("https://api.ipify.org?format=json");var d=await r.json();document.getElementById("info").innerHTML='<div class="bg-blue-50 rounded-lg p-6 text-center"><div class="text-sm text-gray-500">Your IP</div><div class="text-3xl font-bold text-blue-600 font-mono mt-1">'+d.ip+'</div></div><div class="grid grid-cols-2 gap-3 mt-4"><div class="bg-gray-50 p-3 rounded"><div class="text-xs text-gray-500">Platform</div><div class="font-medium text-sm">'+navigator.platform+'</div></div><div class="bg-gray-50 p-3 rounded"><div class="text-xs text-gray-500">Language</div><div class="font-medium text-sm">'+navigator.language+'</div></div></div>';}catch(e){document.getElementById("info").innerHTML='<div class="text-red-600">Failed</div>';}}getIP();</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitespace Remover - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online whitespace remover tool. Fast, secure, no installation.">
+<meta name="keywords" content="whitespace remover, online tool, free whitespace remover">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Whitespace Remover</h1><p class="text-gray-500 mb-4">Remove extra spaces and newlines.</p>
+<textarea id="input" class="w-full h-32 p-3 border rounded-lg font-mono text-sm" placeholder="Paste text..."></textarea>
+<div class="flex gap-2 mt-3 flex-wrap"><button onclick="clean('trim')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Trim Lines</button><button onclick="clean('single')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Single Spaces</button><button onclick="clean('all')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Remove All</button><button onclick="clean('nl')" class="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">Remove Newlines</button></div>
+<textarea id="output" class="w-full h-32 p-3 border rounded-lg bg-gray-50 font-mono text-sm mt-3" readonly></textarea>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function clean(t){var i=document.getElementById("input").value;var r;if(t==="trim")r=i.split("\n").map(l=>l.trim()).join("\n");else if(t==="single")r=i.replace(/  +/g," ");else if(t==="all")r=i.replace(/\s+/g,"");else r=i.replace(/\n+/g," ");document.getElementById("output").value=r;}</script>
+</body>
+</html>

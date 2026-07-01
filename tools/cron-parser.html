@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cron Parser - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online cron parser tool. Fast, secure, no installation.">
+<meta name="keywords" content="cron parser, online tool, free cron parser">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Cron Expression Parser</h1><p class="text-gray-500 mb-4">Understand cron expressions.</p>
+<input id="cron" class="w-full p-3 border rounded-lg font-mono" value="*/5 * * * *" oninput="parse()">
+<div id="res" class="mt-4 bg-gray-50 rounded-lg p-4 font-mono text-sm"></div>
+<div class="mt-4 grid grid-cols-2 gap-2 text-sm"><div class="bg-gray-50 p-2 rounded cursor-pointer" onclick="document.getElementById('cron').value='* * * * *';parse()">Every minute</div><div class="bg-gray-50 p-2 rounded cursor-pointer" onclick="document.getElementById('cron').value='0 * * * *';parse()">Every hour</div><div class="bg-gray-50 p-2 rounded cursor-pointer" onclick="document.getElementById('cron').value='0 0 * * *';parse()">Daily midnight</div><div class="bg-gray-50 p-2 rounded cursor-pointer" onclick="document.getElementById('cron').value='0 9 * * 1-5';parse()">Weekdays 9am</div></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function parse(){var c=document.getElementById("cron").value.trim().split("\s+");var p=["minute","hour","day(month)","month","day(week)"];var h="";for(var i=0;i<5&&i<c.length;i++){var v=c[i];var d=v==="*"?"Every":v.includes("*/")?"Every "+v.split("*/")[1]:v.includes("-")?"From "+v.split("-")[0]+" to "+v.split("-")[1]:"At "+v;h+='<div class="mb-1"><span class="text-gray-500">'+p[i]+":</span> <code class='bg-blue-100 px-2 py-0.5 rounded'>"+v+"</code> = "+d+"</div>";}document.getElementById("res").innerHTML=h||"Enter a cron expression";}parse();</script>
+</body>
+</html>

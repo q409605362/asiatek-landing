@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online word counter tool. Fast, secure, no installation.">
+<meta name="keywords" content="word counter, online tool, free word counter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Word Counter</h1>
+<p class="text-gray-500 mb-4">Count words, characters, sentences, and paragraphs.</p>
+<textarea id="input" class="w-full h-48 p-3 border rounded-lg font-mono text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Paste or type your text here..." oninput="count()"></textarea>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="bg-blue-50 rounded-lg p-4 text-center"><div id="words" class="text-2xl font-bold text-blue-600">0</div><div class="text-sm text-gray-500">Words</div></div>
+<div class="bg-green-50 rounded-lg p-4 text-center"><div id="chars" class="text-2xl font-bold text-green-600">0</div><div class="text-sm text-gray-500">Characters</div></div>
+<div class="bg-purple-50 rounded-lg p-4 text-center"><div id="sentences" class="text-2xl font-bold text-purple-600">0</div><div class="text-sm text-gray-500">Sentences</div></div>
+<div class="bg-orange-50 rounded-lg p-4 text-center"><div id="paragraphs" class="text-2xl font-bold text-orange-600">0</div><div class="text-sm text-gray-500">Paragraphs</div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function count(){var t=document.getElementById("input").value;var w=t.trim()?t.trim().split(/\s+/).length:0;var c=t.length;var s=t.split(/[.!?]+/).filter(x=>x.trim()).length;var p=t.split(/\n\n+/).filter(x=>x.trim()).length;document.getElementById("words").textContent=w;document.getElementById("chars").textContent=c;document.getElementById("sentences").textContent=s;document.getElementById("paragraphs").textContent=p;}</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UUID Generator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online uuid generator tool. Fast, secure, no installation.">
+<meta name="keywords" content="uuid generator, online tool, free uuid generator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">UUID Generator</h1><p class="text-gray-500 mb-4">Generate random UUID v4.</p>
+<div class="flex gap-3 items-end"><div><label class="text-sm text-gray-600">Count:</label><input id="cnt" type="number" value="5" min="1" max="100" class="w-20 p-2 border rounded-lg ml-2"></div><button onclick="gen()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate</button><button onclick="cp()" class="px-4 py-2 bg-gray-200 rounded-lg">Copy All</button></div>
+<div id="out" class="mt-4 bg-gray-50 rounded-lg p-4 font-mono text-sm space-y-1"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function uuid(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(c){var r=Math.random()*16|0;return(c==="x"?r:(r&0x3|0x8)).toString(16);});}function gen(){var n=parseInt(document.getElementById("cnt").value);var h="";for(var i=0;i<n;i++){var u=uuid();h+='<div class="py-1 px-2 hover:bg-gray-100 rounded cursor-pointer" onclick="navigator.clipboard.writeText(this.textContent.trim())">'+u+"</div>";}document.getElementById("out").innerHTML=h;}function cp(){navigator.clipboard.writeText(Array.from(document.getElementById("out").children).map(el=>el.textContent.trim()).join("\n"));}gen();</script>
+</body>
+</html>

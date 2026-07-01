@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online unit converter tool. Fast, secure, no installation.">
+<meta name="keywords" content="unit converter, online tool, free unit converter">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Unit Converter</h1><p class="text-gray-500 mb-4">Convert units of measurement.</p>
+<div class="flex gap-3 items-end"><div><label class="text-sm text-gray-600">Value:</label><input id="v" type="number" value="1" class="w-24 p-2 border rounded-lg ml-2" oninput="cv()"></div><div><label class="text-sm text-gray-600">Category:</label><select id="cat" class="p-2 border rounded-lg ml-2" onchange="upd();cv()"><option value="length">Length</option><option value="weight">Weight</option><option value="temp">Temperature</option></select></div><div><label class="text-sm text-gray-600">From:</label><select id="f" class="p-2 border rounded-lg ml-2" onchange="cv()"></select></div><div><label class="text-sm text-gray-600">To:</label><select id="t" class="p-2 border rounded-lg ml-2" onchange="cv()"></select></div></div>
+<div class="mt-6 text-center text-2xl font-bold text-blue-600" id="r"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>var U={length:{meter:1,kilometer:1000,centimeter:0.01,foot:0.3048,inch:0.0254,mile:1609.344},weight:{gram:1,kilogram:1000,pound:453.592,ounce:28.3495},temp:{celsius:"c",fahrenheit:"f",kelvin:"k"}};function upd(){var c=document.getElementById("cat").value;var u=Object.keys(U[c]);document.getElementById("f").innerHTML=u.map(x=>'<option>'+x+"</option>").join("");document.getElementById("t").innerHTML=u.map(x=>'<option>'+x+"</option>").join("");document.getElementById("t").selectedIndex=1;}function cv(){var v=parseFloat(document.getElementById("v").value);var c=document.getElementById("cat").value;var f=document.getElementById("f").value;var t=document.getElementById("t").value;var r;if(c==="temp"){var k=f==="celsius"?v+273.15:f==="fahrenheit"?(v-32)*5/9+273.15:v;r=t==="celsius"?k-273.15:t==="fahrenheit"?(k-273.15)*9/5+32:k;}else{r=v*U[c][f]/U[c][t];}document.getElementById("r").textContent=v+" "+f+" = "+r.toFixed(4)+" "+t;}upd();cv();</script>
+</body>
+</html>

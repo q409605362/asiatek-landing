@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online age calculator tool. Fast, secure, no installation.">
+<meta name="keywords" content="age calculator, online tool, free age calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Age Calculator</h1><p class="text-gray-500 mb-4">Calculate exact age.</p>
+<div class="flex gap-4 items-end"><div><label class="text-sm text-gray-600">Birth Date:</label><input id="b" type="date" class="p-2 border rounded-lg ml-2" value="1990-01-01"></div><button onclick="calc()" class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700">Calculate</button></div>
+<div id="res" class="mt-6 grid grid-cols-3 gap-4"></div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function calc(){var b=new Date(document.getElementById("b").value);var n=new Date();var y=n.getFullYear()-b.getFullYear();var m=n.getMonth()-b.getMonth();var d=n.getDate()-b.getDate();if(d<0){m--;d+=new Date(n.getFullYear(),n.getMonth(),0).getDate();}if(m<0){y--;m+=12;}var td=Math.floor((n-b)/864e5);document.getElementById("res").innerHTML='<div class="bg-pink-50 rounded-lg p-6 text-center"><div class="text-3xl font-bold text-pink-600">'+y+'</div><div class="text-gray-500">Years</div></div><div class="bg-purple-50 rounded-lg p-6 text-center"><div class="text-3xl font-bold text-purple-600">'+m+'</div><div class="text-gray-500">Months</div></div><div class="bg-blue-50 rounded-lg p-6 text-center"><div class="text-3xl font-bold text-blue-600">'+d+'</div><div class="text-gray-500">Days</div></div><div class="col-span-3 text-center text-gray-500">Total: '+td.toLocaleString()+" days</div>";}calc();</script>
+</body>
+</html>

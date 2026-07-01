@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator - Free Online Tool | Asiatek AI</title>
+<meta name="description" content="Free online percentage calculator tool. Fast, secure, no installation.">
+<meta name="keywords" content="percentage calculator, online tool, free percentage calculator">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+<nav class="bg-white shadow-sm border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-14">
+<div class="flex items-center">
+<a href="/" class="text-xl font-bold text-gray-900">🛠️ DevTools</a>
+<span class="ml-3 text-xs text-gray-400">by Asiatek AI</span>
+</div>
+<div class="flex items-center space-x-4 text-sm">
+<a href="/" class="text-gray-500 hover:text-gray-900">Home</a>
+<a href="/tools" class="text-blue-600 font-medium">All Tools</a>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-5xl mx-auto px-4 py-8">
+<h1 class="text-2xl font-bold mb-2">Percentage Calculator</h1><p class="text-gray-500 mb-4">Calculate percentages.</p>
+<div class="space-y-4">
+<div class="bg-white rounded-lg shadow p-4"><h3 class="font-semibold mb-2 text-sm">What is X% of Y?</h3><div class="flex gap-2 items-center"><input id="x1" type="number" value="20" class="w-20 p-2 border rounded-lg" oninput="c1()">% of <input id="y1" type="number" value="150" class="w-20 p-2 border rounded-lg" oninput="c1()"> = <span id="r1" class="font-bold text-blue-600"></span></div></div>
+<div class="bg-white rounded-lg shadow p-4"><h3 class="font-semibold mb-2 text-sm">X is what % of Y?</h3><div class="flex gap-2 items-center"><input id="x2" type="number" value="30" class="w-20 p-2 border rounded-lg" oninput="c2()"> is <span id="r2" class="font-bold text-green-600"></span>% of <input id="y2" type="number" value="150" class="w-20 p-2 border rounded-lg" oninput="c2()"></div></div>
+</div>
+</main>
+<footer class="bg-gray-50 border-t mt-12">
+<div class="max-w-5xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
+© 2026 Asiatek AI · <a href="/tools" class="text-blue-600">Free Developer Tools</a>
+</div>
+</footer>
+<script>function c1(){document.getElementById("r1").textContent=(parseFloat(document.getElementById("x1").value)/100*parseFloat(document.getElementById("y1").value)).toFixed(2);}function c2(){document.getElementById("r2").textContent=(parseFloat(document.getElementById("x2").value)/parseFloat(document.getElementById("y2").value)*100).toFixed(2);}c1();c2();</script>
+</body>
+</html>
